@@ -1,0 +1,49 @@
+---
+title: "Flexdashboard Example"
+output: flexdashboard::flex_dashboard
+---
+
+```{r}
+library(tidyverse)
+knitr::opts_chunk$set(fig.width = 10)
+```
+
+First Page (Two-columned)
+=======================================
+
+Iris data
+---------------------------------------
+
+### Data
+
+```{r, }
+iris %>% 
+  DT::datatable() # make it an interactive table with DT package
+```
+
+Iris plot
+---------------------------------------
+
+### Plot1
+
+```{r}
+ggplot(iris) +
+  geom_point(aes(Sepal.Width, Petal.Length, col = Species))
+```
+
+### Plot2
+
+```{r}
+ggplot(iris) +
+  geom_point(aes(Sepal.Length, Petal.Length, col = Species))
+```
+
+### Plot3
+
+```{r}
+ggplot(iris) +
+  geom_point(aes(Sepal.Width, Sepal.Length, col = Species))
+```
+
+Second Page 
+=======================================

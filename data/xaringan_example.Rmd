@@ -1,0 +1,58 @@
+---
+title: "Example Slides"
+subtitle: "With a super amazing subtitle"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r, echo = F, message = F, warning = F, fig.align='center'}
+library(tidyverse)
+knitr::opts_chunk$set(fig.width = 10, fig.height = 5, fig.align = 'center')
+```
+
+# Headline
+```{r}
+iris %>% 
+  ggplot(aes(Sepal.Length, Sepal.Width, col = Species)) +
+  geom_point()
+```
+
+---
+class:middle
+
+## Centering
+This slide is now filled from the center due to `class:middle`
+
+???
+
+* Using `???` I can hide notes.
+* I can access these from my knitted html document by pressing `P` 
+(i.e. going into presentation mode.) 
+* Also I can clone the presentation by pressing `C`
+
+---
+class:middle
+
+### Line highlighting via #<<
+
+```{r, eval = F}
+mpg %>% 
+  ggplot(aes(hwy, cty, col = class)) +
+  geom_jitter() #<<
+# Figure is shown on next slide! (due to --)
+```
+
+--
+
+```{r, echo = F}
+mpg %>% 
+  ggplot(aes(hwy, cty, col = class)) +
+  geom_jitter() #<<
+```
+
+More information in the [original intro presentation](https://slides.yihui.org/xaringan/#1).
