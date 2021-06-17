@@ -1,0 +1,59 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(httr)
+library(jsonlite)
+library(tidyverse)
+```
+
+
+```{r}
+ID <- keyring::key_get("Spotify_TaylorSwiftDashboard", username = "ClientID")
+Secret <- keyring::key_get(
+  "Spotify_TaylorSwiftDashboard", 
+  username = "ClientSecret"
+)
+access_token <- POST("https://accounts.spotify.com/api/token",
+    authenticate(ID, Secret),
+    body = list(grant_type = "client_credentials"),
+    encode = "form"
+    ) %>% 
+  content() %>% 
+  .$access_token
+```
+
+
+```{r}
+library(spotifyr)
+
+albums <- read_csv("Albums.csv")
+taylor <- get_artist_audio_features("taylor swift", authorization = access_token) %>% 
+  filter(album_id %in% albums$ID) %>% 
+  select(album_release_year, danceability:tempo, duration_ms, 
+         track_name, track_number, album_name) 
+```
+
+```{r}
+taylor %>% 
+  mutate(
+        Duration = round(duration_ms / 1000),
+        min = floor(Duration / 60),
+        sec = Duration %% 60,
+        sec = if_else(sec %in% 0:9, glue('0{sec}'), glue('{sec}')),
+        Duration = glue("{min}:{sec}")
+    ) %>% 
+    mutate(track_number = format(track_number, accuracy = 0)) %>% 
+    rename(
+      Album = album_name,
+      "No" = track_number,
+      Song = track_name
+    ) %>% 
+  write_csv("my_taylor.csv")
+```
+
+
+
+
