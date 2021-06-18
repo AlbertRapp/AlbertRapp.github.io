@@ -9,4 +9,4 @@ The corresponding text can be found [here](https://yards.albert-rapp.de/communic
 
 ## Data for Shiny Dashboard
 
-* [csv-file](https://albertrapp.github.io/data/my_taylor.csv) and [source](https://albertrapp.github.io/data/DataGeneration.Rmd)
+* [csv-file](https://albertrapp.github.io/data/my_taylor.csv) and [source](https://albertrapp.github.io/data/DataGeneration.Rmd), [auxillary albums file](https://albertrapp.github.io/data/Albums.csv)
