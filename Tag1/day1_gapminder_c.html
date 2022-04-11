@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.165">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Albert Rapp">
+  <title>WiWi BrushUp Kurs 2022</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="day1_gapminder_c_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="day1_gapminder_c_files/libs/quarto-html/quarto.js"></script>
+  <script src="day1_gapminder_c_files/libs/quarto-html/popper.min.js"></script>
+  <script src="day1_gapminder_c_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="day1_gapminder_c_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="day1_gapminder_c_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="day1_gapminder_c_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="day1_gapminder_c_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="day1_gapminder_c_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="day1_gapminder_c_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Inhaltsverzeichnis</h2>
+<ul>
+<li><a href="#zielsetzung" class="nav-link active" data-scroll-target="#zielsetzung">Zielsetzung</a></li>
+<li><a href="#aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a>
+<ul class="collapse">
+<li><a href="#mappe-farben-zu-kontinenten" class="nav-link" data-scroll-target="#mappe-farben-zu-kontinenten">Mappe Farben zu Kontinenten</a></li>
+<li><a href="#positioniere-die-farbigen-flächen-neu" class="nav-link" data-scroll-target="#positioniere-die-farbigen-flächen-neu">Positioniere die farbigen Flächen neu</a></li>
+<li><a href="#mache-die-flächen-durchsichtig" class="nav-link" data-scroll-target="#mache-die-flächen-durchsichtig">Mache die Flächen durchsichtig</a></li>
+<li><a href="#umrande-die-flächen" class="nav-link" data-scroll-target="#umrande-die-flächen">Umrande die Flächen</a></li>
+<li><a href="#gib-jedem-kontinent-ein-eigenes-fenster-eine-eigene-facette" class="nav-link" data-scroll-target="#gib-jedem-kontinent-ein-eigenes-fenster-eine-eigene-facette">Gib jedem Kontinent ein eigenes Fenster / eine eigene Facette</a></li>
+<li><a href="#was-kommt-als-nächstes" class="nav-link" data-scroll-target="#was-kommt-als-nächstes">Was kommt als nächstes?</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+
+
+
+<div class="quarto-title"><h1 class="title display-7">WiWi BrushUp Kurs 2022</h1><p class="subtitle lead">Gapminder - Positionierung und Facetten</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<p>Albert Rapp</p>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">April 7, 2022</p></div></div></div></header>
+
+<section id="zielsetzung" class="level1">
+<h1>Zielsetzung</h1>
+<p>Unser Ziel ist einfach.</p>
+<p><strong>Schritt 1:</strong> Lernen wie die Positionierung von geometrischen Objekten und das Erzeugen von Facetten mithilfe von <code>ggplot2</code> funktioniert.</p>
+<p><strong>Schritt 2:</strong> <a href="http://de.spongepedia.org/index.php/Gute-Nudel-Brett">Gute Nudel Sterne abkassieren und beste Nudel werden</a>.</p>
+</section>
+<section id="aufgaben" class="level1 page-columns page-full">
+<h1>Aufgaben</h1>
+<section id="mappe-farben-zu-kontinenten" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="mappe-farben-zu-kontinenten">Mappe Farben zu Kontinenten</h2>
+<p>Am Ende unseres letzten Tutorials haben wir den folgenden Plot gesehen</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Dem wollen wir uns nun von unserem vorherigen Plot aus annähern. Dieser hat uns gezeigt, dass die Verteilung der Lebenserwartung insgesamt folgendermaßen aussieht.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Probieren wir nun aus, Farbe ins Spiel zu bringen. Verändere das Mapping, sodass die Farben der Variable <code>continent</code> zugeordnet werden. Wenn du das tust, dann wirst du den folgenden Plot erhalten.</p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption margin-caption"><strong>Hinweis:</strong> Falls du bei deinem Versuch nur einzelne Linien farbig geworden sind, so wirf einen Blick in die Dokumentation von <code>stat_density</code> (mit F1). In dem Abschnitt ‘Aesthetics’ findest du alle zuordnenbaren aesthetics, die <code>stat_densizy</code> akzeptiert. Vielleicht klappt es ja mit einem anderen aesthetic als <code>colour</code> bzw. <code>col</code>.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ok. Das ist nicht ganz das was du vermutlich erwartet hast, aber immerhin sehen wir nun unterschiedliche Kontinente. Hier wurden allerdings die unterschiedlichen Dichteplots gestapelt anstatt sie alle (wie eigentlich üblich) auf der x-Achse beginnen zu lassen. Persönlich finde ich solche Art von Grafiken schwierig zu lesen, aber es gibt auch Befürworter solcher Grafiken (siehe bspw. die verwandten <a href="https://en.wikipedia.org/wiki/Streamgraph">Streamgraphs</a>).</p>
+</section>
+<section id="positioniere-die-farbigen-flächen-neu" class="level2">
+<h2 class="anchored" data-anchor-id="positioniere-die-farbigen-flächen-neu">Positioniere die farbigen Flächen neu</h2>
+<p>Glücklicherweise darf ich in meinen Texten entscheiden, wie die Plots aussehen sollen. Lass uns deswegen die unterschiedlichen Kontinentplots zurück zur x-Achse bringen. Um das zu bewerkstelligen, müssen wir das <code>position</code>-Argument der <code>stat_density()</code>-Schicht unseres Plots verändern. Jeder geom- und stat-Schicht in <code>ggplot2</code> hat ein solches Argument. Dies ist Teil der <strong>layered grammar of graphics</strong> auf der <code>ggplot2</code> basiert. Schau dazu beispielsweise die Dokumentation von <code>geom_density()</code> und <code>stat_density()</code> an.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_density</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">stat =</span> <span class="st">"density"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">position =</span> <span class="st">"identity"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  ...,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="cn">NA</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">show.legend =</span> <span class="cn">NA</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">inherit.aes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">outline.type =</span> <span class="st">"upper"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_density</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geom =</span> <span class="st">"area"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">position =</span> <span class="st">"stack"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ...,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">bw =</span> <span class="st">"nrd0"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">adjust =</span> <span class="dv">1</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">kernel =</span> <span class="st">"gaussian"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">512</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">trim =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="cn">NA</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">show.legend =</span> <span class="cn">NA</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">inherit.aes =</span> <span class="cn">TRUE</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Dieser Blick in die Dokumentation zeigt uns gleich mehrere Dinge:</p>
+<ul>
+<li>Beide <code>ggplot2</code>-Schichten verwenden ganz schön viele Optionen/Argumente. Aber die meisten sind schon mit Werten (durch <code>=</code>) befüllt. Deshalb müssen wir gar nicht im Detail wissen, was jede Option macht. Uns geht es jetzt nur darum herauszufinden, wodurch die Positionseinstellungen verändert werden können.</li>
+<li>Außerdem sehen wir nochmals, dass <code>stat_density()</code> das <code>geom = "area"</code> verwendet. Deshalb zeichnet <code>stat_density()</code> eine Fläche.</li>
+<li>Wir sehen, dass <code>stat_density()</code> die Position <code>position = "stack"</code> verwendet. Das klingt doch schon genau nach dem was wir verändern müssen, um die gestapelten Flächen zur x-Achse zurückzuholen.</li>
+<li>Wir müssten jetzt nur wissen, was wir statt <code>"stack"</code> verwenden können. Glücklicherweise sehen wir, dass <code>geom_density()</code> das Positionsargument <code>position = "identity"</code> verwendet. Probieren wir doch mal <code>stat_density()</code> mit diesem Positionsargument zu verwenden.</li>
+</ul>
+<p>Probiere nun aus, <code>stat_density()</code> mit <code>position = "identity"</code> zu verwenden. Dies sollte dann so aussehen:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="mache-die-flächen-durchsichtig" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="mache-die-flächen-durchsichtig">Mache die Flächen durchsichtig</h2>
+<p>Na das hat doch gut geklappt. Leider überdecken sich jetzt die Flächen. Aber wenn wir die Farben ein wenig transparent machen, dann können wir hoffentlich mehr sehen.</p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption margin-caption">Das aesthetic <code>alpha</code> ist für Transparenz verantwortlich. Dabei steht <code>alpha = 1</code> für gar keine Transparenz und <code>alpha = 0</code> für komplette Transparenz. Werte dazwischen machen die Farben entsprechend nur teilweise transparent.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Wundervoll! Das haben wir ganz toll gemacht. Zusätzlich jetzt fände ich es jetzt noch klasse, wenn jede Fläche schwarz umrandet wird. Erinnert euch dafür an euren ersten Versuch, Farben zu Kontinenten zuordnen. Die Chancen stehen gar nicht schlecht, dass euer Plot so aussah:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="umrande-die-flächen" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="umrande-die-flächen">Umrande die Flächen</h2>
+<p>Wie ihr mittlerweile wisst, lag das daran, dass ihr <code>continent</code> zu <code>col</code> bzw. <code>color</code> oder <code>colour</code> zugeordnet habt. Dies hat die <strong>Linien</strong>farbe und nicht die <strong>Füll</strong>farbe <code>fill</code> verändert. Aber nichts ist umsonst! Dadurch wisst ihr jetzt, dass ihr das Aussehen der umrandenden Linie so beinflussen könnt. Probiert also nun dieses Wissen auszunutzen, um die Ränder schwarz zu machen:</p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption margin-caption">Wenn eure Flächen nun mit einer anderen Farbe umrandet sind und ihr einen Legendeneintrag “black” seht, dann überlegt nochmals, wo ihr `col = ‘black’ hinschreiben wollt.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gib-jedem-kontinent-ein-eigenes-fenster-eine-eigene-facette" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="gib-jedem-kontinent-ein-eigenes-fenster-eine-eigene-facette">Gib jedem Kontinent ein eigenes Fenster / eine eigene Facette</h2>
+<p>Alles klar, wir haben getan was wir konnten. Der Plot ist mittlerweile besser lesbar. Aber schön ist was anderes. Die Flächen überschneiden sich einfach immer noch ziemlich viel. Vielleicht sollten wir jedem Kontinent ein eigenes Fenster geben. In <code>ggplot2</code> funktioniert das über die sogenannten <code>facet_*()</code> Funktionen. Schauen wir uns mal an, was die liefern. Wir starten wieder mit unserer Ursprungsgrafik.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Durch Hinzufügen einer einzigen Zeile kriegen wir schon genau das, was wir wollen.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="fu">vars</span>(continent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Das war einfach. Durch die einzelnen Fenster konnten wir uns die ganze Positionierungs- und Transparenzgeschichten sparen. Jetzt müssen wir nur noch verstehen, wie der Code zu verstehen ist. Dazu sei gesagt, dass ein Plot in der <strong>layered grammar of graphics</strong> in <strong>facets</strong> aufgeteilt werden kann. Im Wesentlichen bezeichnet dieser Ansatz Fenster als Facetten. Somit sagt der Ansatz <em>“Wir können unsere Daten aufteilen und jeden Teil in ein eigenes kleines Fenster zeichnen. Zusammengenommen formen unsere kleinen Fenster nun eine neue Grafik.”</em></p>
+<p>Das ist ziemlich banal und alles andere alles andere als eine rocket science. Aber wie ist dieses Konzept in <code>ggplot2</code> umgesetzt? Mit einer weiteren Schicht. Du erinnerst dich? Wie in jeder guten Jenga-Partie wird in der <strong>layered</strong> grammar of graphics geschichtet was das Zeug hält In diesem Fall ist die Facetten/Fenster-Schicht <code>facet_wrap()</code>.</p>
+<p>Wiederum muss diese Funktion wissen, was sie machen soll. Wie soll der Datensatz gesplittet werden? Wir könnten vollkommen unabhängig vom Datensatz eine Regel wie <em>“Teile den Datensatz einfach in zwei Hälften”</em> erfinden. Das sähe hier so aus.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>wilde_regel <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="dv">1</span>, <span class="at">times =</span> <span class="dv">1704</span> <span class="sc">/</span> <span class="dv">2</span>), <span class="co"># Datensatz hat 1704 Einträge</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="dv">2</span>, <span class="at">times =</span> <span class="dv">1704</span> <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> wilde_regel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption margin-caption">Der Code wie die Regel umgesetzt wird, ist nicht wichtig! Macht euch keinen Kopf, wenn ihr nicht versteht, wieso der Code so aussieht wie er es tut. Der wichtige Punkte ist, dass in <code>facet_wrap()</code> nicht <code>vars()</code> verwendet wurde. Stattdessen wurde <code>facet_wrap()</code> mit einer Variable von außerhalb des Datensates gefüttert.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ihr seht, dass unsere Grafik einfach in zwei Hälften geteilt wurde. Das hatte nichts mit irgendeiner Größe aus dem <code>gapminder</code> Datensatz (wie bspw. <code>continent</code>) zu tun. Deswegen konnte hier auf die Funktion <code>vars()</code> verzichtet werden. Wenn wir nun allerdings anhand <code>continent</code> teilen möchten, so müssen wir <code>facet_wrap()</code> mitteilen, dass es nicht eine Variable <code>continent</code> irgendwo suchen soll (analog zu der Variable <code>wilde_regel</code> im vorherigen Beispiel). Stattdessen geben wir R zu verstehen, dass <code>continent</code> im Datensatz steckt. Dies passiert mit der Hilsfunktion <code>vars()</code>.</p>
+<p>Lange Rede, kurzer Sinn: <code>vars()</code> in <code>facet_wrap()</code> erfüllt eine ähnliche Funktion wie <code>aes()</code> in <code>mapping = aes(x = lifeExp)</code>. Wenn etwas von innerhalb des Datensatzes genommen werden soll, dann brauchen wir diese Hilfsfunktionen. Ansonsten verzichten wir auf diese Helfer.</p>
+</section>
+<section id="was-kommt-als-nächstes" class="level2">
+<h2 class="anchored" data-anchor-id="was-kommt-als-nächstes">Was kommt als nächstes?</h2>
+<p>Somit sind wir einen Schritt näher dran, alle Komponenten der layered grammar of graphics zu verstehen. Außerdem sind wir nun deutlich näher an der Grafik, die wir nachbauen wollten. Hier der direkte Vergleich.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_c_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Im nächsten Tutorial lernen wir über Koordinatensysteme, scales und <code>theme()</code>. Damit vervollständigen wir unser Wissen über die Komponenten der layered grammar of graphics. Dann können wir diese Grafik auch wie gewünscht rekonstruieren.</p>
+
+</section>
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

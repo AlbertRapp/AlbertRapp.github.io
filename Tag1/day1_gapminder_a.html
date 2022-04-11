@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.228">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Albert Rapp">
+  <title>WiWi BrushUp Kurs 2022</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="day1_gapminder_a_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="day1_gapminder_a_files/libs/quarto-html/quarto.js"></script>
+  <script src="day1_gapminder_a_files/libs/quarto-html/popper.min.js"></script>
+  <script src="day1_gapminder_a_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="day1_gapminder_a_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="day1_gapminder_a_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="day1_gapminder_a_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="day1_gapminder_a_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="day1_gapminder_a_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="day1_gapminder_a_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Inhaltsverzeichnis</h2>
+<ul>
+<li><a href="#zielsetzung" id="toc-zielsetzung" class="nav-link active" data-scroll-target="#zielsetzung">Zielsetzung</a></li>
+<li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a></li>
+</ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+
+
+
+<div class="quarto-title"><h1 class="title display-7">WiWi BrushUp Kurs 2022</h1><p class="subtitle lead">Gapminder - Erste geometrische Objekte</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<p>Albert Rapp</p>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">April 11, 2022</p></div></div></div></header>
+
+<section id="zielsetzung" class="level1">
+<h1>Zielsetzung</h1>
+<p>Unser Ziel ist einfach.</p>
+<p><strong>Schritt 1:</strong> Punkte und Linienplots mit <code>ggplot2</code> generieren.</p>
+<p><strong>Schritt 2:</strong> <a href="https://www.youtube.com/watch?v=bd4_PIxfMmQ">Weltherrschaft!</a></p>
+</section>
+<section id="aufgaben" class="level1 page-columns page-full">
+<h1>Aufgaben</h1>
+<p>Lade das tidyverse Package, indem du <code>library(tidyverse)</code> in die Konsole eingibst oder in einem Skript / einer Markdowndatei ausführst. Das Package enthält u.A. <code>ggplot2</code>, damit wir (tolle) Grafiken erstellen können. Beim Laden wird außerdem die folgenden Nachrichten erzeugt.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stderr">
+<pre><code>-- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>v ggplot2 3.3.5     v purrr   0.3.4
+v tibble  3.1.6     v dplyr   1.0.7
+v tidyr   1.1.4     v stringr 1.4.0
+v readr   2.0.2     v forcats 0.5.1</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.0.5</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.0.5</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.0.5</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.0.5</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.0.5</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.0.5</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+</div>
+<p>Lade nun auch das <code>gapminder</code> package und schau dir den anschließend verfügbaren Datensatz <code>gapminder</code> an (einfach in die Konsole eingeben oder im Skript/Markdown ausführen). Du solltest den folgenden Output erhalten.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code># A tibble: 1,704 x 6
+   country     continent  year lifeExp      pop gdpPercap
+   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+ 1 Afghanistan Asia       1952    28.8  8425333      779.
+ 2 Afghanistan Asia       1957    30.3  9240934      821.
+ 3 Afghanistan Asia       1962    32.0 10267083      853.
+ 4 Afghanistan Asia       1967    34.0 11537966      836.
+ 5 Afghanistan Asia       1972    36.1 13079460      740.
+ 6 Afghanistan Asia       1977    38.4 14880372      786.
+ 7 Afghanistan Asia       1982    39.9 12881816      978.
+ 8 Afghanistan Asia       1987    40.8 13867957      852.
+ 9 Afghanistan Asia       1992    41.7 16317921      649.
+10 Afghanistan Asia       1997    41.8 22227415      635.
+# ... with 1,694 more rows</code></pre>
+</div>
+</div>
+<p>Dies ist ein Datensatz in Form eines sogenannten <code>tibble</code>. Klingt erstmal merkwürdig, ist aber fürs Erste nicht viel mehr als eine Tabelle mit einem fancy Namen. Die Spaltennamen dieser ausgegebenen Tabelle sind einigermaßen selbsterklärend. Für den Fall der Fälle gibt es in R hilfreiche Dokumentationen zu Datensätzen, Funktionen und was man sonst noch so vergessen könnte.</p>
+<p>Lass uns das Aufrufen der Dokumentation/Hilfe üben. Diese ist nämlich neben google (oder einer datenfreundlicheren Alternative) eine gute Anlaufstelle, um Probleme beim Programmieren zu lösen. Gib dazu entweder <code>?gapminder</code> in die Konsole ein oder tippe <code>F1</code>, wenn sich dein Cursor über dem Wort <code>gapminder</code> befindet. In beiden Fällen öffnet sich die Hilfe in RStudio mit mehr Informationen.</p>
+<p>Soweit so gut. Lies nun in der Dokumentation nach, wofür die Spaltennamen in dem tibble <code>gapminder</code> stehen. Nutze anschließend dieses Wissen, um mithilfe von <code>ggplot()</code> das Pro-Kopf-Bruttoinlandsprodukt gegen die Bevölkerungsgröße zu zeichnen. Dabei soll folgendes Punktdiagramm entstehen.</p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption margin-caption">Reminder: Ein ggplot braucht 1. eine ggplot()-Schicht, <br> 2. <code>geom_*</code>-Schichten, <br> 3. das <code>data</code> Argument <br> 4. das <code>mapping</code> (mit <code>aes()</code>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Das ist kein besonders schöner Plot. Vielleicht kann man mehr erkennen, wenn man sich nur die Daten aus dem Jahr 2010 anschaut. Probier dies nun als nächstes. Du wirst folgenden Plot erhalten:</p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption margin-caption">Benutze <code>filter(&lt;Datensatz&gt;, &lt;Bedingung&gt;)</code> als <code>data</code> Argument</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Naja. Das wird sicherlich auch nicht der Plot des Jahres, aber wir haben schon mal weniger überlappende Punkte. Vielleicht tun wir uns gut daran, erstmal nur ein Land anzuschauen. Gucken wir doch mal wie sich die Bevölkerung von Deutschland entwickelt hat. Extrahiere also die Daten für Deutschland und plotte die Bevölkerung über die Zeit als Liniendiagramm.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Plotte zusätzlich die Datenpunkte in das Bild, damit wir wissen, welche Daten tatsächlich da sind und wo einfach eine Linie gezogen wurde. Mach die Punkte größer, sodass sie gut erkennbar sind. Falls beim verändern der Punktgröße eine Legende erscheint, überlege nochmal, ob die Punktgröße aktuell etwas mit den zugrundeliegenden Daten zu tun hat.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Wo wir schon dabei sind, die Punkte zu verändern, lass uns doch gleich andere Punktformen wählen. Probiere doch mal ein paar der folgenden <code>shape</code> Parameter aus.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Ich persönlich mag <code>shape = 21</code> sehr gerne. Mit dieser Form kann ich sowohl den Punkt füllen als auch den Rand verändern.</p>
+<p>Versuche nun den folgenden Plot nachzubilden (falls du nicht weißt, welche aesthethics von <code>geom_point()</code> verändert werden können, so wirf einen Blick in den Abschnits “Aesthetic” in dessen Dokumentation). Ich gebe zu, dass der Plot jetzt auch keine absolute Schönheit ist, aber eine gute Übung ist es hoffentlich trotzdem. Ich habe übrigens die Farben <code>dodgerblue2</code> und <code>firebrick1</code> verwendet.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Ok, genug angepasst. Kommen wir wieder zurück zu den wesentlichen Dingen. Anstatt nur Deutschland anzugucken, wollen wir nun Deutschland und Frankreich vergleichen. Nutze als Filterbedingung <code>country %in% c('Germany', 'France')</code> und erzeuge so die folgende Grafik.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Nun passe den Code an, um mehr als zwei Länder zu vergleichen:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Anstatt die Punkte miteinander direkt zu verbinden, lass uns eine Ausgleichskurve zeichnen. Ersetze dafür <code>geom_line()</code> durch <code>geom_smooth()</code>, um folgenden Plot zu erhalten.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="day1_gapminder_a_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<!-- # Bonusaufgabe -->
+<!-- Falls du besonders schnell warst, kannst du dir die Zeit vertreiben, indem du den folgenden Plot nachbaust. -->
+<!-- Hier wird bewusst keine Erklärung geliefert. -->
+<!-- Du bist also auf deine Recherchierfähigkeiten angewiesen. -->
+<!-- ```{r} -->
+<!-- ggplot( -->
+<!--   data = filter( -->
+<!--     gapminder,  -->
+<!--     country %in% c('Germany', 'France', 'Switzerland', 'Afghanistan')  -->
+<!--   ), -->
+<!--   mapping = aes(x = year, y = pop, col = country) -->
+<!-- ) + -->
+<!--   geom_line() + -->
+<!--   geom_point(size = 8) + -->
+<!--   scale_y_continuous(labels = scales::number) + -->
+<!--   labs( -->
+<!--     x = '', -->
+<!--     y = 'Bevölkerung',  -->
+<!--     col = 'Land', -->
+<!--     title = 'Vergleich von vier Ländern', -->
+<!--     subtitle = 'Die Daten kommen vom gapminder Package' -->
+<!--   ) + -->
+<!--   theme(legend.position = 'top') -->
+<!-- ``` -->
+
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>
