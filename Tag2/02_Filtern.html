@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.165">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Albert Rapp">
+  <title>WiWi BrushUp Kurs 2022</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="02_Filtern_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="02_Filtern_files/libs/quarto-html/quarto.js"></script>
+  <script src="02_Filtern_files/libs/quarto-html/popper.min.js"></script>
+  <script src="02_Filtern_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="02_Filtern_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="02_Filtern_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="02_Filtern_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="02_Filtern_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="02_Filtern_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="02_Filtern_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Inhaltsverzeichnis</h2>
+<ul>
+<li><a href="#zielsetzung" class="nav-link active" data-scroll-target="#zielsetzung">Zielsetzung</a></li>
+<li><a href="#aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a>
+<ul class="collapse">
+<li><a href="#mehrere-bedingungen-und-negation" class="nav-link" data-scroll-target="#mehrere-bedingungen-und-negation">Mehrere Bedingungen und Negation</a></li>
+<li><a href="#geht-filtern-auch-mit-dem-klammersyntax" class="nav-link" data-scroll-target="#geht-filtern-auch-mit-dem-klammersyntax">Geht Filtern auch mit dem Klammersyntax?</a></li>
+<li><a href="#kann-man-eine-grafik-ohne-data-argument-erstellen" class="nav-link" data-scroll-target="#kann-man-eine-grafik-ohne-data-argument-erstellen">Kann man eine Grafik ohne <code>data</code> Argument erstellen?</a></li>
+<li><a href="#was-sind-die-teuersten-häuser-bezogen-auf-deren-größe" class="nav-link" data-scroll-target="#was-sind-die-teuersten-häuser-bezogen-auf-deren-größe">Was sind die teuersten Häuser bezogen auf deren Größe?</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+
+
+
+<div class="quarto-title"><h1 class="title display-7">WiWi BrushUp Kurs 2022</h1><p class="subtitle lead">Ames Housing - Zugriff auf Daten</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<p>Albert Rapp</p>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">April 13, 2022</p></div></div></div></header>
+
+<section id="zielsetzung" class="level1">
+<h1>Zielsetzung</h1>
+<p>Unser Ziel ist einfach.</p>
+<p><strong>Schritt 1:</strong> Mehr Filtern.</p>
+<p><strong>Schritt 2:</strong> <a href="https://www.youtube.com/watch?v=R9_5GY1cNjQ">“Großer Filter”-Frage klären</a>.</p>
+</section>
+<section id="aufgaben" class="level1">
+<h1>Aufgaben</h1>
+<p>Wir haben die <code>filter()</code> Funktion bereits das ein oder andere mal in Action gesehen während dieses Kurses. In diesem Tutorial lernen wir noch ein paar weitere Filterbedingungen kennen und versuchen, den Zusammenhang zu Vektoren kennenzulernen.</p>
+<p>Dazu betrachten wir erneut unseren Datensatz <code>ames_teil</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ames, <span class="at">package =</span> <span class="st">'modeldata'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ames_teil <span class="ot">&lt;-</span> ames <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sale_price, lot_area, ms_zoning, neighborhood)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Einfache Bedingungen kennen wir ja bereits</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ames_teil <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sale_price <span class="sc">&gt;=</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 2,693 x 4
+   sale_price lot_area ms_zoning                neighborhood
+        &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                    &lt;fct&gt;       
+ 1     215000    31770 Residential_Low_Density  North_Ames  
+ 2     105000    11622 Residential_High_Density North_Ames  
+ 3     172000    14267 Residential_Low_Density  North_Ames  
+ 4     244000    11160 Residential_Low_Density  North_Ames  
+ 5     189900    13830 Residential_Low_Density  Gilbert     
+ 6     195500     9978 Residential_Low_Density  Gilbert     
+ 7     213500     4920 Residential_Low_Density  Stone_Brook 
+ 8     191500     5005 Residential_Low_Density  Stone_Brook 
+ 9     236500     5389 Residential_Low_Density  Stone_Brook 
+10     189000     7500 Residential_Low_Density  Gilbert     
+# ... with 2,683 more rows</code></pre>
+</div>
+</div>
+<section id="mehrere-bedingungen-und-negation" class="level2">
+<h2 class="anchored" data-anchor-id="mehrere-bedingungen-und-negation">Mehrere Bedingungen und Negation</h2>
+<p>Mehrere Bedingungen können wir einfach mit Kommata getrennt in die Filterbedingung schreiben. Nutze die Funktion <code>between()</code> und den Operator <code>%in%</code>, um Grundstücke zu finden, die in der Nachbarschaft <code>North_Ames</code> oder <code>Gilbert</code> sind, und größer als 18000 sqft aber kleiner als 22000 sqft sind.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code># A tibble: 12 x 4
+   sale_price lot_area ms_zoning               neighborhood
+        &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                   &lt;fct&gt;       
+ 1     141000    19138 Residential_Low_Density Gilbert     
+ 2     199500    18494 Residential_Low_Density Gilbert     
+ 3     180000    19900 Residential_Low_Density North_Ames  
+ 4     176000    19296 Residential_Low_Density North_Ames  
+ 5     175000    21872 Residential_Low_Density Gilbert     
+ 6     154204    18160 Residential_Low_Density Gilbert     
+ 7     129000    18450 Residential_Low_Density North_Ames  
+ 8     301600    21281 Residential_Low_Density North_Ames  
+ 9     320000    19378 Residential_Low_Density Gilbert     
+10     192140    21930 Residential_Low_Density Gilbert     
+11     167000    21299 Residential_Low_Density North_Ames  
+12     277500    18275 Residential_Low_Density North_Ames  </code></pre>
+</div>
+</div>
+<p>Anschließend finde alle Häuser, die günstiger als $25000 oder teurer als $600000 sind. Verwende dazu den <code>!</code> Operator.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code># A tibble: 8 x 4
+  sale_price lot_area ms_zoning                  neighborhood          
+       &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                      &lt;fct&gt;                 
+1     611657    12919 Residential_Low_Density    Northridge_Heights    
+2      12789     9656 Residential_Medium_Density Old_Town              
+3     610000    13693 Residential_Low_Density    Northridge_Heights    
+4     615000    12720 Residential_Low_Density    Northridge_Heights    
+5      13100    14584 A_agr                      Iowa_DOT_and_Rail_Road
+6     745000    15623 Residential_Low_Density    Northridge            
+7     755000    21535 Residential_Low_Density    Northridge            
+8     625000    35760 Residential_Low_Density    Northridge            </code></pre>
+</div>
+</div>
+</section>
+<section id="geht-filtern-auch-mit-dem-klammersyntax" class="level2">
+<h2 class="anchored" data-anchor-id="geht-filtern-auch-mit-dem-klammersyntax">Geht Filtern auch mit dem Klammersyntax?</h2>
+<p>Na klar geht das! Wir haben ja bereits gesehen, dass man mit Vektoren einzelne Zeilen und Spalten per <code>[]</code> extrahieren kann.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ames_teil[<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">250</span>, <span class="at">to =</span> <span class="dv">2750</span>, <span class="at">by =</span> <span class="dv">250</span>), <span class="fu">c</span>(<span class="st">'sale_price'</span>, <span class="st">'lot_area'</span>, <span class="st">'ms_zoning'</span>, <span class="st">'neighborhood'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 11 x 4
+   sale_price lot_area ms_zoning                  neighborhood 
+        &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                      &lt;fct&gt;        
+ 1     245350    10475 Residential_Low_Density    College_Creek
+ 2     265000    10208 Residential_Low_Density    Northridge   
+ 3     155000     8094 Residential_Medium_Density Old_Town     
+ 4     286000     4923 Residential_Low_Density    Stone_Brook  
+ 5     139000     7350 Residential_Low_Density    North_Ames   
+ 6     148000     3675 Residential_Medium_Density Edwards      
+ 7     206580    10936 Residential_Low_Density    Gilbert      
+ 8     152000     5400 Residential_Medium_Density Old_Town     
+ 9     134000     9187 Residential_Low_Density    Mitchell     
+10     260000    16059 Residential_Low_Density    Northridge   
+11     224500     9069 Residential_Low_Density    Sawyer_West  </code></pre>
+</div>
+</div>
+<p>Das gleiche funktioniert auch mit Vektoren, die durch Filterbedingungen erzeugt wurden. Gucken wir dazu ein kleines Beispiel an. Zunächst brauchen wir einen winzigen Datensatz.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ames_small <span class="ot">&lt;-</span> ames_teil[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ] <span class="co"># slice(ames_teil, 1:3) = Zeilen 1 bis 3</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ames_small</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 3 x 4
+  sale_price lot_area ms_zoning                neighborhood
+       &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                    &lt;fct&gt;       
+1     215000    31770 Residential_Low_Density  North_Ames  
+2     105000    11622 Residential_High_Density North_Ames  
+3     172000    14267 Residential_Low_Density  North_Ames  </code></pre>
+</div>
+</div>
+<p>Nun können wir durch Vergleiche einen Booleanvektor erzeugen. So bezeichnen wir Vektoren, die nur die Einträge <code>TRUE</code> oder <code>FALSE</code> beinhalten.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ames_small<span class="sc">$</span>ms_zoning <span class="sc">==</span> <span class="st">'Residential_High_Density'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p><code>TRUE</code> bzw. <code>FALSE</code> ist genau dort, wo Bedingung stimmt bzw. nicht stimmt. So ein Vektor kann genutzt werden, um mit Klammern auf Zeilen und Spalten eines tibbles zuzugreifen:</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ames_small[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 1 x 4
+  sale_price lot_area ms_zoning                neighborhood
+       &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                    &lt;fct&gt;       
+1     105000    11622 Residential_High_Density North_Ames  </code></pre>
+</div>
+</div>
+<p>Das ist also genau das gleiche wie</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ames_small[ames_small<span class="sc">$</span>ms_zoning <span class="sc">==</span> <span class="st">'Residential_High_Density'</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Das ist im Wesentlichen wie <code>filter()</code> im Hintergrund funktioniert. Meiner Meinung nach bietet <code>filter()</code> aber den schöneren Syntax. Nichtsdestotrotz ist der das Arbeiten mit Vektoren wie hier demonstriert sehr flexibel. Und wenn ich mal mit einem Vektor statt mit einem ganzen tibble arbeiten muss, dann ist dieser Syntax oft genau das richtige. Dort kann man mit Klammern auch genau die Stellen auswählen, wo eine Filterbedingung <code>TRUE</code> zurückgeliefert hat.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>preise <span class="ot">&lt;-</span> ames_teil<span class="sc">$</span>sale_price</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>preise[preise <span class="sc">&gt;</span> <span class="dv">500000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code> [1] 538000 611657 501837 555000 610000 582933 552000 615000 591587 500067
+[11] 745000 755000 545224 556581 535000 625000 584500</code></pre>
+</div>
+</div>
+<p>Betrachte nun den folgenden Vektor</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="cn">NA</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1]  1  2  5 NA  0  1 NA</code></pre>
+</div>
+</div>
+<p>Dieser enthält fehlende Werte <code>NA</code>. Nutze die Funktion <code>is.na()</code> und <code>[]</code>, um die fehlenden Werte loszuwerden.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code>[1] 1 2 5 0 1</code></pre>
+</div>
+</div>
+</section>
+<section id="kann-man-eine-grafik-ohne-data-argument-erstellen" class="level2">
+<h2 class="anchored" data-anchor-id="kann-man-eine-grafik-ohne-data-argument-erstellen">Kann man eine Grafik ohne <code>data</code> Argument erstellen?</h2>
+<p>Nachdem wir nun Vektoren filtern erstellen können, wollen wir diese nun nutzen, um Grafiken zu erstellen. Man kann nämlich auch <code>ggplot()</code> ohne einen tibble, also ohne ein <code>data</code> Argument, aufrufen. Betrachte dazu folgendes Beispiel.</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>indizes <span class="ot">&lt;-</span> (preise <span class="sc">&gt;</span> <span class="dv">500000</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>preise_greater_500k <span class="ot">&lt;-</span> preise[indizes]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>entsprechende_sizes <span class="ot">&lt;-</span> ames_teil<span class="sc">$</span>lot_area[indizes]</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> entsprechende_sizes, <span class="at">y =</span> preise_greater_500k),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Filtern_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Hier mussten wir <code>ggplot()</code> ein wenig überlisten. Wir haben nämlich unsere Vektoren in ins <code>mapping</code> über <code>aes()</code> geschrieben, obwohl wir dies ja eigentlich für Variablennamen aus dem Datensatz vorgesehen haben. Hier haben wir aber gar keinen Datensatz angegeben. Deswegen wäre es eigentlich naheliegend <code>aes()</code> gar nicht zu verwenden. Aber <code>ggplot()</code> weiß nicht, was zu tun ist, wenn so gar kein <code>mapping</code> angegeben ist, deswegen müssen wir wohl oder übel <code>aes()</code> doch verwenden (und <code>ggplot()</code> weiß dann wie diese Angabe trotz fehlenden <code>data</code> Arguments zu verstehen ist).</p>
+<p>Wenn wir <code>x</code> und <code>y</code>-aesthetics manuell angeben können, dann können wir das erst recht für Farben. Erzeuge einen Vektor <code>farben</code>, der folgendermaßen aussieht.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code> [1] "dodgerblue4" "dodgerblue4" "dodgerblue4" "dodgerblue4" "dodgerblue4"
+ [6] "dodgerblue4" "dodgerblue4" "dodgerblue4" "firebrick4"  "firebrick4" 
+[11] "firebrick4"  "firebrick4"  "firebrick4"  "firebrick4"  "firebrick4" 
+[16] "firebrick4"  "firebrick4" </code></pre>
+</div>
+</div>
+<p>Dabei können dir die folgenden Funktionen behilflich sein.</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">'Wiederhole mich!'</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] "Wiederhole mich!" "Wiederhole mich!" "Wiederhole mich!"</code></pre>
+</div>
+</div>
+<p>Anschließend kannst du unsere vorherige Grafik mit Farben versehen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="02_Filtern_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="was-sind-die-teuersten-häuser-bezogen-auf-deren-größe" class="level2">
+<h2 class="anchored" data-anchor-id="was-sind-die-teuersten-häuser-bezogen-auf-deren-größe">Was sind die teuersten Häuser bezogen auf deren Größe?</h2>
+<p>Berechne einen Vektor <code>preise_pro_sqft</code> der die Preise ins Verhältnis zu der Grundstückgröße setzt. Hier die ersten 20 Einträge dieses Vektors.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code> [1]  6.767391  9.034590 12.055793 21.863799 13.731020 19.593105 43.394309
+ [8] 38.261738 43.885693 25.200000 17.590000 23.182957 21.471078 16.853381
+[15] 31.085044 10.055323 13.515741 34.617518  7.367541 15.939279</code></pre>
+</div>
+</div>
+<p>Nun erzeuge einen Booleanvektor <code>hoher_preis_pro_sqft</code>, der <code>TRUE</code> ist, genau dann wenn der Preis pro sq.ft größer als $80 ist. Mit dem <code>sum()</code> Befehl können wir zählen, wieviele Grundstücke so teuer sind. In diesem Fall wird <code>TRUE</code> als 1 interpretiert und <code>FALSE</code> als 0.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(hoher_preis_pro_sqft)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>Nun können wir mit diesem Vektor und der eben gelernten Technik, die teuersten Häuser markieren. Wenn wir das <code>color</code> Argument geschickt platzieren, können wir uns auch gleiche eine Legende ausgeben lassen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="02_Filtern_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+</section>
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

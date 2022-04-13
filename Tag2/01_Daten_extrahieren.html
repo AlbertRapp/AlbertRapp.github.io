@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.165">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Albert Rapp">
+  <title>WiWi BrushUp Kurs 2022</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="01_Daten_extrahieren_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="01_Daten_extrahieren_files/libs/quarto-html/quarto.js"></script>
+  <script src="01_Daten_extrahieren_files/libs/quarto-html/popper.min.js"></script>
+  <script src="01_Daten_extrahieren_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="01_Daten_extrahieren_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="01_Daten_extrahieren_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="01_Daten_extrahieren_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="01_Daten_extrahieren_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="01_Daten_extrahieren_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="01_Daten_extrahieren_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Inhaltsverzeichnis</h2>
+<ul>
+<li><a href="#zielsetzung" class="nav-link active" data-scroll-target="#zielsetzung">Zielsetzung</a></li>
+<li><a href="#aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a>
+<ul class="collapse">
+<li><a href="#wie-komme-ich-an-einen-teil-der-daten-um-damit-zu-rechnen" class="nav-link" data-scroll-target="#wie-komme-ich-an-einen-teil-der-daten-um-damit-zu-rechnen">Wie komme ich an einen Teil der Daten, um damit zu rechnen?</a></li>
+<li><a href="#sind-die-größten-grundstücke-die-teuersten" class="nav-link" data-scroll-target="#sind-die-größten-grundstücke-die-teuersten">Sind die größten Grundstücke die teuersten?</a></li>
+<li><a href="#markiere-die-teuersten-häuser-jeder-nachbarschaft" class="nav-link" data-scroll-target="#markiere-die-teuersten-häuser-jeder-nachbarschaft">Markiere die teuersten Häuser jeder Nachbarschaft</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+
+
+
+<div class="quarto-title"><h1 class="title display-7">WiWi BrushUp Kurs 2022</h1><p class="subtitle lead">Ames Housing - Zugriff auf Daten</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<p>Albert Rapp</p>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">April 13, 2022</p></div></div></div></header>
+
+<section id="zielsetzung" class="level1">
+<h1>Zielsetzung</h1>
+<p>Unser Ziel ist einfach.</p>
+<p><strong>Schritt 1:</strong> Wir nehmen einfach die Daten…</p>
+<p><strong>Schritt 2:</strong> … <a href="https://www.youtube.com/watch?v=b3KPLm-fq2A">und schieben sie wo anders hin</a>.</p>
+</section>
+<section id="aufgaben" class="level1">
+<h1>Aufgaben</h1>
+<p>In diesem Tutorial wollen wir uns den <code>ames</code> Datensatz aus dem <code>modeldata</code> Package angucken. Dabei werden uns die Packages <code>tidyverse</code> und <code>janitor</code> unterstützen.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ames, <span class="at">package =</span> <span class="st">'modeldata'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ames</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 2,930 x 74
+   MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+ * &lt;fct&gt;                  &lt;fct&gt;            &lt;dbl&gt;    &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    
+ 1 One_Story_1946_and_Ne~ Resident~          141    31770 Pave   No_A~ Slightly~
+ 2 One_Story_1946_and_Ne~ Resident~           80    11622 Pave   No_A~ Regular  
+ 3 One_Story_1946_and_Ne~ Resident~           81    14267 Pave   No_A~ Slightly~
+ 4 One_Story_1946_and_Ne~ Resident~           93    11160 Pave   No_A~ Regular  
+ 5 Two_Story_1946_and_Ne~ Resident~           74    13830 Pave   No_A~ Slightly~
+ 6 Two_Story_1946_and_Ne~ Resident~           78     9978 Pave   No_A~ Slightly~
+ 7 One_Story_PUD_1946_an~ Resident~           41     4920 Pave   No_A~ Regular  
+ 8 One_Story_PUD_1946_an~ Resident~           43     5005 Pave   No_A~ Slightly~
+ 9 One_Story_PUD_1946_an~ Resident~           39     5389 Pave   No_A~ Slightly~
+10 Two_Story_1946_and_Ne~ Resident~           60     7500 Pave   No_A~ Regular  
+# ... with 2,920 more rows, and 67 more variables: Land_Contour &lt;fct&gt;,
+#   Utilities &lt;fct&gt;, Lot_Config &lt;fct&gt;, Land_Slope &lt;fct&gt;, Neighborhood &lt;fct&gt;,
+#   Condition_1 &lt;fct&gt;, Condition_2 &lt;fct&gt;, Bldg_Type &lt;fct&gt;, House_Style &lt;fct&gt;,
+#   Overall_Cond &lt;fct&gt;, Year_Built &lt;int&gt;, Year_Remod_Add &lt;int&gt;,
+#   Roof_Style &lt;fct&gt;, Roof_Matl &lt;fct&gt;, Exterior_1st &lt;fct&gt;, Exterior_2nd &lt;fct&gt;,
+#   Mas_Vnr_Type &lt;fct&gt;, Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;fct&gt;, Foundation &lt;fct&gt;,
+#   Bsmt_Cond &lt;fct&gt;, Bsmt_Exposure &lt;fct&gt;, BsmtFin_Type_1 &lt;fct&gt;, ...</code></pre>
+</div>
+</div>
+<p>Wir sehen, dass dieser Datensatz ganz schön viele Variablen (Spalten) hat. Eine genaue Beschreibung aller Variablen findet sich <a href="http://jse.amstat.org/v19n3/decock/DataDocumentation.txt">online</a>. Machen wir uns als Erstes das Leben leichter und formatieren die Namen, sodass wir bei Zugriff auf Daten nicht immer Groß- und Kleinschreibung beachten müssen. Das klingt erstmal sehr banal. Aber Typos passieren oft genug. Wir brauchen das nicht provozieren.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ames_gute_namen <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(ames)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ames_gute_namen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 2,930 x 74
+   ms_sub_class           ms_zoning lot_frontage lot_area street alley lot_shape
+ * &lt;fct&gt;                  &lt;fct&gt;            &lt;dbl&gt;    &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    
+ 1 One_Story_1946_and_Ne~ Resident~          141    31770 Pave   No_A~ Slightly~
+ 2 One_Story_1946_and_Ne~ Resident~           80    11622 Pave   No_A~ Regular  
+ 3 One_Story_1946_and_Ne~ Resident~           81    14267 Pave   No_A~ Slightly~
+ 4 One_Story_1946_and_Ne~ Resident~           93    11160 Pave   No_A~ Regular  
+ 5 Two_Story_1946_and_Ne~ Resident~           74    13830 Pave   No_A~ Slightly~
+ 6 Two_Story_1946_and_Ne~ Resident~           78     9978 Pave   No_A~ Slightly~
+ 7 One_Story_PUD_1946_an~ Resident~           41     4920 Pave   No_A~ Regular  
+ 8 One_Story_PUD_1946_an~ Resident~           43     5005 Pave   No_A~ Slightly~
+ 9 One_Story_PUD_1946_an~ Resident~           39     5389 Pave   No_A~ Slightly~
+10 Two_Story_1946_and_Ne~ Resident~           60     7500 Pave   No_A~ Regular  
+# ... with 2,920 more rows, and 67 more variables: land_contour &lt;fct&gt;,
+#   utilities &lt;fct&gt;, lot_config &lt;fct&gt;, land_slope &lt;fct&gt;, neighborhood &lt;fct&gt;,
+#   condition_1 &lt;fct&gt;, condition_2 &lt;fct&gt;, bldg_type &lt;fct&gt;, house_style &lt;fct&gt;,
+#   overall_cond &lt;fct&gt;, year_built &lt;int&gt;, year_remod_add &lt;int&gt;,
+#   roof_style &lt;fct&gt;, roof_matl &lt;fct&gt;, exterior_1st &lt;fct&gt;, exterior_2nd &lt;fct&gt;,
+#   mas_vnr_type &lt;fct&gt;, mas_vnr_area &lt;dbl&gt;, exter_cond &lt;fct&gt;, foundation &lt;fct&gt;,
+#   bsmt_cond &lt;fct&gt;, bsmt_exposure &lt;fct&gt;, bsmt_fin_type_1 &lt;fct&gt;, ...</code></pre>
+</div>
+</div>
+<p>Wir brauchen nicht alle 74 Variablen gleichzeitig angucken. Wählen wir erstmal ein paar einfache Variablen aus. Dafür liefert uns das tidyverse die Funktion <code>select()</code>. Benutze diese Funktion, um von <code>ames_gute_namen</code> die Spalten <code>sale_price</code>, <code>lot_area</code>, <code>ms_zoning</code> und <code>neighborhood</code> zu extrahieren und in einer Variable <code>ames_teil</code> zu speichern.</p>
+<div class="cell">
+
+</div>
+<p>Das sollte dann so aussehen.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ames_teil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 2,930 x 4
+   sale_price lot_area ms_zoning                neighborhood
+        &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                    &lt;fct&gt;       
+ 1     215000    31770 Residential_Low_Density  North_Ames  
+ 2     105000    11622 Residential_High_Density North_Ames  
+ 3     172000    14267 Residential_Low_Density  North_Ames  
+ 4     244000    11160 Residential_Low_Density  North_Ames  
+ 5     189900    13830 Residential_Low_Density  Gilbert     
+ 6     195500     9978 Residential_Low_Density  Gilbert     
+ 7     213500     4920 Residential_Low_Density  Stone_Brook 
+ 8     191500     5005 Residential_Low_Density  Stone_Brook 
+ 9     236500     5389 Residential_Low_Density  Stone_Brook 
+10     189000     7500 Residential_Low_Density  Gilbert     
+# ... with 2,920 more rows</code></pre>
+</div>
+</div>
+<p>Damit können wir einen bekannten Plot rekonstruieren.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ames_teil) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(lot_area, sale_price, <span class="at">col =</span> ms_zoning), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01_Daten_extrahieren_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Vermutlich fällt dir auf, dass hier viele Argumentnamen wie <code>data =</code>, <code>mapping =</code>, usw. fehlen. Tatsächlich habe ich diese Teile absichtlich weggelassen. Je mehr man mit <code>ggplot2</code> arbeitet, desto mehr weiß man, dass das erste Argument in <code>ggplot()</code> <code>data</code> ist. Somit setzt <code>ggplot()</code> die Variable <code>ames_teil</code> in diese Argument ein, wenn ich nichts anderes angebe. Also brauche ich nichts genauer spezifizieren. Genau gleich verhält es sich mit <code>geom_point()</code>. Die meisten <code>geom_*()</code> Schichten fangen mit <code>mapping =</code> an. Auf diese Art und Weise wird der Code komprimierter und man spart sich Tipparbeit.</p>
+<section id="wie-komme-ich-an-einen-teil-der-daten-um-damit-zu-rechnen" class="level2">
+<h2 class="anchored" data-anchor-id="wie-komme-ich-an-einen-teil-der-daten-um-damit-zu-rechnen">Wie komme ich an einen Teil der Daten, um damit zu rechnen?</h2>
+<p>Lass uns die Spalte <code>sale_price</code> extrahieren. Benutze dazu entweder den Dollar-Operator <code>$</code> oder die Funktion <code>pull()</code>. Oder probier einfach mal beides aus. Speichere anschließend den extrahierten Vektor in eine Variable <code>preise</code>. Die ersten 50 Einträge dieses Vektors sollten so aussehen.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>preise[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code> [1] 215000 105000 172000 244000 189900 195500 213500 191500 236500 189000
+[11] 175900 185000 180400 171500 212000 538000 164000 394432 141000 210000
+[21] 190000 170000 216000 149000 149900 142000 126000 115000 184000  96000
+[31] 105500  88000 127500 149900 120000 146000 376162 306000 395192 290941
+[41] 220000 275000 259000 214000 611657 224000 500000 320000 319900 205000</code></pre>
+</div>
+</div>
+<p>Benutze nun den Vektor <code>preise</code>, um die Spannweite (kleinster bis größter Wert) der Preise zu berechnen. Benutze dazu die Befehle <code>range()</code>, <code>max()</code>, <code>min()</code> oder <code>c()</code>. Anschließend solltest du den folgenden Output erhalten.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code>[1]  12789 755000</code></pre>
+</div>
+</div>
+<p>Extrahiere nun mithilfe von <code>[]</code> oder einer Kombination von <code>select()</code> und <code>slice()</code> die Zeilen 250, 500, 750, …, 2750 und die Spalten <code>sale_price</code>, <code>lot_area</code>, <code>ms_zoning</code> und <code>neighborhood</code> aus dem Datensatz <code>ames_gute_namen</code>. Dir kann dabei die Funktion <code>seq()</code> helfen. Hier ein Beispiel zu dieser Funktion.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code> [1]  1  3  5  7  9 11 13 15 17 19</code></pre>
+</div>
+</div>
+<p>Am Ende solltest du den folgenden Datensatz erhalten</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code># A tibble: 11 x 4
+   sale_price lot_area ms_zoning                  neighborhood 
+        &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                      &lt;fct&gt;        
+ 1     245350    10475 Residential_Low_Density    College_Creek
+ 2     265000    10208 Residential_Low_Density    Northridge   
+ 3     155000     8094 Residential_Medium_Density Old_Town     
+ 4     286000     4923 Residential_Low_Density    Stone_Brook  
+ 5     139000     7350 Residential_Low_Density    North_Ames   
+ 6     148000     3675 Residential_Medium_Density Edwards      
+ 7     206580    10936 Residential_Low_Density    Gilbert      
+ 8     152000     5400 Residential_Medium_Density Old_Town     
+ 9     134000     9187 Residential_Low_Density    Mitchell     
+10     260000    16059 Residential_Low_Density    Northridge   
+11     224500     9069 Residential_Low_Density    Sawyer_West  </code></pre>
+</div>
+</div>
+</section>
+<section id="sind-die-größten-grundstücke-die-teuersten" class="level2">
+<h2 class="anchored" data-anchor-id="sind-die-größten-grundstücke-die-teuersten">Sind die größten Grundstücke die teuersten?</h2>
+<p>Bestimme einen tibble <code>largest_25</code>, der die 25 größten Grundstücke beinhaltet. Dieser Datensatz sieht ungefähr so aus.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code># A tibble: 25 x 4
+   sale_price lot_area ms_zoning               neighborhood          
+        &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                   &lt;fct&gt;                 
+ 1     375000   215245 Residential_Low_Density Timberland            
+ 2     228950   164660 Residential_Low_Density Timberland            
+ 3     277000   159000 Residential_Low_Density Clear_Creek           
+ 4     302000   115149 Residential_Low_Density Clear_Creek           
+ 5     280000    70761 Residential_Low_Density Clear_Creek           
+ 6     160000    63887 Residential_Low_Density Edwards               
+ 7     160000    57200 Residential_Low_Density Timberland            
+ 8     103000    56600 I_all                   Iowa_DOT_and_Rail_Road
+ 9     538000    53504 Residential_Low_Density Stone_Brook           
+10     256000    53227 Residential_Low_Density Clear_Creek           
+# ... with 15 more rows</code></pre>
+</div>
+</div>
+<p>Diesen Datensatz kannst du nun zusammen mit dem Ursprungsdatensatz <code>ames_teil</code> kombinieren, um die folgende Grafik zu generieren. Benutze dazu zwei Punktschichten mit unterschiedlichen <code>data</code> Argumenten. In einer Schicht verwendest du <code>col = 'grey80'</code> ind in der anderen Schicht <code>col = 'red', size = 2</code>. Falls du nicht auf die Lösung kommst, so kannst du sie dir ausnahmsweise einblenden lassen.</p>
+<div class="cell">
+<details>
+<summary>Lösung (nur anklicken, nachdem du selber getüffelt hast)</summary>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> lot_area, <span class="at">y =</span> sale_price)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> ames_teil, <span class="at">col =</span> <span class="st">'grey80'</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> largest_25, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Die 25 größten Grundstücke'</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="01_Daten_extrahieren_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="markiere-die-teuersten-häuser-jeder-nachbarschaft" class="level2">
+<h2 class="anchored" data-anchor-id="markiere-die-teuersten-häuser-jeder-nachbarschaft">Markiere die teuersten Häuser jeder Nachbarschaft</h2>
+<p>Extrahiere nun einen Datensatz <code>neighborhood_max3</code>, der die 3 teuesten Häuser für jede Nachbarschaft enthält. Also so aussieht.</p>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code># A tibble: 84 x 4
+   sale_price lot_area ms_zoning                  neighborhood 
+        &lt;int&gt;    &lt;int&gt; &lt;fct&gt;                      &lt;fct&gt;        
+ 1     345000    13860 Residential_Low_Density    North_Ames   
+ 2     301600    21281 Residential_Low_Density    North_Ames   
+ 3     277500    18275 Residential_Low_Density    North_Ames   
+ 4     475000    11778 Residential_Low_Density    College_Creek
+ 5     424870     9965 Residential_Low_Density    College_Creek
+ 6     395039    11778 Residential_Low_Density    College_Creek
+ 7     475000    22950 Residential_Medium_Density Old_Town     
+ 8     325000    13500 Residential_Medium_Density Old_Town     
+ 9     295000    18386 Residential_Medium_Density Old_Town     
+10     415000    19800 Residential_Low_Density    Edwards      
+# ... with 74 more rows</code></pre>
+</div>
+</div>
+<p>Markiere diese Häuser anschließend in unserer Ursprungsgrafik.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="01_Daten_extrahieren_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+</section>
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>
