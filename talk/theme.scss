@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: "Source Sans Pro";
+
+// colors
+$body-bg: #ffffff !default;
+$body-color: #656565 !default;
+$link-color: #ffc06b !default;
+$selection-bg: #26351c !default;
+$code-block-bg: #f4f4f4;
+$tabset-border-color: black;
+
+// headings
+$presentation-heading-font: "Libre Baskerville";
+$presentation-heading-color: #06436e !default;
+$presentation-heading-font-weight: 300;
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.2em;
+}

@@ -1,0 +1,732 @@
+---
+title: Generalized Linear Models
+author: Albert Rapp
+date: "Friday, May 27, 2022"
+format: 
+  revealjs:
+    theme: theme.scss
+    slide-level: 2
+execute: 
+  echo: false
+---
+
+## Today's questions
+
+- What are generalized linear models?
+- How can we predict probabilities?
+- Can we distinguish male and female penguins?
+- How can we predict how many high school seniors use drugs?
+- What role can (stochastic) gradient descent play in fitting a GLM?
+
+::: notes
+These are the questions we want to talk about today.
+:::
+
+
+## Penguins data
+
+```{r}
+library(tidyverse)
+dat <- palmerpenguins::penguins %>% 
+  filter(!is.na(sex))
+dat %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, col = sex)) +
+  geom_jitter(size = 4, alpha = 0.5) +
+  facet_wrap(vars(species)) +
+  scale_color_brewer(palette = 'Set1') +
+  theme_minimal(base_size = 20) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)'
+  )
+```
+
+::: notes
+Have a look at this data about penguins. We have characteristics:
+- Weight
+- Bill length
+- Species
+- Sex
+
+It looks like sex should be identifiable somewhat easily as there are clear clusters. Let us try this with a linear model.
+:::
+
+
+## Linear model
+
+$$
+\begin{align*}
+1 \{\text{sex = male} \} &= \beta_0  \\
+&+ \beta_1 \cdot \text{weight} \\
+&+\beta_2 \cdot \text{bill length} \\
+&+\beta_3 \cdot \text{species}
+\end{align*}
+$$
+::: notes
+- We have transformed the sex variable to 0/1
+- Species is categorical so that variable will actually give two betas instead of one (3 - 1 species)
+:::
+
+## Predictions
+
+```{r}
+dat <- palmerpenguins::penguins %>% 
+  filter(!is.na(sex))
+
+lm.mod <- dat %>%
+  mutate(
+    sex = if_else(sex == 'male', 1, 0),
+  ) %>% 
+  lm(data = ., sex ~ body_mass_g + bill_length_mm + species) 
+
+# Use 50% as basic threshold
+preds_lm <- dat %>% 
+  mutate(
+    prob.fit = lm.mod$fitted.values,
+    prediction = if_else(prob.fit > 0.5, 'male', 'female'),
+    correct = if_else(sex == prediction, 'correct', 'incorrect')
+  )
+
+preds_lm %>% 
+  ggplot(aes(x = prob.fit, y = sex)) +
+  geom_violin() +
+  theme_minimal(base_size = 20) +
+  theme(panel.grid.minor = element_blank()) +
+  scale_x_continuous(labels = scales::label_percent()) +
+  labs(
+    x = 'Predicted probability to be male',
+    y = element_blank()
+  )
+```
+
+
+::: notes
+- Let us have a look at the predictions from our linear regression
+- This is a so-called violin plot. It is basically a density estimate. 
+So, the higher the lines, the more predictions are in that area. 
+For symmetry, the density is mirrored.
+- There are predictions that do not fall within 0 and 100%
+:::
+
+------------------------------------------------------------------------
+
+## 
+
+```{r}
+grid_data <- expand_grid(
+    body_mass_g = seq(2000, 7000, 23),
+    bill_length_mm = seq(30, 60, 1),
+    species = unique(dat$species)
+  ) 
+
+grid_data <- grid_data %>% 
+  mutate(prob.fit = predict(lm.mod, newdata = grid_data))
+
+grid_data %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, fill = prob.fit)) +
+  geom_tile() +
+  facet_wrap(vars(species)) +
+  scale_fill_gradient(
+    low = thematic::okabe_ito(4)[3],
+    high = thematic::okabe_ito(4)[1],
+    labels = scales::label_percent()
+  ) +
+  theme_minimal(base_size = 20) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  scale_x_continuous(breaks = seq(2000, 7000, 2000)) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)',
+    fill = 'Predicted probability'
+  ) +
+  guides(
+    fill = guide_colorbar(
+      barwidth = unit(20, 'cm'), 
+      barheight = unit(0.3, 'cm'),
+      title.position = 'top'
+    )
+  ) 
+```
+
+
+::: notes
+- We can make the predictions arbitrarily bad my predicting even other values.
+- But the tendency in this picture is correct. 
+It is more likely that a penguin is a male if he weighs more and has a longer bill.
+- So maybe we only need to transform the predictions so that they make sense.
+:::
+
+
+##
+
+Let $x$ be a predicted value. Then,
+
+$$
+\text{probability} = \frac{e^{\text{x}}}{1 + e^x}
+$$
+
+```{r}
+#| fig.align: center
+tibble(x = seq(-10, 10, 0.1), y = plogis(x)) %>% 
+  ggplot(aes(x, y)) +
+  geom_line(color = thematic::okabe_ito(3)[3], size = 2) +
+  theme_minimal(base_size = 20)
+```
+
+::: notes
+- This is the cdf of the so-called logistic function
+- We could have used any cdf here (we want monotonicity and image in [0, 1])
+- Let's have a look if this may transform probabilities nicely
+:::
+
+------------------------------------------------------------------------
+
+## Transformed probabilities
+
+```{r}
+# Use 50% as basic threshold
+preds_lm <- dat %>% 
+  mutate(
+    prob.fit = plogis(lm.mod$fitted.values),
+    prediction = if_else(prob.fit > 0.5, 'male', 'female'),
+    correct = if_else(sex == prediction, 'correct', 'incorrect')
+  )
+
+preds_lm %>% 
+  ggplot(aes(x = prob.fit, y = sex)) +
+  geom_violin() +
+  theme_minimal(base_size = 20) +
+  theme(panel.grid.minor = element_blank()) +
+  scale_x_continuous(labels = scales::label_percent()) +
+  labs(
+    x = 'Predicted probability to be male',
+    y = element_blank()
+  )
+```
+
+::: notes
+- This looks better. But does it perform well?
+- Let's use 50% as a threshold for classification
+- Beware that this is rarely a good threshold
+:::
+
+
+------------------------------------------------------------------------
+
+## Correct classification?
+
+```{r}
+preds_lm %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, col = correct)) +
+  geom_jitter(size = 4, alpha = 0.6) +
+  facet_wrap(vars(species)) +
+  scale_color_manual(values = c('grey60', thematic::okabe_ito(3)[3])) +
+  theme_minimal(base_size = 20) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)'
+  )
+```
+
+::: notes
+-   We have to do better.
+- So, let us come up with a new model.
+- Let us revisit what we do in linear regression.
+:::
+
+## 
+
+### General prediction
+
+$$
+\begin{align*}
+Y_i &= f(X_1, \ldots, X_p) + \varepsilon_i \\[2mm]
+&= \mathbb{E}[Y_i | X_1, \ldots, X_p] + \varepsilon_i, \quad i = 1, \ldots, n
+\end{align*}
+$$
+
+
+<br> <br>
+
+### Linear predictor
+
+$$
+\eta_i(\beta) = \beta_0 + x_{i, 1}\beta_1 + \cdots + x_{i, p} \beta_p
+$$ 
+
+::: notes
+- What we usually to in linear regression is to model the average outcome given the predictors.
+- With some change in notation, we can make it clear that we model a conditional mean using a linear predictor
+- In our our male/female prediction we can assume that our response variable is a Bernoulli random variable
+- And we link the linear predictor to its mean via the logistic function
+:::
+
+
+## Bernoulli setting 
+<br> 
+
+Assume $Y_i | X_1, \ldots, X_p \sim \text{Ber}(\pi_i)$ and link 
+$$
+\mathbb{E}[Y_i | X_1, \ldots, X_p] = \pi_i = h\big(\eta_i(\beta)\big)
+$$
+
+where 
+
+$$
+h(x) = \frac{e^{\text{x}}}{1 + e^x}.
+$$
+
+::: notes
+-   We have already tried this earlier but the results weren't great.
+-   But that was because our estimated parameter $\beta$ was incorrect
+-   Let's see what the same idea does when used correctly
+:::
+
+## Finding the correct $\beta$
+
+::: panel-tabset
+### Transforming OLS estimates
+
+```{r}
+preds_lm %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, col = correct)) +
+  geom_jitter(size = 4, alpha = 0.6) +
+  facet_wrap(vars(species)) +
+  scale_color_manual(values = c('grey60', thematic::okabe_ito(3)[3])) +
+  scale_x_continuous(breaks = seq(3000, 6000, 1000)) +
+  theme_minimal(base_size = 20) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)'
+  )
+```
+
+### Maximizing likelihood
+
+```{r}
+glm.mod <- glm(sex ~ body_mass_g + bill_length_mm + species, family = binomial, data = dat)
+
+preds <- dat %>% 
+  mutate(
+    prob.fit = glm.mod$fitted.values,
+    prediction = if_else(prob.fit > 0.5, 'male', 'female'),
+    correct = if_else(sex == prediction, 'correct', 'incorrect')
+  )
+
+
+preds %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, col = correct)) +
+  geom_jitter(size = 4, alpha = 0.6) +
+  facet_wrap(vars(species)) +
+  scale_x_continuous(breaks = seq(3000, 6000, 1000)) +
+  scale_color_manual(values = c('grey60', thematic::okabe_ito(3)[3])) +
+  theme_minimal(base_size = 20) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)'
+  )
+```
+:::
+
+
+
+::: notes
+- As you can see, with a different $\beta$ we have a lot less missclassifications
+- What we did here was to use a maximum likelihood approach.
+:::
+
+
+## 
+
+### Likelihood-function
+
+$$
+L(\beta) := \prod_{i = 1}^n f(y_i | \beta) = \prod_{i = 1}^n \pi_i^{y_i} (1 - \pi_i)^{1 - y_i} 
+$$
+
+<br>
+
+### log-likelihood-function
+
+$$
+l(\beta) 
+:= 
+\log L(\beta) 
+= 
+\sum_{i = 1}^n \bigg[ 
+  \underbrace{y_i \log \bigg( 
+    \frac{\pi_i}{1 - \pi_i}
+  \bigg) 
+  + 
+  \log (1 - \pi_i)}_{=: l_i(\beta)}
+\bigg]
+$$
+
+::: notes
+- As with all ML approaches we define a likelihood function that depends on our parameter beta and consider its logarithm
+- We want to find its maximum to find our ML estimator. So, we need to derive $l$.
+This is sometimes called score function
+:::
+
+## 
+
+### Score function
+
+$$
+s(\beta)
+:=
+\frac{\partial l(\beta)}{\partial \beta}
+=
+\sum_{i = 1}^n \frac{\partial l_i(\beta)}{\partial \beta}
+=
+\sum_{i = 1}^n s_i(\beta),
+$$
+
+where
+
+$$
+\begin{align*} 
+  s_i(\beta) &= x_i(y_i - \pi_i) = x_i\big(y_i - h(x_i^T \beta)\big)\quad \text{and} \\[2mm]
+  h(x) &= \frac{e^{\text{x}}}{1 + e^x}
+\end{align*}
+$$
+
+## 
+
+### Maximum likelihood estimator
+
+$$
+s(\hat{\beta}) = 0
+$$
+
+#### Newton's method
+
+$$
+\beta^{(t + 1)} = \beta^{(t)} + \mathcal{J}^{-1}(\beta^{(t)}) s(\beta^{(t)}), 
+$$ 
+where 
+
+$$
+\mathcal{J}(\beta) = - \frac{\partial^2 l(\beta)}{\partial \beta \partial \beta^T}
+$$
+is the observed information Matrix.
+
+::: notes
+- We need to find a root of $s$. But that's generally not possible with closed formulas.
+- Use Newton's method numerically. This requires a further derivative of the log-likelihood function.
+- So, this is the idea of a GLM. Before we go into more details about how the numerics work. Let us consider another setting.
+:::
+
+## 
+
+### Poisson Model
+
+<br>
+
+```{r}
+simpleCap <- function(x) {
+    s <- strsplit(x, " ")[[1]]
+    paste(toupper(substring(s, 1, 1)), substring(s, 2),
+          sep = "", collapse = " ")
+}
+poissonreg::seniors %>%
+  rename_with(~map_chr(., simpleCap)) %>% 
+  gt::gt() %>% 
+  gt::tab_options(table.width = gt::pct(80), table.font.size =  '20pt') %>% 
+  gt::tab_footnote(footnote = 'Alcohol, Cigarette, and Marijuana Use for High School Seniors; Table 7.3 of Agresti, A (2007). An Introduction to Categorical Data Analysis.')
+```
+
+
+::: notes
+- Here, we want to predict count data.
+- Regular linear regression will fail miserably once again because the response is restricted to nonnegative integers.  
+- So, let us use a Poisson model instead and link its expectation to the linear predictor once again.
+:::
+
+
+## 
+
+Assume $Y_i | X_1, X_2, X_3 \sim \text{Poi}(\lambda_i)$, $\lambda_i > 0$ and use exponential link function
+
+$$
+\mathbb{E}[Y_i | X_1, X_2, X_3] = \lambda_i = \exp\big(\eta_i(\beta)\big).
+$$ 
+
+Then,
+
+$$
+\begin{align*}
+  l(\beta) &= \sum_{i = 1}^n \big[y_i x_i^T\beta - \exp(x_i^T\beta )\big] \\
+s(\beta) &= \sum_{i = 1}^n x_i\big(y_i - \exp(x_i^T \beta)\big)
+\end{align*}
+$$
+
+::: notes
+- Here, exp is a good link function because what we want to predict (lambda) needs to be positive
+- In this setting we can compute the likelihood function and the score function once again.
+- Using Newton we can then find an ML estimator.
+:::
+
+## 
+
+### Using Newton's method to find $\beta$
+
+```{r}
+lambdas <- glm(count ~ ., data = poissonreg::seniors, family = poisson)$fitted.values
+
+poissonreg::seniors %>%
+  rename_with(~map_chr(., simpleCap)) %>% 
+  mutate(
+    `Pred. Lambda` = round(lambdas, digits = 2),
+    Prediction = map_dbl(lambdas, ~which.max(dpois(1:1000, lambda = .)))
+  ) %>% 
+  gt::gt() %>% 
+  gt::tab_options(table.width = gt::pct(85), table.font.size =  '20pt')
+```
+
+
+::: notes
+- Here, we have predicted lambda and then just looked at the density of the corresponding poisson distribution to find out what the most likely value is 
+- Of course, we have seen that we can model Poisson and Bernoulli r.v. by linking a linear predictor to the corresponding conditional expectation.
+- This begs the question what other distributions are good for this.
+:::
+
+
+## Exponential families
+
+$$
+f(y | \theta) = \exp\bigg\{
+  \frac{y\theta - b(\theta)}{\phi}w + c(y, \phi, w)
+\bigg\}, 
+$$ where
+
+-   $\theta$ is the **natural/canonical parameter**
+-   $b(\theta)$ is a twice differentiable function
+-   $\phi$ is a dispersion parameter
+-   $w$ is a known weight
+- $c$ is a normalization constant independent of $\theta$
+
+::: notes
+- $c$ is just a constant independent of $\theta$ 
+- In general, exponential families can be used for these kind of purposes.
+- The formula looks a bit random at first but as it turns out many well-known distributions can be represented like this.
+- Its a bit magical actually. Even more so, exponential families fulfil many nice features such as having canonical sufficient statistics 
+- Let's take a look at examples.
+:::
+
+## 
+
+### Examples
+
+<br>
+
+| Distribution                 | $\theta$                 | $b(\theta)$          | $b^\prime(\theta)$              | $\phi$     |
+|---------------|----------------------|-----------|----------------|--------------|
+| $\mathcal{N}(\mu, \sigma^2)$ | $\mu$                    | $\theta^2/2$         | $\theta$                        | $\sigma^2$ |
+| $\text{Ber}(\pi)$            | $\log (\pi / (1 - \pi))$ | $\log(1 + e^\theta)$ | $\frac{e^\theta}{1 + e^\theta}$ | 1          |
+| $\text{Poi}(\lambda)$        | $\log(\lambda)$          | $\exp(\theta)$       | $\exp(\theta)$                  | 1          |
+
+
+::: notes
+-  Notice the derivative of b. These were the link functions we used. As is turns out, these are the canoncical link functions that work well.
+- Now, we understand all the ingredients that we need to understand what GLMs consist of
+:::
+
+## Two Pillars of GLMs
+<br>
+
+### Distributional assumption
+$Y_i | X_1, \ldots, X_p$ follows a distribution from an exponential family
+<br>
+<br>
+
+### Structural assumption
+$\mathbb{E}[Y_i | X_1, \ldots, X_p] = h(x_i^T \beta)$ 
+
+::: notes
+- h is one-to-one twice differentiable response function
+- Now, let us deal with the numerics and how to find the ML estimator in a bit mroe detail.
+- For that let us look at a simple example
+:::
+
+##
+
+### Simplified penguin model
+
+```{r}
+#| out-width: "28cm"
+#| out-height: "15cm"
+scores <- read_rds('scores.rds')
+
+glm.mod.simple <- glm(sex ~ body_mass_g, family = binomial, data = dat)
+simple_coeffs <- coefficients(glm.mod.simple)
+trafo_sex <- if_else(dat$sex == 'male', 1, 0)
+design_matrix <- matrix(
+  data = c(rep(1, length(dat$body_mass_g)), dat$body_mass_g),
+  ncol = 2
+)
+
+score_fct <- function(beta0, beta1) {
+  diff <- trafo_sex - plogis(design_matrix %*% c(beta0, beta1))
+  colSums(design_matrix * matrix(rep(diff, 2), ncol = 2))
+}
+
+scores %>% 
+  ggplot(aes(beta0, beta1, fill = score_norm)) +
+  geom_tile() +
+  annotate(
+    'point',
+    x = simple_coeffs[1],
+    y = simple_coeffs[2],
+    size = 4
+  ) +
+  annotate(
+    'curve',
+    x = simple_coeffs[1] + 0.05,
+    xend = simple_coeffs[1] + 0.001,
+    y = simple_coeffs[2] + 0.000025,
+    yend = simple_coeffs[2]   + 0.000004,
+    curvature = 0.2,
+    arrow = arrow(length = unit(0.25, 'cm'))
+  ) +
+  annotate(
+    'text',
+    x = simple_coeffs[1] + 0.055,
+    y = simple_coeffs[2] + 0.000025,
+    label = 'Solution from Newton method',
+    hjust = 0, 
+    size = 5
+  ) +
+  scale_fill_gradient(
+    trans = 'log',
+    low = thematic::okabe_ito(4)[3],
+    high = thematic::okabe_ito(4)[1],
+    labels = scales::label_number()
+  ) +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = 'top') +
+  guides(
+    fill = guide_colorbar(
+      barwidth = unit(15, 'cm'), 
+      barheight = unit(0.3, 'cm'),
+      title.position = 'top'
+    )
+  ) +
+  labs(
+    x = 'Intercept',
+    y = 'Weight coefficient',
+    fill = 'Norm of score vector')
+```
+
+
+::: notes
+- We have modeled a pinguins sex only by its weight
+- Grid search to compute score for different values of beta
+- Computed norm of resulting vector
+- This can take forever if you have to look everywhere. Notice how the explodes if we just go a bit too far
+- Instead of grid searching, Newton's method goes through this plane iteratively based on the gradient of where the algorithm is currently at
+- This is done until have an approximately zero score
+- Let's look at the formulas now
+:::
+
+
+##
+
+
+### Newton's method
+
+$$
+\begin{pmatrix}
+  \beta^{(t + 1)}_0 \\
+  \beta^{(t + 1)}_1 
+\end{pmatrix}
+= 
+\begin{pmatrix}
+  \beta^{(t)}_0 \\
+  \beta^{(t)}_1 
+\end{pmatrix} + \mathcal{J}^{-1}\big(\beta^{(t)}_0, \beta^{(t)}_1\big) s\big(\beta^{(t)}_0, \beta^{(t)}_1\big), 
+$$ 
+
+where
+
+$$
+\begin{align*}
+\mathcal{J}(\beta) 
+&= 
+- \frac{\partial^2 l(\beta)}{\partial \beta \partial \beta^T} \\
+&=
+h(x_{i}^T\beta) \big(1 - h(x_{i}^T\beta)\big) 
+\begin{pmatrix}
+  \sum_{i = 1}^n x_{i, 0}^2 & \sum_{i = 1}^n x_{i, 0}x_{i, 1} \\
+  \sum_{i = 1}^n x_{i, 0}x_{i, 1} & \sum_{i = 1}^n x_{i, 1}^2
+\end{pmatrix} 
+\end{align*}
+$$
+::: notes
+- Notice how this method works in 2D and uses all samples x
+- Also, here we need to compute the inverse of a matrix
+- If we have a lot of data, then each step can take really long to compute
+- So, instead one could also try to do some other approximation
+:::
+
+
+## 
+
+### Stochastic gradient descent
+
+$$
+\begin{align*}
+\begin{pmatrix}
+  \beta^{(t + 1)}_0 \\
+  \beta^{(t + 1)}_1 
+\end{pmatrix} 
+&=
+\begin{pmatrix}
+  \beta^{(t)}_0 \\
+  \beta^{(t)}_1 
+\end{pmatrix} 
++ 
+\gamma_t \frac{\partial}{\partial \beta^{(t)}} \log f\big(y_t; x_t, \beta^{(t)} \big) \\[4mm]
+&= 
+\begin{pmatrix}
+  \beta^{(t)}_0 \\
+  \beta^{(t)}_1 
+\end{pmatrix} 
++ 
+\gamma_t \Big( 
+  y_t - h\big(x_{t}^T\beta^{(t)}\big)
+\Big)x_{t},
+\end{align*}
+$$ 
+where $(x_t, y_t)$ is **randomly** sampled from our training data and $\gamma_t t \rightarrow \gamma > 0$ as $t \rightarrow \infty$.
+
+::: notes
+- Notice how stochastic gradient descent uses a single random sample but still operates in a 2D space (the complexity reduction is only in the amount of samples)
+- Here, we look at the gradient of the log-likelihood function, so we need one derivative less
+- $gamma_n$ is the learning rate and determines how far along the gradient we go in each step. Go to far and you may miss the optimum. Take only a small step and you may wander forever. So try to choose the sequence somewhat nicely
+- There are many improvements of this like averaging in-between steps and choosing $\gamma$ optimal in some sense.
+:::
