@@ -1,0 +1,605 @@
+---
+title: WiWi BrushUp
+subtitle: "Tag 1: Grafiken mit `ggplot2`"
+author: Albert Rapp
+date: "Montag, 11. April 2022"
+format: 
+  revealjs:
+    theme: theme.scss
+    slide-level: 2
+execute: 
+  echo: true
+---
+
+# Vorstellung
+
+# Warum Datenanalyse? Warum R?
+
+## Datenanalyse lässt euch die Dinge selber in die Hand nehmen
+
+```{r}
+#| echo: false
+setwd(here::here('day1/presentations'))
+```
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+knitr::include_graphics('imgs/volatility-voters.png')
+```
+
+::: notes
+- Story über die Aussage meines Schwiegervaters (in Spee),
+- Wähler werden angeblich impulsiver
+- Bundestagswahl 2021 (weil sich die CDU doch noch retten konnte)
+:::
+
+## Storytelling with Data
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+knitr::include_graphics('imgs/swd-plot.png')
+```
+
+::: notes
+- Mit Daten könnt ihr Erkenntnisse vermitteln und Wert generieren
+- Hier habe ich einen SWD-Plot über die Erfolgsquote von Lagerhäusern nachgebaut
+:::
+
+## Statistische Analysen
+
+```{r}
+#| echo: false
+library(scales)
+library(ggplot2)
+library(ggrepel)
+
+dat <- data.frame(
+  id = 1:19,
+  fulfilled = c(803, 865, 795, 683, 566, 586, 510, 436, 418, 364, 379, 372, 374, 278, 286, 327, 225, 222, 200),
+  accuracy = c(86, 80, 84, 82, 86, 80, 80, 93, 88, 87, 85, 85, 83, 94, 86, 78, 89, 88, 91),
+  error = c(10, 14, 10, 14, 10, 16, 15, 6, 11, 7, 12, 13, 8, 4, 12, 12, 7, 10, 7)
+)
+
+dat$total <- dat$fulfilled
+dat$rate <- dat$accuracy / 100
+a <- 0.05                                                                                                         
+b <- 0
+
+fit <- nls(rate ~ 1-(1/(exp(a * (total ^ b)))), weights = total, start = list(a = a, b = b), data = dat,
+       algorithm = "port", control = list(warnOnly = TRUE))
+
+coef <- as.vector(coef(fit))
+b.upper <- confint(fit)[4]
+b.lower <- confint(fit)[2]
+a <- coef[[1]]
+b <- coef[[2]]
+
+padding <- seq(1, ceiling(max(dat$total) * 1.05), 1)
+padding <- unique(c(padding, dat$total))
+predicted.rate <- 1-(1/(exp(a * padding ^ (b))))
+se <- sqrt((predicted.rate * (1-predicted.rate))/padding)
+upper95 <- predicted.rate + 2*se
+lower95 <- predicted.rate - 2*se
+upper99 <- predicted.rate + 3*se
+lower99 <- predicted.rate - 3*se
+funnel.data <- data.frame(padding, predicted.rate, se, upper95, lower95, upper99, lower99)
+funnel.data <- merge(funnel.data, dat, by.x = "padding", by.y = "total", all.x = TRUE)
+funnel.data$abnormal <- ifelse(funnel.data$rate > funnel.data$upper99 | funnel.data$rate < funnel.data$lower99, "abnormal", "normal")       
+funnel.data[ , c("upper95", "lower95", "upper99", "lower99")][ funnel.data[ , c("upper95", "lower95", "upper99", "lower99")] > 1] <- NA
+funnel.data[ , c("upper95", "lower95", "upper99", "lower99")][ funnel.data[ , c("upper95", "lower95", "upper99", "lower99")] < 0] <- NA
+funnel.data$b.upper <- b.upper
+funnel.data$b.lower <- b.lower
+
+funnel.data.plot <- ggplot(data = funnel.data, aes(x = padding)) +
+  geom_line(aes(y = upper95), colour = "#676767", lty = 2, alpha = 0.5, size = 0.5) +
+  geom_line(aes(y = lower95), colour = "#676767", lty = 2, alpha = 0.5, size = 0.5) +
+  geom_line(aes(y = predicted.rate), colour = "#CB3564", size = 0.5) +
+  geom_point(aes(y = rate), shape = 21, colour = "grey22", fill = "#FF5A5A", size = 5) +
+  geom_text_repel(
+    aes(label = id, y = rate),
+    size = 4, force = 1, point.padding = 5.5, fill = "white", 
+    alpha = 0.8, colour = "#676767", segment.alpha = 0
+  ) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  theme_minimal() +              
+  labs(
+    title = "Fulfilment accuracy data,\nfrom https://albert-rapp.de/post/2022-03-29-recreating-the-swd-look/",
+    subtitle = "Dashed line shows 95% control limit, acuracy rate-total relationship is statistically significant at p = .05\n",
+    x = "\nTotal number of fulfilments",
+    y = "Accuracy rate\n"
+  ) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = ("none"),
+    panel.border = element_rect(fill = NA, colour = "#676767", size = 0.2),
+    strip.text.x = element_text(hjust = 0, face = "bold", size = 12),
+    plot.title = element_text(size = 16, face = "bold", vjust = 0, hjust = 0),
+    plot.subtitle = element_text(size = 10, face = "italic", vjust = 0, hjust = 0, colour = "grey44"),
+    plot.title.position = "plot",
+    text = element_text(size = 16)
+  )
+
+funnel.data.plot
+```
+
+::: notes
+- Ein Leser hat meinen Blogpost kommentiert und mir eine statistische Analyse geschickt
+- Das ist die Stärke von R! 
+- Wir können statistische Analysen und Datenvisualisierung und Storytelling aus einer Schmiede machen.
+- Excel kann das zwar auch, aber Code is reproduzierbarer und point-and-click ist anfällig für last-minute Änderungen
+- Und Excel ist vergleichsweise langsam
+:::
+
+# Warum Datenvisualisierung?
+
+
+## Verschiedene Punktmuster...
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(datasauRus)
+library(tidyverse)
+datasaurus_dozen %>% 
+  filter(dataset %in% c('star', 'circle', 'x_shape', 'dino')) %>% 
+  ggplot(aes(x, y)) +
+  geom_point(size = 2) +
+  facet_wrap(vars(dataset)) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 16),
+    plot.background = element_rect(color = "black"),
+    strip.background = element_rect(color = 'black'),
+    panel.background = element_rect(color = 'black')
+  )
+```
+
+::: notes
+Klassisches Beispiel: Man übersieht wichtige Dinge, wenn man sich nur auf Zahlen verlässt.
+:::
+
+## ... führen zu gleichen Statistiken
+
+```{r}
+#| echo: false
+datasaurus_dozen %>% 
+  filter(dataset %in% c('star', 'circle', 'x_shape', 'dino')) %>% 
+  group_by(dataset) %>% 
+  summarize(
+    Durchschnitt_x = mean(x),
+    Durchschnitt_y = mean(y),
+    Varianz_x = mean(x),
+    Varianz_y = mean(y)
+  )
+```
+
+# Demonstration von R
+
+::: notes
+Meine Notes
+
+-   Konsole (Taschenrechner Befehle)
+-   Visual Editor
+-   Skripte / Markdown files
+-   Projekte anlegen
+:::
+
+# Installation
+
+## Auf Eurem Computer
+
+-   [R](https://cloud.r-project.org/)
+-   [Rstudio](https://www.rstudio.com/products/rstudio/download/)
+-   [Quarto](https://quarto.org/docs/get-started/)
+-   [RTools (Windows only)](https://cran.r-project.org/bin/windows/Rtools/rtools40.html)
+
+## In RStudio
+
+<br>
+
+### Packages installieren
+Tippe im Fenster `Console`:
+
+```{r}
+#| eval: false
+
+install.packages('tidyverse')
+install.packages('gapminder')
+install.packages('palmerpenguins')
+install.packages('modeldata')
+install.packages('janitor')
+```
+
+<br>
+
+### RStudio Theme anpassen
+
+Such dir ein schönes Design für RStudio aus. `Tools > Global Options > Appearance`
+
+------------------------------------------------------------------------
+
+### Verhindere sessionübergreifendes Speichern
+
+`Tools > Global Options`
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-align: center
+
+knitr::include_graphics('imgs/workspace_setting.PNG')
+```
+
+------------------------------------------------------------------------
+
+### Lege dir ein Projekt für den Kurs an
+
+```{r}
+#| echo: false
+#| out-width: "16cm"
+#| out-height: "9cm"
+#| fig-align: center
+knitr::include_graphics('imgs/rstudio_projects.PNG')
+```
+
+
+# Erste Schritte mit `ggplot2`
+
+
+## Eine erste Grafik
+
+```{r}
+#| echo: false
+
+my_data <- mpg
+ggplot(data = my_data, mapping = aes(x = cty, y = hwy, col = factor(year))) +
+  geom_jitter(size = 4, alpha = 0.5) + 
+  labs(
+    x = "Verbrauch in der Stadt", 
+    y = "Verbrauch auf dem Highway", 
+    col = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_color_brewer(palette = "Set1") +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16)
+  )
+```
+
+
+# Demonstration in RStudio
+
+::: notes
+* Basic Punktplot von cty gegen hwy ohne Farben (`aes()` in Punktschicht)
+* layered grammar of graphics nennen
+* Aestheticsliste in Doku zeigen
+* `aes()` ist zur Unterscheidung von Variablen, die im Datensatz sind und Variablen in der Umgebung
+* Gefilterten Datensatz abspeichern und für den ein Punktplot
+* Linienplot zusätzlich hinzufügen (`aes()` in Linienschicht)
+* Code aufräumen und in die vorderste Schicht verfrachten
+* Linien wieder raus und Punkte blau machen
+* Punkte anhand von **class** farbig machen (nicht Jahr, da sonst factor)
+* `geom_jitter()`
+:::
+
+# Statistische Transformationen
+
+## Welche Daten nutzen die Linien?
+
+```{r}
+#| echo: false
+ggplot(data = my_data, mapping = aes(x = cty, y = hwy, col = factor(year))) +
+  geom_jitter(size = 4, alpha = 0.25) + 
+  geom_smooth(se = F, size = 2) +
+  labs(
+    x = "Verbrauch in der Stadt", 
+    y = "Verbrauch auf dem Highway", 
+    col = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_color_brewer(palette = "Set1") +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16)
+  )
+```
+
+
+## Wer hat hier gezählt?
+
+::: {.panel-tabset}
+
+## Counting
+
+```{r}
+#| echo: false
+ggplot(data = my_data, mapping = aes(y = manufacturer, fill = factor(year))) +
+  stat_count() +
+  facet_wrap(vars(year)) +
+  labs(
+    x = "Anzahl", 
+    y = "Hersteller", 
+    fill = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_fill_brewer(palette = "Set1") +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16),
+    strip.background = element_rect(color = 'black'),
+    panel.background = element_rect(color = 'black')
+  )
+```
+
+
+## Binning
+
+```{r}
+#| echo: false
+ggplot(data = my_data, mapping = aes(x = cty, fill = factor(year))) +
+  stat_bin() +
+  facet_wrap(vars(year)) +
+  labs(
+    x = "Verbrauch in der Stadt", 
+    y = "Anzahl", 
+    fill = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_fill_brewer(palette = "Set1") +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16),
+    strip.background = element_rect(color = 'black'),
+    panel.background = element_rect(color = 'black')
+  )
+```
+
+:::
+
+::: notes
+* Anmerken, dass es zwei Zählarten sind (zwei statistische Trafos)
+:::
+
+# Demonstration in RStudio
+
+::: notes
+* Starte mit `stat_count()` für Hersteller
+* Dann demonstriere `stat_bin()` für `cty`-Histrogramm
+* In Dokumentation zeigen, dass es immer `geom_()` und `stat_()`-Schichten gibt
+* Unterschiedliche Outputs von `geom_density()` und `stat_density()` zeigen
+:::
+
+# Positionierung und Facetten
+
+
+## Jedes Jahr hat sein eigenes Fenster bekommen
+
+```{r}
+#| echo: false
+ggplot(data = my_data, mapping = aes(x = cty, fill = factor(year))) +
+  geom_histogram() +
+  facet_wrap(vars(year)) +
+  labs(
+    x = "Verbrauch in der Stadt", 
+    y = "Anzahl", 
+    fill = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_fill_brewer(palette = "Set1") +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16),
+    strip.background = element_rect(color = 'black'),
+    panel.background = element_rect(color = 'black')
+  )
+```
+
+
+## Alternative: Transparent zeichnen
+
+```{r}
+#| echo: false
+ggplot(data = my_data, mapping = aes(x = cty, fill = factor(year))) +
+  geom_histogram(alpha = 0.5, position = 'identity') +
+  labs(
+    x = "Verbrauch in der Stadt", 
+    y = "Anzahl", 
+    fill = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_fill_brewer(palette = "Set1") +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16),
+  )
+```
+
+# Demonstration in RStudio
+
+::: notes
+
+* Vorherige `geom_histogram()` mit Farbe nach **class** zeichnen
+* `geom_histogram()` und `stat_bin()` angucken und sehen, dass es dort das Argument 
+`position` gibt
+* `position = 'identity'` verwenden.
+* Dann lieber eigenes Fenster für jeden Plot
+* `vars()` in `facet_wrap()` erklären
+
+:::
+
+
+# Koordinatensysteme, Scales und Themes
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+my_data <- mpg
+setwd(here::here('day1/presentations'))
+```
+
+
+## Steuerung von Koordinatensystemen
+
+::: {.panel-tabset}
+
+### Ohne Zoom
+
+```{r}
+#| echo: false
+
+set.seed(123)
+ggplot(data = my_data, mapping = aes(x = cty, y = hwy, col = factor(year))) +
+  geom_jitter(size = 4, alpha = 0.25) + 
+  geom_smooth(se = F, size = 2) +
+  labs(
+    x = "Verbrauch in der Stadt", 
+    y = "Verbrauch auf dem Highway", 
+    col = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_color_brewer(palette = "Set1") +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16)
+  )
+```
+
+### Mit Zoom
+
+```{r}
+#| echo: false
+
+set.seed(123)
+ggplot(data = my_data, mapping = aes(x = cty, y = hwy, col = factor(year))) +
+  geom_jitter(size = 4, alpha = 0.25) + 
+  geom_smooth(se = F, size = 2) +
+  labs(
+    x = "Verbrauch in der Stadt", 
+    y = "Verbrauch auf dem Highway", 
+    col = "Modell",
+    title = "Jahresvergleich für Automodelle"
+  ) +
+  scale_color_brewer(palette = "Set1") +
+  coord_cartesian(xlim = c(10, 20), ylim = c(10, 30)) +
+  theme_minimal() +
+  theme(
+    legend.position = 'top',
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16)
+  )
+```
+
+:::
+
+## Transformation von Achsen
+
+::: {.panel-tabset}
+
+### Standard
+
+```{r}
+#| echo: false
+data(ames, package = 'modeldata')
+dat <- ames %>% 
+  janitor::clean_names() %>% 
+  select(sale_price, lot_area, ms_zoning) %>% 
+  filter(!is.na(sale_price), !is.na(lot_area))
+p <- dat %>% 
+  ggplot(aes(lot_area, sale_price)) +
+  geom_point(size = 3, alpha = 0.5, col = 'dodgerblue4') +
+  geom_smooth(se = F, col = 'firebrick4', size = 2) +
+  labs(
+    x = "Grundstücksgröße (in sq.ft)",
+    y = "Verkaufspreis (in USD)",
+    title = "Zusammenhang zwischen Verkaufspreis und Grundstücksgröße"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title.position = 'plot',
+    plot.background = element_rect(color = "black"),
+    text = element_text(size = 16)
+  ) 
+p
+```
+
+### Transformierte Achsen
+
+```{r}
+#| echo: false
+p + 
+  scale_x_log10(labels = scales::number) +
+  scale_y_log10(labels = scales::dollar)
+```
+
+:::
+
+
+## Anpassungsfreiheit mit `theme()`
+
+::: {.panel-tabset}
+
+### Standardausgabe
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics('imgs/standard-before-swd.png')
+```
+
+### Storytelling
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics('imgs/swd-plot.png')
+```
+
+:::
+
+
+# Demonstration in RStudio
+
+::: notes
+- Ames housing Datensatz nehmen (Größe gegen Preis plotten,  Farbe auf `ms_zoning` mappen)
+- Erst reinzoomen
+- Dann erklären, dass wir vll lieber x- und y-aesthetic transformieren sollen
+- Dann scale logarithmieren
+- Dann Farbe mit brewer anpassen
+- Beschriftungen mit `labs()` ändern
+- Labels auf Achse anpassen
+- `theme_minmal()` setzen
+- Legende nach oben verschieben mit `theme()`
+- Legende mit `element_rect()` anpassen
+:::

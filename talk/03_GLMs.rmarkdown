@@ -1,0 +1,312 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+setwd(here::here('03_GLMs/'))
+```
+
+
+# Trying to find probabilities using regular linear model
+
+We want to predict whether a given penguin is male or female.
+Let's do a rudimentary approach first.
+What happens if I just run a linear regression and just transform the predicted
+values using the logit function? Let's see.
+
+
+```{r}
+logit <- function(x) exp(x) / (1 + exp(x))
+dat <- palmerpenguins::penguins %>% 
+  filter(!is.na(sex))
+
+lm.mod <- dat %>%
+  mutate(
+    sex = if_else(sex == 'male', 1, 0),
+  ) %>% 
+  lm(data = ., sex ~ body_mass_g + bill_length_mm + species) 
+
+# Use 50% as basic threshold
+preds_lm <- dat %>% 
+  mutate(
+    prob.fit = logit(lm.mod$fitted.values),
+    prediction = if_else(prob.fit > 0.5, 'male', 'female'),
+    correct = if_else(sex == prediction, 'correct', 'incorrect')
+  )
+```
+
+```{r}
+grid_data <- expand_grid(
+    body_mass_g = seq(2000, 7000, 50),
+    bill_length_mm = seq(30, 60, 1),
+    species = unique(dat$species)
+  ) 
+
+grid_data <- grid_data %>% 
+  mutate(prob.fit = predict(lm.mod, newdata = grid_data))
+
+grid_data %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, fill = prob.fit)) +
+  geom_tile() +
+  facet_wrap(vars(species)) +
+  scale_fill_gradient(
+    low = thematic::okabe_ito(4)[3],
+    high = thematic::okabe_ito(4)[1],
+    labels = scales::label_percent()
+  ) +
+  theme_minimal(base_size = 20) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)'
+  )
+```
+
+
+Now, this will give us the following estimated probabilities as well as some classifications.
+
+
+```{r}
+preds_lm %>% 
+  ggplot(aes(x = prob.fit, y = sex)) +
+  geom_violin() +
+  theme_minimal(base_size = 14) 
+
+preds_lm %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, col = correct)) +
+  geom_jitter(size = 3, alpha = 0.5) +
+  facet_wrap(vars(species)) +
+  scale_color_manual(values = c('grey60', thematic::okabe_ito(1))) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)'
+  )
+```
+
+
+## Using a GLM to determine probabilities
+
+Now, let's fit a generalized linear model to get better results.
+
+
+```{r}
+dat %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, col = sex)) +
+  geom_jitter() +
+  facet_wrap(vars(species))
+
+glm.mod <- glm(sex ~ body_mass_g + bill_length_mm + species, family = binomial, data = dat)
+
+preds <- dat %>% 
+  mutate(
+    prob.fit = glm.mod$fitted.values,
+    prediction = if_else(prob.fit > 0.5, 'male', 'female'),
+    correct = if_else(sex == prediction, 'correct', 'incorrect')
+  ) 
+
+preds %>% 
+  ggplot(aes(x = prob.fit, y = sex)) +
+  geom_violin() +
+  theme_minimal(base_size = 14)
+
+preds %>% 
+  ggplot(aes(body_mass_g, bill_length_mm, col = correct)) +
+  geom_jitter(size = 3, alpha = 0.5) +
+  facet_wrap(vars(species)) +
+  scale_color_manual(values = c('grey60', thematic::okabe_ito(1))) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = 'top', 
+    panel.background = element_rect(color = 'black'),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    x = 'Body mass (in g)',
+    y = 'Bill length (in mm)'
+  )
+```
+
+
+Next, let us take a look at the coefficients.
+To demonstrate how they are found, let us take a look at a simpler model.
+
+
+```{r}
+glm.mod.simple <- glm(sex ~ body_mass_g, family = binomial, data = dat)
+simple_coeffs <- coefficients(glm.mod.simple)
+trafo_sex <- if_else(dat$sex == 'male', 1, 0)
+design_matrix <- matrix(
+  data = c(rep(1, length(dat$body_mass_g)), dat$body_mass_g),
+  ncol = 2
+)
+
+score_fct <- function(beta0, beta1) {
+  diff <- trafo_sex - plogis(design_matrix %*% c(beta0, beta1))
+  colSums(design_matrix * matrix(rep(diff, 2), ncol = 2))
+}
+
+
+scores <- expand_grid(
+  beta0 = seq(-5.3, -5, 0.00004),
+  beta1 = seq(0.0012, 0.0013, length.out = 41)
+) %>% 
+  mutate(
+    score = map2(beta0, beta1, score_fct),
+    score_norm = map_dbl(score, ~sqrt(sum(.^2)))
+  )
+
+scores %>% 
+  ggplot(aes(beta0, beta1, fill = score_norm)) +
+  geom_tile() +
+  annotate(
+    'point',
+    x = simple_coeffs[1],
+    y = simple_coeffs[2],
+    size = 4
+  ) +
+  annotate(
+    'curve',
+    x = simple_coeffs[1] + 0.05,
+    xend = simple_coeffs[1],
+    y = simple_coeffs[2] + 0.000025,
+    yend = simple_coeffs[2]   + 0.0000025,
+    curvature = 0.2,
+    arrow = arrow(length = unit(0.25, 'cm'))
+  ) +
+  annotate(
+    'text',
+    x = simple_coeffs[1] + 0.055,
+    y = simple_coeffs[2] + 0.000025,
+    label = 'Solution from Newton method',
+    hjust = 0
+  ) +
+  scale_fill_gradient(
+    trans = 'log',
+    low = thematic::okabe_ito(4)[3],
+    high = thematic::okabe_ito(4)[1],
+    labels = scales::label_number()
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = 'top') +
+  guides(
+    fill = guide_colorbar(
+      barwidth = unit(15, 'cm'), 
+      barheight = unit(0.3, 'cm'),
+      title.position = 'top'
+    )
+  ) +
+  labs(fill = 'Norm of score vector')
+```
+
+
+# Stochastic gradient descent
+
+Next, let us use SGD to find optimal parameters beta0 and beta1.
+Let's do explicit SGD first.
+
+
+```{r}
+a_n <- 1 / (1:100)
+lm.mod.simple <- dat %>%
+  mutate(
+    sex = if_else(sex == 'male', 1, 0),
+  ) %>% 
+  lm(data = ., sex ~ body_mass_g) 
+start_beta <- coefficients(lm.mod.simple)
+n <- 1
+
+step_explicit_SGD <- function(b_n, n) {
+  n_sample <- round(runif(1, 1, length(dat$species)))
+  diff <- trafo_sex[n_sample] - plogis(t(b_n) %*% design_matrix[n_sample, ])
+  update <- rep(diff, 2) * design_matrix[n_sample, ]
+  b_n + n^(-1.1) * update
+}
+
+sgd_coeff_by_hand <- reduce(1:100000, step_explicit_SGD, .init = start_beta)
+sum(score_fct(sgd_coeff_by_hand[1], sgd_coeff_by_hand[2])^2)
+sum(score_fct(simple_coeffs[1], simple_coeffs[2])^2)
+
+```
+
+```{r}
+set.seed(45234)
+sgd_coeffs <- sgd::sgd(
+  sex ~ body_mass_g,
+  data = dat %>% mutate(sex = factor(if_else(sex == 'male', 1, 0))),
+  model = 'glm',
+  model.control = list(family = 'binomial'),
+  sgd.control=list(method = 'ai-sgd', npasses = 100000, lr.control=c(1 / 100000, 1 / 100000, 0.5, NA), pass = T)
+)
+sgd_coeffs
+sum(score_fct(sgd_coeffs$coefficients[1], sgd_coeffs$coefficients[2])^2)
+sum(score_fct(simple_coeffs[1], simple_coeffs[2])^2)
+```
+
+```{r}
+data(ames)
+
+
+dat_ames <- ames %>% 
+  janitor::clean_names() %>% 
+  select(sale_price, lot_area) %>% 
+  mutate(expensive = factor(if_else(sale_price > quantile(sale_price, 0.9), 1, 0)))
+
+
+glm(expensive ~ lot_area, family = binomial, data = dat_ames)$coefficients
+sgd_coeffs <- sgd::sgd(
+  expensive ~ lot_area,
+  data = dat_ames %>% select(!sale_price),
+  model = 'glm',
+  model.control = list(family = 'binomial'),
+  sgd.control=list(method = 'sgd', npasses = 10000, pass = T)
+)
+```
+
+```{r}
+library(sgd)
+
+# Dimensions
+N <- 1e4
+d <- 1
+
+# Generate data.
+set.seed(42)
+X <- matrix(rnorm(N*d), ncol=d)
+theta <- rep(5, d+1)
+eps <- rnorm(N)
+p <- 1/(1+exp(-(cbind(1, X) %*% theta + eps)))
+y <- rbinom(N, 1, p)
+dat_theo <- data.frame(y=y, x=X)
+
+microbenchmark::microbenchmark(
+  sgd = {sgd(y ~ ., data=dat_theo, model="glm",
+                 model.control=list(family="binomial"),
+                 sgd.control=list(method = 'ai-sgd', npasses=1000,
+                 pass=T))},
+  glm = {glm(y ~ ., data = dat_theo, family="binomial")$coefficients}
+)
+
+```
+
+```{r}
+lambdas <- glm(count ~ ., data = poissonreg::seniors, family = poisson)$fitted.values
+
+which.max(dpois(1:1000, lambda = lambdas[1]))
+```
+
