@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+
+<title>Übungsblatt 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="03_Uebungsblatt2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03_Uebungsblatt2_files/libs/quarto-html/quarto.js"></script>
+<script src="03_Uebungsblatt2_files/libs/quarto-html/popper.min.js"></script>
+<script src="03_Uebungsblatt2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03_Uebungsblatt2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03_Uebungsblatt2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03_Uebungsblatt2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03_Uebungsblatt2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03_Uebungsblatt2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03_Uebungsblatt2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#ziel" id="toc-ziel" class="nav-link active" data-scroll-target="#ziel">Ziel</a></li>
+  <li><a href="#hilfsfunktion" id="toc-hilfsfunktion" class="nav-link" data-scroll-target="#hilfsfunktion">Hilfsfunktion</a></li>
+  <li><a href="#gewinne-in-spiel-1" id="toc-gewinne-in-spiel-1" class="nav-link" data-scroll-target="#gewinne-in-spiel-1">Gewinne in Spiel 1</a></li>
+  <li><a href="#gewinne-in-spiel-2" id="toc-gewinne-in-spiel-2" class="nav-link" data-scroll-target="#gewinne-in-spiel-2">Gewinne in Spiel 2</a></li>
+  <li><a href="#vergleich-der-gewinnchancen" id="toc-vergleich-der-gewinnchancen" class="nav-link" data-scroll-target="#vergleich-der-gewinnchancen">Vergleich der Gewinnchancen</a></li>
+  <li><a href="#zusammenfassung-der-aufgaben" id="toc-zusammenfassung-der-aufgaben" class="nav-link" data-scroll-target="#zusammenfassung-der-aufgaben">Zusammenfassung der Aufgaben</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Übungsblatt 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor:in</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">20. Oktober 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="ziel" class="level1">
+<h1>Ziel</h1>
+<p>Betrachte zwei Spiele.</p>
+<ol type="1">
+<li><p>Ein Würfel wird maximal <span class="math inline">\(n\)</span> mal geworfen. Wir gewinnen das Spiel, wenn wir eine 6 würfeln.</p></li>
+<li><p>Zwei Würfel werden gleichzeitig maximal <span class="math inline">\(m\)</span> mal geworfen. Wir gewinnen das Spiel, wenn wir einen 6er Pasch würfeln.</p></li>
+</ol>
+<p>Wir wollen nun <span class="math inline">\(N\)</span> Runden dieser beiden Spiele simulieren und zählen wie oft wir jedes Spiel gewinnen. Theoretisch sollte sich die relative Anzahl der gewonnen Spiele für große <span class="math inline">\(N\)</span> den echten Gewinnwahrscheinlichkeiten annähern (jeweils für Spiel 1 und 2).</p>
+</section>
+<section id="hilfsfunktion" class="level1">
+<h1>Hilfsfunktion</h1>
+<p>Ihr könnt die folgende Hilfsfunktion verwenden. Den Code darin musst du nicht verstehen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>simulate_dice <span class="ot">&lt;-</span> <span class="cf">function</span>(k, game) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (game <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># k Zufallszahlen aus Intervall [0, 6] simulieren</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(k, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">6</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Auf ganze Zahl aufrunden. </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">ceiling</span>(x))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (game <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2 * k Zufallszahlen aus Intervall [0, 6] simulieren</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">2</span> <span class="sc">*</span> k, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">6</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Auf ganze Zahl aufrunden und tibble befüllen </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Jede Zeile ist ein Wurf von zwei Würfeln</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(x)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    tib <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">"W1"</span> <span class="ot">=</span> x[<span class="dv">1</span><span class="sc">:</span>k],</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"W2"</span> <span class="ot">=</span> x[(k<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(<span class="dv">2</span> <span class="sc">*</span> k)]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(tib)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">'Ich kenne nur Spiel 1 oder 2'</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Die Hilfsfunktion übernimmt für uns das Würfeln. Das erste Argument <code>k</code> bestimmt, wie oft wir spielen und das zweite Argument <code>game</code> bestimmt, ob wir Spiel 1 oder 2 spielen. Entsprechend sind auch die Ausgaben unterschiedlich.</p>
+<p>Für <code>game = 1</code> wird ein Vektor mit Zahlen zwischen 1 und 6 zurückgegeben. Für <code>game = 2</code> wird ein tibble (eine Tabelle) mit Zahlen zwischen 1 und 6 zurückgegeben. Dabei steht die erste Spalte <code>W1</code> für die Zahl des ersten Würfels und <code>W2</code> entsprechend für den zweiten Würfel. Für andere Werte von <code>game</code> erhalten wir eine Fehlermeldung.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">simulate_dice</span>(<span class="dv">10</span>, <span class="at">game =</span> <span class="dv">1</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3 4 1 2 5 3 2 4 6 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulate_dice</span>(<span class="dv">10</span>, <span class="at">game =</span> <span class="dv">2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+      W1    W2
+   &lt;dbl&gt; &lt;dbl&gt;
+ 1     4     1
+ 2     6     6
+ 3     6     1
+ 4     6     4
+ 5     1     3
+ 6     4     6
+ 7     4     2
+ 8     2     2
+ 9     1     3
+10     3     3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulate_dice</span>(<span class="dv">10</span>, <span class="at">game =</span> <span class="dv">3</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in simulate_dice(10, game = 3): Ich kenne nur Spiel 1 oder 2</code></pre>
+</div>
+</div>
+</section>
+<section id="gewinne-in-spiel-1" class="level1">
+<h1>Gewinne in Spiel 1</h1>
+<p>Wir wollen zunächst mal nur Spiel 1 untersuchen. Schreibe eine Funktion <code>game_one(n)</code>, die Spiel 1 einmal spielt und uns sagt, ob wir gewonnen haben (Rückgabe gewonnen: <code>TRUE</code>, Rückgabe verloren: <code>FALSE</code>). Offensichtlich ist diese Funktion von der Variable <span class="math inline">\(n\)</span> abhängig.</p>
+<p><strong>Hinweise:</strong></p>
+<ul>
+<li><p>Vergiss nicht, dass du die <code>simulate_dice()</code> Funktion nutzen kannst, um entsprechend oft zu würfeln.</p></li>
+<li><p>In R wird <code>TRUE</code> als 1 interpretiert und <code>FALSE</code> als 0. Dies könntest du beispielsweise nutzen, um einen Booleanvektor zu summieren. Wenn die Summe größer als Null ist, dann war offensichtlich ein <code>TRUE</code> in dem Vektor enthalten.</p></li>
+</ul>
+<div class="cell">
+
+</div>
+<p>Der Output deiner Funktion könnte also so aussehen. Beachte, dass die Ausgabe zufällig ist. Wir simulieren hier ja zufällige Ereignisse.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">game_one</span>(<span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">game_one</span>(<span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">game_one</span>(<span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Simuliere nun das erste Spiel <code>N</code> mal. Wähle dabei <code>N = 1000</code> und <code>n = 4</code>. Dazu kannst du dir einen leeren Boolenvektor <code>game_one_wins</code> der Länge <code>N</code> erstellen. Lasse diesen dann über eine for-Schleife befüllen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>game_one_wins <span class="ot">&lt;-</span> <span class="fu">logical</span>(<span class="at">length =</span> N)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Einzelne Einträge lassen sich mit [] und &lt;- ändern</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bspw.   game_one_wins[1] &lt;- TRUE setzt den ersten Eintrag auf TRUE</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>Den relativen Anteil der gewonnen Spiele könntest du nun mit <code>mean()</code> berechnen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(game_one_wins)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.515</code></pre>
+</div>
+</div>
+</section>
+<section id="gewinne-in-spiel-2" class="level1">
+<h1>Gewinne in Spiel 2</h1>
+<p>Wir haben uns in dem vorangegangen Abschnitt einen Vektor <code>game_one_wins</code> erstellt, der uns für die <code>N</code> Spiele sagt, welches wir gewonnen oder verloren haben. Das gleiche sollst du nun für Spiel 2 machen. Diesen Vektor nennen wir <code>game_two_wins</code>.</p>
+<p>Gehe dabei analog zum vorherigen Abschnitt vor. Konkret:</p>
+<ul>
+<li><p>Erstelle eine Funktion <code>game_two(m)</code>, die in Abhängigkeit einer Zahl <code>m</code> zurückgibt, ob wir ein Spiel gewonnen haben. <strong>Hinweise:</strong></p>
+<ul>
+<li><p>Die Funktion <code>simulate_dice()</code> gibt dir ja in diesem Fall einen tibble zurück. Somit musst du überprüfen, ob in der zurückgegebenen Tabelle ein 6er-Pasch vorkommt. Dies kannst du durch geschicktes filtern herausfinden. Anschließend kannst du mit der Funktion <code>nrow()</code> herausfinden, wieviele Zeilen deine gefilterte Tabelle hat.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kleines Beispiel wie die Funktion nrow() funktioniert.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">simulate_dice</span>(<span class="dv">4</span>, <span class="at">game =</span> <span class="dv">2</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div></li>
+</ul></li>
+<li><p>Befülle einen zunächst leeren Vektor mithilfe einer for-Schleife. Nutze dabei <code>N = 1000</code> und <code>m = 24</code>.</p></li>
+</ul>
+<p>Den relativen Anteil der gewonnen Spiele könntest du nun wieder mit <code>mean()</code> berechnen.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(game_two_wins)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.482</code></pre>
+</div>
+</div>
+</section>
+<section id="vergleich-der-gewinnchancen" class="level1">
+<h1>Vergleich der Gewinnchancen</h1>
+<p>Wir wollen nun für die Parameter <code>N = 1000</code>, <code>n = 4</code> und <code>m = 24</code> die Gewinnchancen vergleichen. Dazu wollen wir die Entwicklung der relativen Anzahl der Gewinne von 1, …, <code>N</code> visualisieren und mit den echten Gewinnwahrscheinlichkeiten vergleichen. Am Ende des Tages soll das so aussehen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="03_Uebungsblatt2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Hier sehen wir also, dass sich die relative Gewinnanzahl mit zunehmender Spielanzahl an die theoretische Wahrscheinlichkeit annähert.</p>
+<p>Um diese Grafik zu erstellen, wollen wir wie folgt vorgehen. Zunächst sammeln wir unseren bisherigen erstellten Vektoren in einem tibble.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>win_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="dv">1</span><span class="sc">:</span>N,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">game_one =</span> game_one_wins,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">game_two =</span> game_two_wins</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>win_data</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 3
+       N game_one game_two
+   &lt;int&gt; &lt;lgl&gt;    &lt;lgl&gt;   
+ 1     1 TRUE     FALSE   
+ 2     2 TRUE     FALSE   
+ 3     3 TRUE     FALSE   
+ 4     4 TRUE     TRUE    
+ 5     5 FALSE    TRUE    
+ 6     6 FALSE    FALSE   
+ 7     7 TRUE     TRUE    
+ 8     8 TRUE     TRUE    
+ 9     9 TRUE     TRUE    
+10    10 TRUE     TRUE    
+# … with 990 more rows</code></pre>
+</div>
+</div>
+<p>Dann erstellen wir zwei Vektoren <code>game_one_quota</code> und <code>qame_two_quota</code>. Der i-te Eintrag dieser Vektoren enthält die relative Gewinnhäufigkeit bis zum i-ten Spiel (jeweils für Spiel 1 und 2). Um solche Vektoren zu erstellen, kannst du die <code>numeric()</code> funktion benutzen. Diese funktioniert genauso wie <code>logical()</code>. Jedoch erstellt sie einen leeren Zahlenvektor und keinen Booleanvektor.</p>
+<p>Sobald ihr diese Vektoren berechnet habt, könnt ihr sie in einen tibble werfen und diesen umordnen. Das geht mit dem folgenden Code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>quota_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="dv">1</span><span class="sc">:</span>N,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">game_one =</span> game_one_quota,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">game_two =</span> game_two_quota</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>N,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">'game'</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">'game_'</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">'quota'</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>quota_data</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 3
+       N game  quota
+   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1     1 one    1   
+ 2     1 two    0   
+ 3     2 one    1   
+ 4     2 two    0   
+ 5     3 one    1   
+ 6     3 two    0   
+ 7     4 one    1   
+ 8     4 two    0.25
+ 9     5 one    0.8 
+10     5 two    0.4 
+# … with 1,990 more rows</code></pre>
+</div>
+</div>
+<p>Mit diesem Datensatz können wir nun unser Liniendiagramm erstellen. Dies funktioniert genauso wie auf dem ersten Übungsblatt.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="03_Uebungsblatt2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Die gepunkteten Linien kriegen wir nun eine <code>geom_hline()</code> zu dem Plot hinzu”addieren”. Schaue in die Dokumentation von <code>geom_hline()</code> welche Argumente es im mapping versteht (in ggplot sagt man auch oft “aesthetic” zu diesen Argumenten).</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="03_Uebungsblatt2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="zusammenfassung-der-aufgaben" class="level1">
+<h1>Zusammenfassung der Aufgaben</h1>
+<p>Die Aufgaben sind wieder im Text verstreut. Hier eine kleine Übersicht, damit du nichts vergisst.</p>
+<ul>
+<li><p><code>game_one()</code> Funktion erstellen (1)</p></li>
+<li><p><code>game_one_wins</code> Vektor befüllen (1)</p></li>
+<li><p>Das gleiche für Spiel 2 (1.5)</p></li>
+<li><p><code>game_one_quota</code> und <code>game_two_quota</code> Vektoren erstellen (1.5)</p></li>
+<li><p>Finale Grafik erstellen (1)</p></li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
