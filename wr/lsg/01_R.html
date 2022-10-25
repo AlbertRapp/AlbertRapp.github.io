@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.231">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+
+<title>Übungsblatt 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="02_Uebungsblatt1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="02_Uebungsblatt1_files/libs/quarto-html/quarto.js"></script>
+<script src="02_Uebungsblatt1_files/libs/quarto-html/popper.min.js"></script>
+<script src="02_Uebungsblatt1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="02_Uebungsblatt1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="02_Uebungsblatt1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="02_Uebungsblatt1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="02_Uebungsblatt1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="02_Uebungsblatt1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="02_Uebungsblatt1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#beschreibung" id="toc-beschreibung" class="nav-link active" data-scroll-target="#beschreibung">Beschreibung</a></li>
+  <li><a href="#erster-blick-in-unseren-datensatz" id="toc-erster-blick-in-unseren-datensatz" class="nav-link" data-scroll-target="#erster-blick-in-unseren-datensatz">Erster Blick in unseren Datensatz</a></li>
+  <li><a href="#wohlstand-und-lebenserwartung" id="toc-wohlstand-und-lebenserwartung" class="nav-link" data-scroll-target="#wohlstand-und-lebenserwartung">Wohlstand und Lebenserwartung</a>
+  <ul class="collapse">
+  <li><a href="#erstmal-nur-ein-jahr" id="toc-erstmal-nur-ein-jahr" class="nav-link" data-scroll-target="#erstmal-nur-ein-jahr">Erstmal nur ein Jahr</a>
+  <ul class="collapse">
+  <li><a href="#gemeinsame-verteilung" id="toc-gemeinsame-verteilung" class="nav-link" data-scroll-target="#gemeinsame-verteilung">Gemeinsame Verteilung</a></li>
+  <li><a href="#kontinente-ins-spiel-bringen" id="toc-kontinente-ins-spiel-bringen" class="nav-link" data-scroll-target="#kontinente-ins-spiel-bringen">Kontinente ins Spiel bringen</a></li>
+  <li><a href="#größe-der-punkte-nach-bevölkerung" id="toc-größe-der-punkte-nach-bevölkerung" class="nav-link" data-scroll-target="#größe-der-punkte-nach-bevölkerung">Größe der Punkte nach Bevölkerung</a></li>
+  </ul></li>
+  <li><a href="#mehrere-jahre-betrachen" id="toc-mehrere-jahre-betrachen" class="nav-link" data-scroll-target="#mehrere-jahre-betrachen">Mehrere Jahre betrachen</a>
+  <ul class="collapse">
+  <li><a href="#output-mit-for-schleife" id="toc-output-mit-for-schleife" class="nav-link" data-scroll-target="#output-mit-for-schleife">Output mit for-Schleife</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#vergleich-1952-bis-2007" id="toc-vergleich-1952-bis-2007" class="nav-link" data-scroll-target="#vergleich-1952-bis-2007">Vergleich: 1952 bis 2007</a>
+  <ul class="collapse">
+  <li><a href="#welche-länder-haben-ihre-lebenserwartung-verschlechtert" id="toc-welche-länder-haben-ihre-lebenserwartung-verschlechtert" class="nav-link" data-scroll-target="#welche-länder-haben-ihre-lebenserwartung-verschlechtert">Welche Länder haben ihre Lebenserwartung verschlechtert?</a></li>
+  <li><a href="#wie-groß-sind-die-veränderungen" id="toc-wie-groß-sind-die-veränderungen" class="nav-link" data-scroll-target="#wie-groß-sind-die-veränderungen">Wie groß sind die Veränderungen?</a></li>
+  <li><a href="#und-wieviele-länder-haben-sich-verbessert" id="toc-und-wieviele-länder-haben-sich-verbessert" class="nav-link" data-scroll-target="#und-wieviele-länder-haben-sich-verbessert">Und wieviele Länder haben sich verbessert</a></li>
+  </ul></li>
+  <li><a href="#zusammenfassung-der-aufgaben" id="toc-zusammenfassung-der-aufgaben" class="nav-link" data-scroll-target="#zusammenfassung-der-aufgaben">Zusammenfassung der Aufgaben</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Übungsblatt 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor:in</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">20. Oktober 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="beschreibung" class="level1">
+<h1>Beschreibung</h1>
+<p>Auf diesem Übungsblatt wollen wir die gelernten Inhalte aus der <a href="https://albertrapp.github.io/wr/01_Einfuehrung.html">Einführung</a> nochmals wiederholen und erweitern. Da R (und Programmierung) für viele von euch recht neu ist, ist dies kein klassisches Übungsblatt. Dieses Blatt ist untypisch in dem Sinne, dass ihr nicht einfach eine Aufgabenstellung bekommt und damit alleine gelassen werdet.</p>
+<p>Stattdessen soll dieses Blatt euch durch eine winzige Datenanalyse durchleiten. Dabei werdet ihr immer wieder aufgefordert, kleine Schritte selbst zu übernehmen. Für das erfolgreiche Absolvieren dieser Aufgaben werdet ihr mit Punkten belohnt. Am Ende dieses Dokuments findet ihr nochmal eine Übersicht über die Aufgaben, die ihr zu erledigen habt.</p>
+</section>
+<section id="erster-blick-in-unseren-datensatz" class="level1">
+<h1>Erster Blick in unseren Datensatz</h1>
+<p>Wir wollen uns mit dem Datensatz <code>gapminder</code> aus dem gleichnamigen Paket beschäftigen. Dazu muss dieses Paket zunächst installiert werden. Tu dies jetzt, um dann die folgenden Befehle fehlerfrei ausführen zu können.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.3.6      ✔ purrr   0.3.5 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+✔ readr   2.1.3      ✔ forcats 0.5.2 
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Nun haben wir Zugriff auf den Gapminder Datensatz. Dieser sieht wie folgt aus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gapminder</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,704 × 6
+   country     continent  year lifeExp      pop gdpPercap
+   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+ 1 Afghanistan Asia       1952    28.8  8425333      779.
+ 2 Afghanistan Asia       1957    30.3  9240934      821.
+ 3 Afghanistan Asia       1962    32.0 10267083      853.
+ 4 Afghanistan Asia       1967    34.0 11537966      836.
+ 5 Afghanistan Asia       1972    36.1 13079460      740.
+ 6 Afghanistan Asia       1977    38.4 14880372      786.
+ 7 Afghanistan Asia       1982    39.9 12881816      978.
+ 8 Afghanistan Asia       1987    40.8 13867957      852.
+ 9 Afghanistan Asia       1992    41.7 16317921      649.
+10 Afghanistan Asia       1997    41.8 22227415      635.
+# … with 1,694 more rows</code></pre>
+</div>
+</div>
+<p>Finde nun heraus, welche Informationen dieser Datensatz beschreibt und wofür die Spaltennamen in diesem Datensatz stehen. Nutze dabei, dass Datensätze genauso wie Funktionen in den Hilfeseiten dokumentiert sind. Halte deine Erkenntnisse in einem Quartodokument fest.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lifeExp <span class="ot">=</span> life expectancy at birth, <span class="cf">in</span> years</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">=</span> population</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>gdpPercap <span class="ot">=</span> GDP per <span class="fu">capita</span> (US<span class="sc">$</span>, inflation<span class="sc">-</span>adjusted)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wohlstand-und-lebenserwartung" class="level1 page-columns page-full">
+<h1>Wohlstand und Lebenserwartung</h1>
+<p>Hans Roslings <a href="https://www.youtube.com/watch?v=jbkSRLYSojo">200 Countries, 200 Years, 4 Minutes</a> ist mittlerweile ein Klassiker. Diesen Klassiker wollen wir hier mit unseren Datensatz in Teilen nachbauen. Schau dir dazu zunächst das Video an, damit du weißt, worum es geht.</p>
+<section id="erstmal-nur-ein-jahr" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="erstmal-nur-ein-jahr">Erstmal nur ein Jahr</h2>
+<p>Betrachten wir zunächst mal nur das Jahr 1952 in unserem Datensatz. Erstelle dazu eine Variable <code>gapminder_1952</code>, die nur die Daten dieses des Jahres 1952 enthält. Dieser Datensatz sollte so aussehen</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1952</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 142 × 6
+   country     continent  year lifeExp      pop gdpPercap
+   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+ 1 Afghanistan Asia       1952    28.8  8425333      779.
+ 2 Albania     Europe     1952    55.2  1282697     1601.
+ 3 Algeria     Africa     1952    43.1  9279525     2449.
+ 4 Angola      Africa     1952    30.0  4232095     3521.
+ 5 Argentina   Americas   1952    62.5 17876956     5911.
+ 6 Australia   Oceania    1952    69.1  8691212    10040.
+ 7 Austria     Europe     1952    66.8  6927772     6137.
+ 8 Bahrain     Asia       1952    50.9   120447     9867.
+ 9 Bangladesh  Asia       1952    37.5 46886859      684.
+10 Belgium     Europe     1952    68    8730405     8343.
+# … with 132 more rows</code></pre>
+</div>
+</div>
+<p>Nun wollen wir zunächst einen groben Überblick über die Verteilung von <code>gdpPercap</code> und <code>lifeExp</code> erhalten. Erstelle dazu für jede dieser Variablen ein Histogramm. Achte dabei darauf, dass du die folgenden Grafiken inklusive Beschriftungen replizierst. Die Bildüberschrift kannst du genauso wie alle Beschriftungen in einer <code>labs()</code>-Schicht bestimmen. Also</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"x-Beschriftung"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"y-Beschriftung"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Ein Titel"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="histogramm-für-gdppercap" class="level4">
+<h4 class="anchored" data-anchor-id="histogramm-für-gdppercap">Histogramm für <code>gdpPercap</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdpPercap), <span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Bruttoinlandsprodukt (pro-Kopf, inflationsbereinigt in USD)'</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Anzahl'</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Verteilung vom Bruttoinlandsprodukt im Jahre 1952'</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="histogramm-für-lifeexp" class="level4">
+<h4 class="anchored" data-anchor-id="histogramm-für-lifeexp">Histogramm für <code>lifeExp</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp), <span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Lebenserwartung bei Geburt (in Jahren)'</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Anzahl'</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Verteilung der Lebenserwartung im Jahre 1952'</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Das erste Histogramm zeigt, dass es ein Land gab, dass ein Bruttoinlandsprodukt über 90000 gehabt haben muss. Finde heraus, um welches Land es sich dabei handelte und dokumentiere deine Erkenntnisse in einem Quartodokument.</p>
+</section>
+<section id="gemeinsame-verteilung" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="gemeinsame-verteilung">Gemeinsame Verteilung</h3>
+<p>Unsere Histogramme haben uns jeweils die Lebenserwartung und das BIP einzeln visualisiert. Um Zusammenhänge zu erkennen, muss man jedoch die gemeiname Verteilung dieser Größen betrachten. Erstelle also nun ein Punktdiagramm (ähnlich wie es Hans Rosling getan hat). Dies soll so aussehen.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">'dodgerblue4'</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Bruttoinlandsprodukt (pro-Kopf, inflationsbereinigt in USD)'</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Lebenserwartung bei Geburt (in Jahren)'</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Lebenserwartung und Wohlstand im Jahre 1952'</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-erstes-punktdiagramm" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="02_Uebungsblatt1_files/figure-html/fig-erstes-punktdiagramm-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Abbildung&nbsp;1: Unser erstes Punktdiagramm</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Dies ist allerdings kein besonders toller Plot. Genau wie bei unserem vorherigen Histogramm ist alles an der linken Seite der Grafik konzentriert. Dies macht die Grafik schwer zu lesen.</p>
+<p>Wieso hatte also die Grafik von Hans Rosling dieses Problem nicht? Schau dir nochmal das <a href="https://www.youtube.com/watch?v=jbkSRLYSojo">Video</a> an und achte genau auf die x-Achse. Fällt dir was auf?</p>
+<p>Nicht schlimm, wenn du es nicht sofort erkennst. Ich verrate dir die Lösung. Hans Rosling verwendet eine logarithmierte x-Achse, d.h. die x-Achse macht nicht immer die gleichen Schritte (so wie bei uns). Im Video macht die Achse die folgenden Schritte: <code>400 - 4000 - 40000</code>. Somit geht die Achse die Potenzen <span class="math inline">\(4 \cdot 10^k\)</span>, <span class="math inline">\(k = 1, \ldots, 3\)</span> durch.</p>
+<p>Dies können wir in unserer Grafik auch machen. Dazu muss lediglich die zusätzliche Schicht <code>scale_x_log10()</code> zu unserer Grafik “addiert” werden (ohne jegliche Argument - einfach <code>()</code> leer lassen). Tu dies nun. Dann sollte deine Grafik so aussehen.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">'dodgerblue4'</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Bruttoinlandsprodukt (pro-Kopf, inflationsbereinigt in USD)'</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Lebenserwartung bei Geburt (in Jahren)'</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Lebenserwartung und Wohlstand im Jahre 1952'</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-log-achse" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="02_Uebungsblatt1_files/figure-html/fig-log-achse-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Abbildung&nbsp;2: Logarithmierte Achsen</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Wenn du in <code>scale_x_log10()</code> noch <code>labels = scales::label_number()</code> reinschreibst, dann kriegst du noch schönere Achsenbeschriftungen. Das musst du aber nicht machen, wenn dir das zu kompliziert (oder zu mysteriös) ist. In den nachfolgenden Grafiken werde ich die schöneren Beschriftungen verwenden, aber das kannst du ignorieren.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">'dodgerblue4'</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Bruttoinlandsprodukt (pro-Kopf, inflationsbereinigt in USD)'</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Lebenserwartung bei Geburt (in Jahren)'</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Lebenserwartung und Wohlstand im Jahre 1952'</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="kontinente-ins-spiel-bringen" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="kontinente-ins-spiel-bringen">Kontinente ins Spiel bringen</h3>
+<p>In Hans Roslings Video wurden die Punkte entsprechend ihres Kontinents unterschiedlich eingefärbt. Dies solltest du jetzt auch tun. Am Ende solltest du die folgende Grafik erhalten.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> gdpPercap, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> lifeExp,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> continent</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Bruttoinlandsprodukt (pro-Kopf, inflationsbereinigt in USD)'</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Lebenserwartung bei Geburt (in Jahren)'</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Lebenserwartung und Wohlstand im Jahre 1952'</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">'Kontinent'</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-farbige-Kontinente" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="02_Uebungsblatt1_files/figure-html/fig-farbige-Kontinente-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Abbildung&nbsp;3: Logarithmierte Achsen</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="größe-der-punkte-nach-bevölkerung" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="größe-der-punkte-nach-bevölkerung">Größe der Punkte nach Bevölkerung</h3>
+<p>Nun müssen wir noch die Punkte entsprechend der Bevölkerung eines Landes skalieren. Hier ist ein bisschen Transferleistung gefragt. Wir haben bisher die Punkte immer gleichgroß und damit <code>size</code> datenunabhängig gemacht. Jetzt sollen wir <code>size</code> datenabhängig machen. Dies sieht dann am Ende des Tages so aus.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> gdpPercap, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> lifeExp,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> continent,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> pop</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Bruttoinlandsprodukt (pro-Kopf, inflationsbereinigt in USD)'</span>,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Lebenserwartung bei Geburt (in Jahren)'</span>,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Lebenserwartung und Wohlstand im Jahre 1952'</span>,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">'Kontinent'</span>,</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">'Bevölkerung'</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-variable-groessen" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="02_Uebungsblatt1_files/figure-html/fig-variable-groessen-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Abbildung&nbsp;4: Logarithmierte Achsen</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mehrere-jahre-betrachen" class="level2">
+<h2 class="anchored" data-anchor-id="mehrere-jahre-betrachen">Mehrere Jahre betrachen</h2>
+<p>Wir haben nun eine halbwegs solide Imitation von Hans Roslings Grafik gebastelt. Allerdings betrachten wir aktuell nur ein einziges Jahr. Ziel ist es nun, eine eigene Funktion zu schreiben, die ein Jahr entgegen nimmt und uns eine Grafik für diese Jahr zurückgibt.</p>
+<p>Die Zutaten für diese Funktion haben wir schon:</p>
+<ol type="1">
+<li>Filtere <code>gapminder</code> entsprechend dem übergebenen Jahr</li>
+<li>Erstelle die obige Grafik und ersetze den Datensatz durch den neuen gefilterten Datensatz.</li>
+</ol>
+<p>Nun müssen wir nur noch verstehen, wie wir Funktionen erstellen. Das Grundgerüst dafür sieht so aus.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>name<span class="sc">&gt;</span> <span class="er">&lt;</span><span class="sc">-</span> <span class="cf">function</span>(<span class="sc">&lt;</span>Variablen<span class="sc">&gt;</span>) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Berechnungen</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">&lt;</span>endergebnis<span class="sc">&gt;</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://twitter.com/cosima_meyer">Cosima Meyer</a> hat dazu erst kürzlich, eine gute <a href="https://twitter.com/cosima_meyer/status/1574653260891316228">Grafik</a> erstellt. Vielleicht hilft sie dir beim Verständnis. Beispielsweise könnten wir eine Funktion schreiben, die aus unserem Datensatz bestimmte Länder extrahiert.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>extract_country <span class="ot">&lt;-</span> <span class="cf">function</span>(data, country_name) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Zwischenergebnisse können in Funktionen auch in Variablen gespeichert werden</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(country <span class="sc">==</span> country_name)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ausgabe</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(tmp)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_country</span>(gapminder, <span class="st">'Germany'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 6
+   country continent  year lifeExp      pop gdpPercap
+   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+ 1 Germany Europe     1952    67.5 69145952     7144.
+ 2 Germany Europe     1957    69.1 71019069    10188.
+ 3 Germany Europe     1962    70.3 73739117    12902.
+ 4 Germany Europe     1967    70.8 76368453    14746.
+ 5 Germany Europe     1972    71   78717088    18016.
+ 6 Germany Europe     1977    72.5 78160773    20513.
+ 7 Germany Europe     1982    73.8 78335266    22032.
+ 8 Germany Europe     1987    74.8 77718298    24639.
+ 9 Germany Europe     1992    76.1 80597764    26505.
+10 Germany Europe     1997    77.3 82011073    27789.
+11 Germany Europe     2002    78.7 82350671    30036.
+12 Germany Europe     2007    79.4 82400996    32170.</code></pre>
+</div>
+</div>
+<p>Alternativ könnte man auch auf <code>return()</code> verzichten und <code>tmp</code> einfach so aufrufen. Eine Funktion gibt automatisch die letzte <strong>aufgerufene</strong> Variable aus. Dies sähe für unser letztes Beispiel so aus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>extract_country <span class="ot">&lt;-</span> <span class="cf">function</span>(data, country_name) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(country <span class="sc">==</span> country_name)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Aufrufen statt return() geht auch</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  tmp</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Schreibe nun eine Funktion <code>plot_gapminder_year</code>, die für ein angegebenes Jahr <code>selected_year</code> die obige Grafik ausgibt. Dies sieht dann so aus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot_gapminder_year <span class="ot">&lt;-</span> <span class="cf">function</span>(selected_year) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  text <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">'Lebenserwartung und Wohlstand im Jahre'</span>, selected_year)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> selected_year) <span class="sc">|&gt;</span> </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> gdpPercap, </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> lifeExp,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> continent,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> pop</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">'Bruttoinlandsprodukt (pro-Kopf, inflationsbereinigt in USD)'</span>,</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">'Lebenserwartung bei Geburt (in Jahren)'</span>,</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> text,</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">'Kontinent'</span>,</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="st">'Bevölkerung'</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>())</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gapminder_year</span>(<span class="at">selected_year =</span> <span class="dv">1957</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Beachte dabei, dass sich der Text im Titel auch ändern muss. Hier könnte es hilfreich sein, in der Funktion eine Zwischenvariable mit dem korrekten Text abzuspeichern und diese Variable dann in <code>labs()</code> zu verwenden. Die Funktion <code>paste()</code> könnte sich dabei als hilfreich erweisen.</p>
+<section id="output-mit-for-schleife" class="level3">
+<h3 class="anchored" data-anchor-id="output-mit-for-schleife">Output mit for-Schleife</h3>
+<p>Nutze nun deine Funktion <code>plot_gapminder_year()</code> und eine for-Schleife, um die Grafiken für die Jahre 1952, 1967, 1992 und 2007 in ein Quartodokument zu schreiben. Du wirst dabei die Funktion <code>print()</code> benötigen, um eine Ausgabe der Grafik in der Schleife zu erzwingen.</p>
+<p>In deinem Quartodokument solltest du dann den Output der Schleife direkt untereinander sehen. Ich habe es hier mal in einem tabset-panel angeordnet, damit man die Grafiken leichter vergleichen kann. Dies musst du aber nicht tun. Wenn du die Schleife in RStudio ausführst, kann es sein, dass du nur die 2007er Grafik zu Gesicht bekommst. Dies liegt daran, dass die Grafiken so schnell von R generiert werden, dass nur noch die letzte im <code>Plots</code>-Fenster zu sehen ist.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">1952</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">1967</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">1992</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">2007</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gapminder_year</span>(<span class="at">selected_year =</span> <span class="dv">1952</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gapminder_year</span>(<span class="at">selected_year =</span> <span class="dv">1967</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gapminder_year</span>(<span class="at">selected_year =</span> <span class="dv">1992</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gapminder_year</span>(<span class="at">selected_year =</span> <span class="dv">2007</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_Uebungsblatt1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="vergleich-1952-bis-2007" class="level1 page-columns page-full">
+<h1>Vergleich: 1952 bis 2007</h1>
+<section id="welche-länder-haben-ihre-lebenserwartung-verschlechtert" class="level2">
+<h2 class="anchored" data-anchor-id="welche-länder-haben-ihre-lebenserwartung-verschlechtert">Welche Länder haben ihre Lebenserwartung verschlechtert?</h2>
+<p>Finden wir nun heraus, ob manche Länder ihre Lebenserwartung verschlechtert haben. Dazu benötigen wir nur die Variablen <code>country</code>, <code>year</code> und <code>lifeExp</code>. Erstelle eine Variable <code>comparison_data</code>, der nur diese Spalten <strong>und</strong> nur die Jahre 1952 und 2007 enthält.</p>
+<p>Der <code>%in%</code>-Operator kann dir dabei behilflich sein. Finde mit einer schnellen Internetrecherche raus, wie dieser Operator funktioniert. Dein Datensatz <code>comparison_data</code> sollte dann so aussehen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>comparison_data <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, year, lifeExp) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>, <span class="dv">2007</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>comparison_data</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 284 × 3
+   country      year lifeExp
+   &lt;fct&gt;       &lt;int&gt;   &lt;dbl&gt;
+ 1 Afghanistan  1952    28.8
+ 2 Afghanistan  2007    43.8
+ 3 Albania      1952    55.2
+ 4 Albania      2007    76.4
+ 5 Algeria      1952    43.1
+ 6 Algeria      2007    72.3
+ 7 Angola       1952    30.0
+ 8 Angola       2007    42.7
+ 9 Argentina    1952    62.5
+10 Argentina    2007    75.3
+# … with 274 more rows</code></pre>
+</div>
+</div>
+<p>Nun können wir den Datensatz ein wenig umsortieren. Dies geht mit der Funktion <code>pivot_wider()</code>. Im Prinzip brauchst du nicht zu verstehen, wie sie funktioniert. Du kannst einfach den folgenden Codeschnipsel übernehmen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>comparison_data_wider <span class="ot">&lt;-</span> comparison_data <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> year,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> lifeExp,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">'lifeExp_'</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>comparison_data_wider</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 142 × 3
+   country     lifeExp_1952 lifeExp_2007
+   &lt;fct&gt;              &lt;dbl&gt;        &lt;dbl&gt;
+ 1 Afghanistan         28.8         43.8
+ 2 Albania             55.2         76.4
+ 3 Algeria             43.1         72.3
+ 4 Angola              30.0         42.7
+ 5 Argentina           62.5         75.3
+ 6 Australia           69.1         81.2
+ 7 Austria             66.8         79.8
+ 8 Bahrain             50.9         75.6
+ 9 Bangladesh          37.5         64.1
+10 Belgium             68           79.4
+# … with 132 more rows</code></pre>
+</div>
+</div>
+<p>Wir können nun diese neue Tabelle nutzen, um herauszufinden, welche Länder von 1952 bis 2007 ihre Lebenserwartung verschlechtert haben. Dokumentiere den dazu nötigen Code in einem Quartodokument. Der entsprechende Output sieht wie folgt aus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>comparison_data_wider <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lifeExp_2007 <span class="sc">&lt;</span> lifeExp_1952)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  country   lifeExp_1952 lifeExp_2007
+  &lt;fct&gt;            &lt;dbl&gt;        &lt;dbl&gt;
+1 Swaziland         41.4         39.6
+2 Zimbabwe          48.5         43.5</code></pre>
+</div>
+</div>
+</section>
+<section id="wie-groß-sind-die-veränderungen" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="wie-groß-sind-die-veränderungen">Wie groß sind die Veränderungen?</h2>
+<p>Füge der Tabelle <code>comparison_data_wider</code> nun noch die Spalten <code>change</code> and <code>change_result</code> hinzu. Speichere die neue Tabelle in der Variable <code>lifeexp_changes</code>. Die Spalte <code>change_result</code> sollte den Eintrag <code>"verbessert"</code> enthalten, wenn die Lebenserwartung sich verbessert hat. Ansonsten enthält sie den Eintrag <code>"verschlechtert"</code>. Die Funktion <code>if_else()</code> kann hier hilfreich sein.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lifeexp_changes <span class="ot">&lt;-</span> comparison_data_wider <span class="sc">|&gt;</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">change =</span> lifeExp_2007 <span class="sc">-</span> lifeExp_1952,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">change_result =</span> <span class="fu">if_else</span>(change <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"verbessert"</span>, <span class="st">'verschlechtert'</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>lifeexp_changes</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 142 × 5
+   country     lifeExp_1952 lifeExp_2007 change change_result
+   &lt;fct&gt;              &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        
+ 1 Afghanistan         28.8         43.8   15.0 verbessert   
+ 2 Albania             55.2         76.4   21.2 verbessert   
+ 3 Algeria             43.1         72.3   29.2 verbessert   
+ 4 Angola              30.0         42.7   12.7 verbessert   
+ 5 Argentina           62.5         75.3   12.8 verbessert   
+ 6 Australia           69.1         81.2   12.1 verbessert   
+ 7 Austria             66.8         79.8   13.0 verbessert   
+ 8 Bahrain             50.9         75.6   24.7 verbessert   
+ 9 Bangladesh          37.5         64.1   26.6 verbessert   
+10 Belgium             68           79.4   11.4 verbessert   
+# … with 132 more rows</code></pre>
+</div>
+</div>
+<p>Erstelle zusätzlich ein Histogramm, das die Verteilung der Veränderung der Lebenserwartungen aller Länder zeigt. Es sollte so aussehen:</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>lifeexp_changes <span class="sc">|&gt;</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> change)) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">'dodgerblue4'</span>, <span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">'Veränderung der Lebenserwartung'</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">'Anzahl'</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Wie viel hat sich zwischen 1952 und 2007 getan?'</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-veraenderung-lebenserwartung" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="02_Uebungsblatt1_files/figure-html/fig-veraenderung-lebenserwartung-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Abbildung&nbsp;5: Verteilung der Veränderung der Lebenserwartung</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="und-wieviele-länder-haben-sich-verbessert" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="und-wieviele-länder-haben-sich-verbessert">Und wieviele Länder haben sich verbessert</h2>
+<p>Erstelle abschließend noch ein Balkendiagram, das zählt, wie viele Länder sich verbessert bzw. verschlechtert haben. Diese Grafik sollte so aussehen (Hinweis: <code>''</code> ist ein “leerer” Text):</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lifeexp_changes <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> change_result)) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">'dodgerblue4'</span>) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'Anzahl'</span>, <span class="at">y =</span> <span class="fu">element_blank</span>())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-verbesserung-lebenserwartung" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="02_Uebungsblatt1_files/figure-html/fig-verbesserung-lebenserwartung-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Abbildung&nbsp;6: Die meisten Länder haben glücklicherweise ihre Lebenserwartung erhöhnt</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="zusammenfassung-der-aufgaben" class="level1">
+<h1>Zusammenfassung der Aufgaben</h1>
+<p>Die Aufgaben, die ihr hier zu erledigen habt, sind durch den Text verstreut gewesen. Damit ihr auch nichts vergesst, hier nochmal eine Zusammenfassung von dem was ihr tun sollt.</p>
+<ol type="1">
+<li><code>gapminder</code>-Informationen in Quartodokument festhalten (1)</li>
+<li><code>gapminder_1952</code>-Variable erstellen (1)</li>
+<li><code>gdpPerCap</code>- und <code>lifeExp</code>-Histogramme erstellen (2)</li>
+<li>Dokumentiere, welches Land einen BIP über 90000 hat (1)</li>
+<li><a href="#fig-erstes-punktdiagramm">Abbildung&nbsp;1</a> erstellen (2)</li>
+<li>Achsen logarithmieren (<a href="#fig-log-achse">Abbildung&nbsp;2</a>) (1)</li>
+<li>Kontinente farbig machen (<a href="#fig-farbige-Kontinente">Abbildung&nbsp;3</a>) (2)</li>
+<li>Punktgröße variabel machen (<a href="#fig-variable-groessen">Abbildung&nbsp;4</a>) (3)</li>
+<li><code>plot_gapminder_year</code>-Funktion schreiben (3)</li>
+<li>Ausgewählte Jahre über for-Schleife plotten (3)</li>
+<li><code>comparison_data</code> Tabelle berechnen (2)</li>
+<li>Tabelle mit Ländern, die ihre Lebenserwartung verschlechtert haben, ausgeben (2)</li>
+<li><code>lifeexp_changes</code> Tabelle berechnen (3)</li>
+<li>Verteilung der Veränderung der Lebenserwartung (<a href="#fig-veraenderung-lebenserwartung">Abbildung&nbsp;5</a>) plotten (2)</li>
+<li>Mit Balkendiagramm (<a href="#fig-verbesserung-lebenserwartung">Abbildung&nbsp;6</a>) zählen, wieviele Länder sich verbessert und verschlechtert haben (2)</li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
