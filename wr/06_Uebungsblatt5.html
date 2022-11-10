@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.253">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+
+<title>Übungsblatt 5</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="06_Uebungsblatt5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="06_Uebungsblatt5_files/libs/quarto-html/quarto.js"></script>
+<script src="06_Uebungsblatt5_files/libs/quarto-html/popper.min.js"></script>
+<script src="06_Uebungsblatt5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="06_Uebungsblatt5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="06_Uebungsblatt5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="06_Uebungsblatt5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="06_Uebungsblatt5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="06_Uebungsblatt5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="06_Uebungsblatt5_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#münzen-werfen" id="toc-münzen-werfen" class="nav-link active" data-scroll-target="#münzen-werfen">Münzen werfen</a>
+  <ul class="collapse">
+  <li><a href="#zähldichte" id="toc-zähldichte" class="nav-link" data-scroll-target="#zähldichte">Zähldichte</a></li>
+  <li><a href="#verteilungsfunktion" id="toc-verteilungsfunktion" class="nav-link" data-scroll-target="#verteilungsfunktion">Verteilungsfunktion</a></li>
+  <li><a href="#gegenüberstellung" id="toc-gegenüberstellung" class="nav-link" data-scroll-target="#gegenüberstellung">Gegenüberstellung</a></li>
+  </ul></li>
+  <li><a href="#zusammenfassung" id="toc-zusammenfassung" class="nav-link" data-scroll-target="#zusammenfassung">Zusammenfassung</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Übungsblatt 5</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor:in</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">8. November 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="münzen-werfen" class="level1">
+<h1>Münzen werfen</h1>
+<section id="zähldichte" class="level2">
+<h2 class="anchored" data-anchor-id="zähldichte">Zähldichte</h2>
+<p>Schreibe eine Funktion <code>throw_coin(times, prob)</code>, die eine unfaire Münze <code>times</code> mal wirft und zurückgibt, wie oft die Münze Kopf gezeigt hat. Dabei wird Kopf mit einer Wahrscheinlichkeit von <code>prob</code> gezeigt</p>
+<p>Nutze anschließend diese Funktion, um das folgende Zufallsexperiment 10000 mal unabhängig voneinander auszuführen:</p>
+<ul>
+<li>Eine Münze wird 10 mal geworfen</li>
+<li>Die Wahrscheinlichkeit, dass Kopf fällt, ist 60%</li>
+<li>Die Anzahl der geworfenen Köpfe wird festgehalten.</li>
+</ul>
+<p>Visualisiere nun Verteilung der Funktion mithilfe eines Balkendiagramms. Dies sollte ungefähr so aussehen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="06_Uebungsblatt5_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Verfeinere nun deine Visualisierung, indem du</p>
+<ol type="1">
+<li>die x-Achse mithilfe von <code>scale_c_continuous()</code> formatierst, sodass sie ganze Zahlen zeigt</li>
+<li>das theme veränderst bspw. mit <code>theme_light()</code> oder <code>theme_minimal()</code>. Erhöhe dabei die <code>base_size</code> in deiner <code>theme_*</code> Funktion, sodass die Schrift deutlich größer wird.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="06_Uebungsblatt5_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="verteilungsfunktion" class="level2">
+<h2 class="anchored" data-anchor-id="verteilungsfunktion">Verteilungsfunktion</h2>
+<p>Lass uns nun eine andere Darstellung wählen, um die Ergebnisse des Zufallsexperiments zu visualisieren.</p>
+<p>Berechne anhand deines Vektors die <em>empirische Verteilungsfunktion</em></p>
+<p><span class="math display">\[
+  \hat{F}(x) = \frac{1}{n} \sum_{k = 1}^{n} \mathbb{1}\{ X(k) \leq x \},
+\]</span> wobei <span class="math inline">\(X(k)\)</span>, die <span class="math inline">\(k\)</span>-te Beobachtung, <span class="math inline">\(k = 1, \ldots, n\)</span>, einer Zufallsvariable <span class="math inline">\(X\)</span> ist für <span class="math inline">\(x \in \{-1, -0.99, -0.98, \ldots, 11\}\)</span>.</p>
+<p>Visualisiere <span class="math inline">\(\hat{F}\)</span> mithilfe der Funktion <code>geom_step()</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="06_Uebungsblatt5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="gegenüberstellung" class="level2">
+<h2 class="anchored" data-anchor-id="gegenüberstellung">Gegenüberstellung</h2>
+<p>Wenn du deine zwei vorherigen plots in Variablen abgespeichert hast, kannst du sie ganz leicht in einer gemeinsamen Grafik anzeigen. Installiere und lade dazu das <code>patchwork</code> Paket. Nachdem das Paket geladen ist, kannst du Plots ganz einfach “addieren” (mit <code>+</code>) und “dividieren” mit <code>/</code>.</p>
+<p>Nutze dies um die folgenden Grafiken zu erstellen:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="06_Uebungsblatt5_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="06_Uebungsblatt5_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="zusammenfassung" class="level1">
+<h1>Zusammenfassung</h1>
+<p>Folgende Aufgaben waren zu erledigen:</p>
+<ul>
+<li><code>throw_coin()</code> schreiben (1)</li>
+<li>Bar chart für Häufigkeiten erstellen (1)</li>
+<li>Bar chart mit einem Theme versehen (1)</li>
+<li>Empirische Verteilungsfunktion visualisieren (1)</li>
+<li>Gegenüberstellungen erstellen (1)</li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
