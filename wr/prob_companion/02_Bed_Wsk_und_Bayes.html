@@ -135,6 +135,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./04_Verteilungen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./bibliografie.html" class="sidebar-item-text sidebar-link">Bibliografie</a>
   </div>
 </li>
@@ -229,6 +234,19 @@ Eddy, David M. 1982. <span>„Probabilistic reasoning in clinical medicine: Prob
 </div>
 
 </main> <!-- /main -->
+<script>
+var custom_title = document.querySelectorAll('.custom .theorem-title');
+for (let i = 0; i < custom_title.length; i++ ) {
+   var mod_name = custom_title[i].innerHTML;
+   custom_title[i].innerHTML = mod_name.replace("Annahme", "Bemerkung");
+};
+
+var cnj_citations = document.querySelectorAll("a[href*='#cnj']");
+for (let i = 0; i < cnj_citations.length; i++ ) {
+   var cite_name = cnj_citations[i].innerHTML;
+   cnj_citations[i].innerHTML = cite_name.replace("Annahme", "Bemerkung");
+};
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

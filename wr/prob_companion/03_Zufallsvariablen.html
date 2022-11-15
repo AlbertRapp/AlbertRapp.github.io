@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bibliografie.html" rel="next">
+<link href="./04_Verteilungen.html" rel="next">
 <link href="./02_Bed_Wsk_und_Bayes.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -112,6 +112,11 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_Zufallsvariablen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Zufallsvariablen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Verteilungen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -270,6 +275,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+<script>
+var custom_title = document.querySelectorAll('.custom .theorem-title');
+for (let i = 0; i < custom_title.length; i++ ) {
+   var mod_name = custom_title[i].innerHTML;
+   custom_title[i].innerHTML = mod_name.replace("Annahme", "Bemerkung");
+};
+
+var cnj_citations = document.querySelectorAll("a[href*='#cnj']");
+for (let i = 0; i < cnj_citations.length; i++ ) {
+   var cite_name = cnj_citations[i].innerHTML;
+   cnj_citations[i].innerHTML = cite_name.replace("Annahme", "Bemerkung");
+};
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -410,8 +428,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bibliografie.html" class="pagination-link">
-        <span class="nav-page-text">Bibliografie</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04_Verteilungen.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

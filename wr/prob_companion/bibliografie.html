@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03_Zufallsvariablen.html" rel="prev">
+<link href="./04_Verteilungen.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,6 +133,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./04_Verteilungen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./bibliografie.html" class="sidebar-item-text sidebar-link active">Bibliografie</a>
   </div>
 </li>
@@ -170,6 +175,13 @@ Medicine: Problems and Opportunities.”</span> In <em>Judgment Under
 Uncertainty: Heuristics and Biases</em>, edited by Daniel Kahneman, Paul
 Slovic, and AmosEditors Tversky, 249–67. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511809477.019">https://doi.org/10.1017/CBO9780511809477.019</a>.
 </div>
+<div id="ref-Norberg2002" class="csl-entry" role="doc-biblioentry">
+Norberg, Ragnar. 2020. <em>Basic Life Insurance Mathematics</em>. <a href="http://web.math.ku.dk/~mogens/lifebook.pdf">http://web.math.ku.dk/~mogens/lifebook.pdf</a>.
+</div>
+<div id="ref-spiegelhalter2019" class="csl-entry" role="doc-biblioentry">
+Spiegelhalter, David. 2019. <em>The Art of Statistics: Learning from
+Data</em>. Pelican.
+</div>
 <div id="ref-Spodarev2018" class="csl-entry" role="doc-biblioentry">
 Spodarev, Evgeny. 2018. <em>Vorlesungsskript Zur Elementaren
 Wahrscheinlichkeitsrechnung Und Statistik</em>.
@@ -183,6 +195,19 @@ Wahrscheinlichkeitsrechnung Und Stastistik</em>.
 
 
 </main> <!-- /main -->
+<script>
+var custom_title = document.querySelectorAll('.custom .theorem-title');
+for (let i = 0; i < custom_title.length; i++ ) {
+   var mod_name = custom_title[i].innerHTML;
+   custom_title[i].innerHTML = mod_name.replace("Annahme", "Bemerkung");
+};
+
+var cnj_citations = document.querySelectorAll("a[href*='#cnj']");
+for (let i = 0; i < cnj_citations.length; i++ ) {
+   var cite_name = cnj_citations[i].innerHTML;
+   cnj_citations[i].innerHTML = cite_name.replace("Annahme", "Bemerkung");
+};
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -318,8 +343,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03_Zufallsvariablen.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Zufallsvariablen</span></span>
+      <a href="./04_Verteilungen.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

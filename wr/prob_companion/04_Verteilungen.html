@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.253">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Übungsbegleiter - 4&nbsp; Verteilungen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./bibliografie.html" rel="next">
+<link href="./03_Zufallsvariablen.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Übungsbegleiter</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Vorwort</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Wahrscheinlichkeitsmasse_Mengensysteme.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Wahrscheinlichkeitsmaße und Mengensysteme</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Bed_Wsk_und_Bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bedingte Wahrscheinlichkeit und der Satz von Bayes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Zufallsvariablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Zufallsvariablen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Verteilungen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibliografie.html" class="sidebar-item-text sidebar-link">Bibliografie</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#diskrete-zufallsvariablen" id="toc-diskrete-zufallsvariablen" class="nav-link active" data-scroll-target="#diskrete-zufallsvariablen"><span class="toc-section-number">4.1</span>  Diskrete Zufallsvariablen</a></li>
+  <li><a href="#absolutstetige-zufallsvariablen" id="toc-absolutstetige-zufallsvariablen" class="nav-link" data-scroll-target="#absolutstetige-zufallsvariablen"><span class="toc-section-number">4.2</span>  Absolutstetige Zufallsvariablen</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Im letzten Kapitel sind wir darauf eingegangen, dass man Zufallsexperimente mit einer Zufallsvariable und dessen Verteilung zusammenfassen kann. Natürlich eignet sich nicht jede Verteilung, um jedes Zufallsexperiment zu beschreiben. In <a href="03_Zufallsvariablen.html#exm-vertfkt-wuerfel">Beispiel&nbsp;<span>3.2</span></a> wäre es zum Beispiel wenig situationsbezogen gewesen, die Augenzahl eines klassischen Würfel über eine Zufallsvariable <span class="math inline">\(Y\)</span> mit <span class="math inline">\(\mathbb{P}(Y = 7) &gt; 0\)</span> oder <span class="math inline">\(\mathbb{P}(Y = 3{.}5) &gt; 0\)</span> zu beschreiben.</p>
+<p>Dementsprechend müssen wir darauf achten, dass der kleinste Wertebereich <span class="math inline">\(C \subset \mathbb{R}\)</span> einer Zufallsvariable <span class="math inline">\(X\)</span>, sodass <span class="math inline">\(\mathbb{P}(X \in C) = 1\)</span>, zum entsprechenden Zufallsexperiment passt. Insbesondere gibt es gute Gründe, zwischen einem abzählbaren und überabzählbaren Wertebereich <span class="math inline">\(C\)</span> zu unterscheiden. Ist der Bereich <span class="math inline">\(C\)</span> abzählbar, so sprechen wir von einer <em>diskreten Zufallsvariable</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Nach dieser Bezeichnung ist die Zufallsvariable <span class="math inline">\(R\)</span> aus <a href="03_Zufallsvariablen.html#exm-vertfkt-wuerfel">Beispiel&nbsp;<span>3.2</span></a> eine diskrete Zufallsvariable. Tatsächlich ist <span class="math inline">\(R\)</span> sogar eine der einfachsten Zufallsvariablen, da sie jedem möglichen Wert <span class="math inline">\(1, \ldots, 6\)</span> die gleiche Wahrscheinlichkeit zuordnet.</p>
+<p>Innerhalb der Klassen der diskreten Zufallsvariablen gibt es allerdings noch eine Vielzahl an weiteren Verteilungen, die unterschiedlich Wahrscheinlichkeiten zulassen. In diesem Kapitel werden wir einige davon kennenlernen. Außerdem werden wir auch die Klasse der <em>absolutstetigen Zufallsvariablen</em> erkunden. Diese führen uns in den Bereich eines überabzählbaren Wertebereichs <span class="math inline">\(C\)</span>.</p>
+<section id="diskrete-zufallsvariablen" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="diskrete-zufallsvariablen"><span class="header-section-number">4.1</span> Diskrete Zufallsvariablen</h2>
+<p>Um die unterschiedlichen diskreten Verteilungen kennenzulernen, führen wir den Begriff der Zähldichte ein. Da die Zähldichte auf sehr simple Weise mit der Verteilungsfunktion <span class="math inline">\(F_X\)</span> einer diskreten Zufallsvariable <span class="math inline">\(X\)</span> zusammenhängt, charakterisiert auch die Zähldichte die Verteilung von <span class="math inline">\(X\)</span> eindeutig.</p>
+<div id="def-zaehldichte" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.1 (Zähldichte) </strong></span>Es sei <span class="math inline">\(X\)</span> eine diskrete Zufallsvariable, d.h. es gibt eine abzählbare Menge <span class="math inline">\(C = \{ x_1, x_2, \ldots \}\)</span>, sodass <span class="math inline">\(\mathbb{P}(X \in C) = 1\)</span> und <span class="math inline">\(\mathbb{P}(X = x_k) &gt; 0\)</span> für alle <span class="math inline">\(k \in \mathbb{N}\)</span> bzw. <span class="math inline">\(k = 1, \dots, N\)</span>, falls <span class="math inline">\(C\)</span> endlich mit <span class="math inline">\(\vert C \vert = N\)</span>. Dann heißt die Funktion <span class="math inline">\(p(k) = \mathbb{P}(X = x_k)\)</span>, <span class="math inline">\(k \in \mathbb{N}\)</span> bzw. <span class="math inline">\(k = 1, \ldots, N\)</span>, Zähldichte von <span class="math inline">\(X\)</span>.</p>
+</div>
+<div id="exm-diskrete-gleichverteilung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.1 (Diskrete Gleichverteilung) </strong></span>Die Zähldichte der diskreten Gleichverteilung auf einer Menge $C = { x_1, , x_N }$ ist gegeben als <span class="math inline">\(p(k) = \frac{1}{N}\)</span> für alle <span class="math inline">\(k = 1, \ldots, N\)</span>. In Zeichen schreiben wir <span class="math inline">\(X \sim \text{U}\{ x_1, \ldots, x_N \}\)</span>. Für <span class="math inline">\(C = \{ 1, \ldots, 6 \}\)</span> entspricht diese Verteilung der Verteilung in <a href="03_Zufallsvariablen.html#exm-vertfkt-wuerfel">Beispiel&nbsp;<span>3.2</span></a>.</p>
+</div>
+<div id="exm-geometrische-verteilung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.2 (Geometrische Verteilung) </strong></span>Die geometrischen Verteilung besitzt die Zähldichte <span class="math inline">\(p(k) = p(1-p)^{k-1}\)</span> für alle <span class="math inline">\(k \in \mathbb{N}\)</span>, wobei <span class="math inline">\(p \in [0,1]\)</span>. Diese Verteilung beschreibt die Anzahl der unabhängigen Versuche eines Zufallsexperiments bis zum ersten “Erfolg’’. Wichtig dabei ist, dass jeder Versuch des Experiments unter gleichbleibenden Bedingungen stattfindendet.</p>
+<p>Nehmen wir an, dass ein Paar versucht, ein Mädchen zu bekommen. Außerdem ist es für dieses Paar scheinbar logistisch<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> möglich so lange Kinder zu kriegen, bis es ein Mädchen bekommt. Wir interessieren uns nun für die Fragestellung, wie wahrscheinlich es ist, dass das Paar genau 3 Jungs bekommt, bevor das erste Mädchen geboren wurde und modellieren dies mit einer geometrischen Verteilung.</p>
+<p>Es sei also <span class="math inline">\(X\)</span> die Anzahl der Kinder des Paares nachdem es aufhört, Kinder zu bekommen. Dann gilt <span class="math inline">\(X \sim \text{Geo}(p)\)</span> und wir berechnen die gesuchte Wahrscheinlichkeit als <span class="math inline">\(\mathbb{P}(X = 4) = p(1-p)^3\)</span>. Nach Angaben der WHO<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> liegt die natürliche “sex ration at birth’’ bei 105 Jungen zu 100 Mädchen. Somit können wir annehmen, dass <span class="math inline">\(p \approx 0{.}4878\)</span> und wir berechnen <span class="math inline">\(\mathbb{P}(X = 4) = 0{.}0655\)</span></p>
+</div>
+<div id="exm-binomialverteilung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.3 (Binomialverteilung) </strong></span>Die Binomialverteilung besitzt die Zähldichte <span class="math inline">\(p(k) = \binom{n}{k}p^k(1-p)^{n-k}\)</span> für alle <span class="math inline">\(k \in \{0, \ldots, n\}\)</span>, wobei <span class="math inline">\(n \in \mathbb{N}\)</span> und <span class="math inline">\(p \in [0,1]\)</span>. Diese Verteilung beschreibt die Anzahl der Erfolge bei <span class="math inline">\(n\)</span> unabhängigen Versuchen eines unter gleichbleibenden Bedingungen stattfindenden Zufallsexperiments. Für <span class="math inline">\(n = 1\)</span> nennen wir die Binomialverteilung auch Bernoulliverteilung und schreiben <span class="math inline">\(X \sim \text{Ber}(p)\)</span>. Im Allgemeinen schreiben wir <span class="math inline">\(X \sim \text{Bin}(n, p)\)</span>.</p>
+<p>Betrachten wir wieder das Paar aus <a href="#exm-geometrische-verteilung">Beispiel&nbsp;<span>4.2</span></a> und nehmen an, dass das Paar unabhängig vom Geschlecht nun 4 Kinder bekommen hat. Nun wollen wir untersuchen, wie wahrscheinlich es ist, dass das Paar mindestens 2 Mädchen bekommen hat. Dazu definieren wir <span class="math inline">\(X\)</span> als die Anzahl der Mädchen und nehmen an, dass <span class="math inline">\(X \sim \text{Bin}(n, p)\)</span> mit <span class="math inline">\(n = 4\)</span> und <span class="math inline">\(p = 0{.}4878\)</span>. Dann gilt <span class="math display">\[\begin{align*}
+        \mathbb{P}(X \geq 2)
+        &amp;=
+        \mathbb{P}(X = 2) + \mathbb{P}(X = 3) + \mathbb{P}(X = 4)\\
+        &amp;=
+        \binom{4}{2} p^2 (1-p)^2
+        +
+        \binom{4}{3} p^3 (1-p)^1
+        +
+        \binom{4}{3} p^4 (1-p)^0
+        =
+        0.8388.  
+\end{align*}\]</span></p>
+</div>
+<div id="exm-poisson-verteilung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.4 (Poisson Verteilung) </strong></span>Die Poissonverteilung besitzt die Zähldichte <span class="math inline">\(p(k) = \frac{\lambda^k}{k!} e^{-\lambda}\)</span>, <span class="math inline">\(k = 0, 1, 2, \ldots\)</span>, wobei <span class="math inline">\(\lambda &gt; 0\)</span>. Die Poissonverteilung beschreibt die Anzahl der Ereignisse, die mit gleichbleibender Rate unabhängig voneinander in einem festen Zeitfenster eintreten. Wir schreiben <span class="math inline">\(X \sim \text{Poi}(\lambda)\)</span>. In dem populärwissenschaftlichen und meiner Meinung nach empfehlenswerten Buch <span class="citation" data-cites="spiegelhalter2019">(<a href="bibliografie.html#ref-spiegelhalter2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span> demonstriert der Statistiker David Spiegelhalter, wie verblüffend gut<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> eine Poissonverteilung die Anzahl der Morde in England und Wales zwischen 2014 und 2016 modellieren kann.</p>
+<p>Insgesamt gab es 1.545 Vorfälle über einen Zeitraum von 1.095 Tagen. Dies führt zu einer durchschnittlichen Rate von <span class="math inline">\(\lambda = 1{.}41\)</span> Vorfällen pro Tag führt. Dazu nimmt Spiegelhalter an, dass die Anzahl der Vorfälle <span class="math inline">\(X\)</span> an einem beliebigen Tag <span class="math inline">\(\text{Poi}(\lambda)\)</span>-verteilt ist. Multipliziert man die Wahrscheinlichkeit <span class="math inline">\(\mathbb{P}(X = k)\)</span> für <span class="math inline">\(k = 0, \ldots, 5\)</span> und <span class="math inline">\(\mathbb{P}(X &gt; 5)\)</span> mit der Anzahl der beobachteten Tage, so erhält man die erwartete Anzahl von Tagen mit <span class="math inline">\(k = 0, \ldots, 5\)</span> bzw. mehr als 5 Vorfällen und kann dies mit den beobachteten Daten vergleichen (siehe <a href="#tbl-spiegelhalter">Tabelle&nbsp;<span>4.1</span></a> und <a href="#fig-spiegelhalter">Abbildung&nbsp;<span>4.1</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-spiegelhalter" class="anchored">
+
+<table style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif; display: table; border-collapse: collapse; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;"><caption>Tabelle&nbsp;4.1:  Vergleich der Poissonverteilung mit Parameter 1.41 und der beobachten Anzahl von Morden in England und Wales zwischen April 2014 und März 2016, siehe Table 10.3 in (Spiegelhalter 2019) </caption>
+  
+  <thead style="border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
+    <tr>
+      <th style="color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; text-align: left;" rowspan="1" colspan="1" scope="col">Morde an einem Tag</th>
+      <th style="color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" rowspan="1" colspan="1" scope="col">Beobachtete Anzahl der Tage</th>
+      <th style="color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" rowspan="1" colspan="1" scope="col">Erwartete Anzahl der Tage</th>
+    </tr>
+  </thead>
+  <tbody style="border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3;">
+    <tr><td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;">0</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">259</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">267.10</td></tr>
+    <tr><td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;">1</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">387</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">376.80</td></tr>
+    <tr><td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;">2</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">261</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">265.90</td></tr>
+    <tr><td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;">3</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">131</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">125.00</td></tr>
+    <tr><td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;">4</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">40</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">44.10</td></tr>
+    <tr><td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;">5</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">13</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">12.40</td></tr>
+    <tr><td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;">Mehr als 5</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">3</td>
+<td style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;">3.60</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-spiegelhalter" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04_Verteilungen_files/figure-html/fig-spiegelhalter-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Abbildung&nbsp;4.1: Vergleich der Poissonverteilung mit Parameter 1.41 und der beobachten Anzahl von Morden in England und Wales zwischen April 2014 und März 2016, siehe Table 10.3 in (Spiegelhalter 2019)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="cnj-zaehldichte" class="custom theorem conjecture">
+<p><span class="theorem-title"><strong>Annahme 4.1 </strong></span>&nbsp;</p>
+<ul>
+<li><p>All diese Zähldichten haben zwei Dinge gemeinsam:</p>
+<ol type="1">
+<li><p><span class="math inline">\(p(k) \in [0, 1]\)</span> für alle <span class="math inline">\(k \in \mathbb{N}\)</span>, da <span class="math inline">\(p(k)\)</span> immer eine Wahrscheinlichkeit ist.</p></li>
+<li><p>Die Summe über alle <span class="math inline">\(p(k)\)</span> ist gleich 1, da die zu den Wahrscheinlichkeiten gehörenden Ereignisse, eine disjunkte Vereinigung des Grundraumes darstellt.</p></li>
+</ol></li>
+<li><p>Nach dem Poissonschen Approximationssatz bzw. dem Gesetz der seltenen Ereignisse lässt sich die Binomialverteilung für große <span class="math inline">\(n\)</span> und kleine <span class="math inline">\(p\)</span> durch eine Poissonverteilung mit Parameter <span class="math inline">\(\lambda = np\)</span> approximieren.</p></li>
+</ul>
+</div>
+</section>
+<section id="absolutstetige-zufallsvariablen" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="absolutstetige-zufallsvariablen"><span class="header-section-number">4.2</span> Absolutstetige Zufallsvariablen</h2>
+<p>Die bisherige Klasse von Verteilungen ist leider keine adäquate Wahl für viele Anwendungsfälle. Wollen wir beispielsweise die (zufällige) Ankunftszeit eines Freundes an einem vereinbarten Treffpunkt beschreiben, so stellen wir fest, dass es überabzählbar viele mögliche Ankunftszeiten gibt (sofern wir Zeit als ein Kontinuum auffassen).</p>
+<p>Somit brauchen wir eine Zufallsvariable <span class="math inline">\(X\)</span>, die überabzählbar viele Werte annehmen kann. Allerdings stellt uns das vor die Herausforderung, dass wir nicht analog zu <a href="#cnj-zaehldichte">Annahme&nbsp;<span>4.1</span></a> fordern können, dass <span class="math inline">\(\mathbb{P}(X = k) &gt; 0\)</span> für überabzählbar viele Werte <span class="math inline">\(k\)</span>. Dies wäre ein Widerspruch, da da sich sonst alle Wahrscheinlichkeiten der Form <span class="math inline">\(\mathbb{P}(X = k)\)</span> nicht zu 1 “summieren’’ können<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p>Deswegen müssen wir uns mit einer Hilfsfunktion begnügen, die ein Analogon zur Zähldichte <span class="math inline">\(\mathbb{P}(X = k)\)</span> für überabzählbare Werte darstellt. Außerdem sollte sich das Integral dieser Funktion über alle möglichen Werte 1 ergeben (was wir als Analogon zur überabzählbaren Summation betrachten). Auf diese Weise können wir absolutstetige Zufallsvariablen sinnvoll definieren.</p>
+<div id="def-absolutstetigkeit-dichte" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.2 (Absolutstetigkeit, Dichte) </strong></span>Die Verteilung einer Zufallsvariable <span class="math inline">\(X\)</span> heißt <em>absolutstetig</em>, falls die Verteilungsfunktion <span class="math inline">\(F_X\)</span> von <span class="math inline">\(X\)</span> folgender Darstellung besitzt: <span class="math display">\[\begin{align*}
+        F_X(x) = \int_{-\infty}^{x} f_X(t)\ dt, \quad x \in \mathbb{R},
+\end{align*}\]</span> wobei <span class="math inline">\(f_X : \mathbb{R} \rightarrow [0, \infty)\)</span> eine (Lebesgue)integrierbare Funktion auf <span class="math inline">\(\mathbb{R}\)</span> ist. Die Funktion <span class="math inline">\(f\)</span> wird dabei als <em>Dichte von <span class="math inline">\(X\)</span></em> bezeichnet.</p>
+</div>
+<p>Genau wie es im diskreten Fall mit der Zähldichte funktioniert hat, können wir im absolutstetigen Fall eine Verteilung eindeutig über die Dichtefunktion charakterisieren. Zudem können wir beliebige Wahrscheinlichkeiten mittels <span class="math display">\[\begin{align*}
+    \mathbb{P}(X \in B) = \int_B f_X(y)\ dy = \int_\mathbb{R} \mathbb{1}_{B}(y) f_X(y)\ dy
+\end{align*}\]</span> für alle <span class="math inline">\(B \in \mathcal{B}(\mathbb{R})\)</span> berechnen.</p>
+<div id="cnj-absolutestetigkeit" class="custom theorem conjecture">
+<p><span class="theorem-title"><strong>Annahme 4.2 </strong></span>&nbsp;</p>
+<ul>
+<li><p>Absolutstetige Zufallsvariablen sind nicht die einzigen Zufallsvariablen mit überabzählbarem Wertebereich <span class="math inline">\(C\)</span>. Schließlich kann man sich auch Zufallsvariablen als Mischung von diskreten und absolutstetigen Zufallsvariablen konstruieren. Diese haben dann einen überabzählbaren Wertebereich, sind aber nicht absolutstetig.</p></li>
+<li><p>Analog zur <a href="#cnj-zaehldichte">Annahme&nbsp;<span>4.1</span></a> muss die Zähldichte die folgenden Eigenschaften erfüllen:</p>
+<ol type="1">
+<li><span class="math inline">\(f_X(x) \geq 0\)</span> für alle <span class="math inline">\(x \in \mathbb{R}\)</span></li>
+<li><span class="math inline">\(\int_\mathbb{R} f_X(x)\ dx = 1\)</span></li>
+</ol></li>
+</ul>
+</div>
+<div id="exm-normalverteilung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.5 (Normalverteilung) </strong></span>Die Normalverteilung zählt zu den wichtigsten Verteilungen in der Stochastik. Ihre Dichte ist gegeben durch <span class="math display">\[\begin{align*}
+        f_X(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \bigg\{ - \frac{(x-\mu)^2}{2\sigma^2} \bigg\}, \quad x \in \mathbb{R},
+\end{align*}\]</span> wobei <span class="math inline">\(\mu \in \mathbb{R}\)</span> und <span class="math inline">\(\sigma &gt; 0\)</span> Parameter der Verteilung sind (siehe <a href="#fig-normaldichte">Abbildung&nbsp;<span>4.2</span></a>).</p>
+<div class="cell" data-fig.showtext="true">
+<div class="cell-output-display">
+<div id="fig-normaldichte" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04_Verteilungen_files/figure-html/fig-normaldichte-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Abbildung&nbsp;4.2: Dichte der Normalverteilung für Parameter <span class="math inline">\(\mu = 0, \sigma = 1\)</span> (orange), <span class="math inline">\(\mu = 2, \sigma = 1\)</span> (grün), <span class="math inline">\(\mu = -2, \sigma = 2\)</span> (blau)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Betrachtet man die Dichten der Normalverteilung in <a href="#fig-normaldichte">Abbildung&nbsp;<span>4.2</span></a>, so lässt sich erkennen, dass ein Großteil der Fläche zwischen Funktion und <span class="math inline">\(x\)</span>-Achse im Intervall <span class="math inline">\([\mu-a, \mu + a]\)</span> liegt, wobei <span class="math inline">\(a \in \mathbb{R}\)</span> eine von <span class="math inline">\(\sigma\)</span> abhängige Zahl ist. Konkreter gilt für eine normalverteilte Zufallsvariable <span class="math inline">\(X\)</span> die sogenannte <span class="math inline">\(k\)</span>-<span class="math inline">\(\sigma\)</span>-Regel: <span class="math display">\[\begin{align}
+        \label{eq: k-sigma Regel}
+        \mathbb{P}\big(\mu - k \sigma \leq X \leq \mu + k \sigma\big)
+        \approx
+        \begin{cases}
+            68\% &amp;,\ k = 1\\
+            95\% &amp;,\ k = 2\\
+            99{.}7\% &amp;,\ k = 3
+        \end{cases}
+\end{align}\]</span> Es lässt sich erahnen, dass dies eine gute Eigenschaft ist, die es ermöglicht viele natürliche Phänomene wie Körpergröße, Blutdruck, Messfehler in der Physik und noch viel mehr zu modellieren.</p>
+<p>Ein weiterer Grund für die Wichtigkeit der Normalverteilung ist der zentrale Grenzwertsatz (ZGWS), den ich hier nur anschneiden möchte. Wir werden in einem späteren Kapitel ausführlicher über den ZGWS reden. Grob formuliert besagt der Satz, dass ich unter sehr milden Bedingungen eine Summe von Zufallsvariablen <span class="math inline">\(X_1 + \ldots X_n\)</span> nach einer Transformation <span class="math inline">\((X_1 + \ldots X_n - a_n)/b_n\)</span>, wobei <span class="math inline">\(a_n \in \mathbb{R}\)</span> und <span class="math inline">\(b_n &gt; 0\)</span> geeignete Konstanten (in Abhängigkeit von <span class="math inline">\(n\)</span>) sind, mithilfe einer Standardnormalverteilung (<span class="math inline">\(\mu = 0,\ \sigma = 1\)</span>) approximieren kann.</p>
+<p>Die Folge <span class="math inline">\(a_n\)</span> übernimmt dabei die sogenannte Zentrierung und die Folge <span class="math inline">\(b_n\)</span> übernimmt die Normierung/Skalierung. Auch auf die genaue Wahl von <span class="math inline">\(a_n\)</span> und <span class="math inline">\(b_n\)</span> werden wir später noch genauer eingehen.</p>
+<p>Nehmen wir nun an, dass wir einen Würfel <span class="math inline">\(n \in \mathbb{N}\)</span> mal werfen und <span class="math inline">\(X_i\)</span>, <span class="math inline">\(i = 1, \ldots, n\)</span>, die gewürfelte Augenzahl des <span class="math inline">\(i\)</span>-ten Versuches darstellt. Dann ist nach <a href="03_Zufallsvariablen.html#exm-vertfkt-wuerfel">Beispiel&nbsp;<span>3.2</span></a> <span class="math inline">\(X_i\)</span> diskret gleichverteilt. Wählen wir nun <span class="math inline">\(a_n = 3{.}5n\)</span> und <span class="math inline">\(b_n = \sqrt{35n/12}\)</span>, so “nähert’’ sich die Verteilung von <span class="math inline">\((X_1 + \ldots X_n - a_n)/b_n\)</span> für steigendes <span class="math inline">\(n\)</span> an die Standardnormalverteilung an (siehe <a href="#fig-zgws-wuerfel">Abbildung&nbsp;<span>4.3</span></a>).</p>
+<div class="cell" data-fig.showtext="true">
+<div class="cell-output-display">
+<div id="fig-zgws-wuerfel" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04_Verteilungen_files/figure-html/fig-zgws-wuerfel-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Abbildung&nbsp;4.3: Histogramm von jeweils <span class="math inline">\(N = 10{.}000\)</span> Realisierungen von <span class="math inline">\((X_1 + \ldots X_n - a_n)/b_n\)</span> für <span class="math inline">\(n \in \{ 1, 5, 10, 50, 100, 1000 \}\)</span>.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="exm-exponentialverteilung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 4.6 (Exponentialverteilung) </strong></span>Eine weitere wichtige absolutstetige Verteilung ist die Exponentialverteilung mit Dichtefunktion <span class="math display">\[\begin{align*}
+        f_X(x) = \lambda e^{-\lambda x} \mathbb{1}\{ x &gt; 0 \},
+\end{align*}\]</span> wobei <span class="math inline">\(\lambda &gt; 0\)</span> ein Parameter dieser Verteilung ist. Sei <span class="math inline">\(T\)</span> die Restlebensdauer einer Person oder eines Gegenstandes zum Zeitpunkt <span class="math inline">\(t &gt; 0\)</span>. Außerdem nehmen wir an, dass <span class="math inline">\(T\)</span> nicht-negativ ist und Verteilungsfunktion <span class="math inline">\(F\)</span> und Dichte <span class="math inline">\(f\)</span> besitzt. Nach Kapitel 3 in <span class="citation" data-cites="Norberg2002">(<a href="bibliografie.html#ref-Norberg2002" role="doc-biblioref">Norberg 2020</a>)</span> lässt sich die sogenannte Sterblichkeitsintensität definieren als <span class="math display">\[\begin{align*}
+         \mu(t) := \frac{f(t)}{1-F(t)}.
+\end{align*}\]</span> Mithilfe dieser Größe lässt sich die Wahrscheinlichkeit, einer <span class="math inline">\(t\)</span>-jährigen Person in (einem kurzen) Interval <span class="math inline">\((t, t+dt)\)</span> zu sterben bzw. eines <span class="math inline">\(t\)</span>-jährigen Gegenstandes kaputt zu gehen, approximativ durch <span class="math inline">\(\mu(t)dt\)</span> ermitteln. Nimmt man nun an, dass <span class="math inline">\(T \sim\)</span> Exp<span class="math inline">\((\lambda)\)</span> mit <span class="math inline">\(\lambda &gt; 0\)</span>, so gilt <span class="math inline">\(\mu(t) = \lambda\)</span>. Also ist die Sterblichkeitsintensität unabhängig vom Alter <span class="math inline">\(t\)</span>, was zwar nicht unbedingt eine sinnvolle Modellierung der Lebensdauer eines Menschen darstellt, aber für die Lebensdauer von technischen Geräten dennoch geeignet ist.</p>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-Norberg2002" class="csl-entry" role="doc-biblioentry">
+Norberg, Ragnar. 2020. <em>Basic Life Insurance Mathematics</em>. <a href="http://web.math.ku.dk/~mogens/lifebook.pdf">http://web.math.ku.dk/~mogens/lifebook.pdf</a>.
+</div>
+<div id="ref-spiegelhalter2019" class="csl-entry" role="doc-biblioentry">
+Spiegelhalter, David. 2019. <em>The Art of Statistics: Learning from Data</em>. Pelican.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Streng genommen ist die Verteilung der jeweiligen Zufallsvariable diskret. Jedoch werden die Zufallsvariablen häufig auch so genannt.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Anlässlich der Anmerkung meiner Freundin sei an dieser Stelle erwähnt, dass mir bewusst ist, dass zum Kinderkriegen mehr als nur “logistische’’ Überlegungen dazugehören. Das ist hier natürlich alles nur grob vereinfacht dargestellt.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.who.int/data/maternal-newborn-child-adolescent-ageing/indicator-explorer-new/mca/sex-ratio-at-birth-(male-births-per-female-births)">Link</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Für mich persönlich ist hier verblüffend, wie gut man Beobachtungen durch geeignete mathematische Modelle beschreiben kann. An sich ist es allerdings auch gut, dass die Poissonverteilung so gut passt, da dies als Indiz dafür dienen kann, dass die Mordrate halbwegs konstant ist und kein Serienmörder o.ä. unterwegs ist.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Außerdem hätte die Verteilungsfunktion solch einer Zufallsvariable überabzählbar viele Sprungstellen. Dies ist aber unmöglich, da eine monotone Funktion höchstens abzählbar viele Sprungstellen haben kann. Danke an Marco Oesting für diesen Hinweis zur technischen Untermalung der obigen Begründung.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+var custom_title = document.querySelectorAll('.custom .theorem-title');
+for (let i = 0; i < custom_title.length; i++ ) {
+   var mod_name = custom_title[i].innerHTML;
+   custom_title[i].innerHTML = mod_name.replace("Annahme", "Bemerkung");
+};
+
+var cnj_citations = document.querySelectorAll("a[href*='#cnj']");
+for (let i = 0; i < cnj_citations.length; i++ ) {
+   var cite_name = cnj_citations[i].innerHTML;
+   cnj_citations[i].innerHTML = cite_name.replace("Annahme", "Bemerkung");
+};
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03_Zufallsvariablen.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Zufallsvariablen</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./bibliografie.html" class="pagination-link">
+        <span class="nav-page-text">Bibliografie</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
