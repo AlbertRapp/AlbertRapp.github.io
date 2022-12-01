@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.253">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Übungsbegleiter - 5&nbsp; Zufallsvektoren</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./bibliografie.html" rel="next">
+<link href="./04_Verteilungen.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Zufallsvektoren</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Übungsbegleiter</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Vorwort</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Wahrscheinlichkeitsmasse_Mengensysteme.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Wahrscheinlichkeitsmaße und Mengensysteme</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Bed_Wsk_und_Bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bedingte Wahrscheinlichkeit und der Satz von Bayes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Zufallsvariablen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Zufallsvariablen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Verteilungen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Zufallsvektoren.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Zufallsvektoren</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibliografie.html" class="sidebar-item-text sidebar-link">Bibliografie</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-Zufallsvektoren" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Zufallsvektoren</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Nehmen wir einmal an, dass in nächster Zeit eine Wahl anstünde und wir die Wahl mit stochastischen Mitteln prognostizieren wollen. Beispielsweise könnte man die Antwort eines Teilnehmers einer Wahlumfrage mit einer Zufallsvariable <span class="math inline">\(X_1\)</span> modellieren. Üblicherweise reicht es allerdings nicht aus, nur eine Person zu befragen.</p>
+<p>Also brauchen wir für die Antworten weiterer Umfrageteilnehmer ebenfalls Zufallsvariablen <span class="math inline">\(X_2, \ldots, X_n\)</span>. Wollen wir diese Zufallsvariablen nicht einzeln betrachten und unsere Stichprobe lieber als Ganzes betrachten, so können wir die Ergebnisse in einem Vektor <span class="math inline">\(X = (X_1, \ldots, X_n)\)</span> bündeln. Dies bringt uns auf natürliche Weise zu dem Konzept von Zufallsvektoren.</p>
+<div id="def-Zufallsvektor" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.1 (Zufallsvektor) </strong></span>Es seien <span class="math inline">\(X_1, \ldots, X_n\)</span> Zufallsvariablen auf einem Wahrscheinlichkeitsraum <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> gegeben. Dann nennen wir <span class="math inline">\(X = (X_1, \ldots, X_n)\)</span> Zufallsvektor mit Komponenten <span class="math inline">\(X_1, \ldots, X_n\)</span>. Wir nennen <span class="math inline">\(X\)</span> diskret bzw. absolutstetig, falls alle Komponenten diskret bzw. absolutstetig sind.</p>
+</div>
+<p>Glücklicherweise übertragen sich viele Konzepte aus dem Ein- ins Mehrdimensionale. Im diskreten Fall sprechen wir nun statt einer Zähldichte <span class="math inline">\(\mathbb{P}(X_1 = k_1)\)</span> von einer gemeinsamen Zähldichte <span class="math inline">\(\mathbb{P}(X_1 = k_1, \ldots, X_n = k_n)\)</span>. Analog dazu gibt es im absolutstetigen Fall auch eine gemeinsame Dichtefunktion <span class="math inline">\(f_X(x_1, \ldots, x_n)\)</span>. Ebenso gibt es auch wieder die Verteilungsfunktion <span class="math display">\[\begin{align*}
+    F_X(x_1, \ldots, x_n)
+    &amp;=
+    \mathbb{P}\big(X_1 \leq x_1, \ldots, X_n \leq x_n\big)\\
+    &amp;=
+    \begin{cases}
+        \sum_{k_1 \leq x_1} \dots \sum_{k_n \leq x_n} \mathbb{P}(X_1 = k_1, \ldots, X_n = k_n) \\
+        \int_{-\infty}^{x_n} \dots \int_{-\infty}^{x_1} f_X(t_1, \ldots, t_n) \ dt_1 \dots dt_n
+    \end{cases}
+\end{align*}\]</span> Für unabhängige Zufallsvariablen lässt sich dies noch vereinfachen.</p>
+<div id="thm-unabhaengiger-vektor" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.1 </strong></span>Es sei <span class="math inline">\(X\)</span> ein Zufallsvektor mit Komponenten <span class="math inline">\(X_1, \ldots, X_n\)</span>. Nun sind <span class="math inline">\(X_1, \ldots, X_n\)</span> genau dann unabhängig, wenn <span class="math display">\[\begin{align*}
+        F_X(x_1, \ldots, x_n) = F_{X_1}(x_1) \cdots F_{X_n}(x_n)
+\end{align*}\]</span> für alle <span class="math inline">\(x_1, \ldots, x_n \in \mathbb{R}\)</span>.</p>
+</div>
+<div id="cnj-mehrdim-unabhaengigkeit" class="custom theorem conjecture">
+<p><span class="theorem-title"><strong>Annahme 5.1 </strong></span>Im diskreten Fall bedeutet dies, dass die gemeinsame Zählzähldichte von <span class="math inline">\(X\)</span> in das Produkt der (Rand-)Zähldichten von <span class="math inline">\(X_1, \ldots, X_n\)</span> zerfällt. Im absolutstetigen Fall passiert das gleiche bzgl. der gemeinsamen Dichtefunktion und den Randdichtefunktionen von <span class="math inline">\(X_1, \ldots, X_n\)</span>. Üblicherweise arbeitet man im Mehrdimensionalen überwiegend mit der Zähldichte und Dichtefunktion, da diese einfacher zu handhaben sind und die Verteilungsfunktion eindeutig charakterisieren.</p>
+</div>
+<p>Falls die Zufallsvariablen abhängig sind, so lässt sich auf den ersten Blick keine sinnvolle Aussage bzgl. dem Zusammenhang zwischen gemeinsamer Verteilungsfunktion und den Randverteilungsfunktionen treffen. Insbesondere lässt sich kein einfacher Schluss von den Randverteilungen auf die gemeinsame Verteilung ziehen. Dazu fehlt uns nämlich die Abhängigkeitsstruktur zwischen den einzelnen Zufallsvariablen. Andersherum lässt sich nach Kenntnis der gemeinsamen Verteilung glücklicherweise viel über die Randverteilungen sagen.</p>
+<div id="thm-randdichte-berechnen" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.2 </strong></span>Es sei <span class="math inline">\(X\)</span> ein Zufallsvektor mit Komponenten <span class="math inline">\(X_1, \ldots, X_n\)</span> und gemeinsamer Zähldichte <span class="math inline">\(p(k_1, \ldots, k_n)\)</span> bzw. gemeinsamer Dichtefunktion <span class="math inline">\(f_X(x_1, \ldots, x_n)\)</span>. Dann gilt für alle <span class="math inline">\(i = 1, \ldots, n\)</span> <span class="math display">\[\begin{align}
+        \mathbb{P}(X_i = x)
+        =
+        \sum_{k_1, \ldots, k_{i-1}, k_{i+1}, \ldots, k_n}
+        p(k_1, \ldots, k_{i-1}, x, k_{i+1}, \ldots, k_n) \label{eq: Randdichte diskret}
+        \tag{1}
+\end{align}\]</span> bzw. <span class="math display">\[\begin{align}
+        f_{X_i}(x) = \int_{\mathbb{R}^{n-1}} f_X(t_1, \ldots,t_{i-i}, x, t_{i+1}, \ldots t_n)\ dt_1, \ldots, dt_{i-1} dt_{i+1} \ldots, dt_n. \label{eq: Randdichte stetig}
+        \tag{2}
+\end{align}\]</span></p>
+</div>
+<p>Letztendlich bedeutet Gleichung <span class="math inline">\(\eqref{eq: Randdichte diskret}\)</span>, dass wenn man sich für die Randwahrscheinlichkeit <span class="math inline">\(\mathbb{P}(X_i = x)\)</span> interessiert, lediglich die Wahrscheinlichkeiten aller Ereignisse summieren muss, die mit dem Ereignis <span class="math inline">\(\{ X_i = x \}\)</span> konform sind. Dementsprechend lässt sich Gleichung <span class="math inline">\(\eqref{eq: Randdichte stetig}\)</span> als infinitesimale Version von Gleichung <span class="math inline">\(\eqref{eq: Randdichte diskret}\)</span> verstehen. Die beiden Gleichungen kann man auch auch so interpretieren, dass man die überflüssigen Variablen <span class="math inline">\(t_1, \ldots, t_{i-1}, t_{i+1}, \ldots, t_n\)</span> “rausintegriert’’ bzw. im diskreten Fall <span class="math inline">\(k_1, \ldots, k_{i-1}, k_{i+1}, \ldots, k_n\)</span>”raussummiert’’.</p>
+<p>Die Idee, die Wahrscheinlichkeit eines beliebigen Ereignisses <span class="math inline">\(A\)</span> über die Summation bzw. Integration von mit <span class="math inline">\(A\)</span> konformen Mengen und der gemeinsamen (Zähl-)dichte zu berechnen, findet man oft in der Stochastik. Beispielsweise wird diese Technik auch für die Bestimmung der (Zähl-)Dichte von Funktionen von Zufallsvariablen genutzt.</p>
+<div id="exm-summe-poisson" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 5.1 </strong></span>Es seien <span class="math inline">\(X_1\)</span> und <span class="math inline">\(X_2\)</span> zwei beliebige Poi(<span class="math inline">\(\lambda\)</span>)-verteilte Zufallsvariablen, wobei <span class="math inline">\(\lambda &gt; 0\)</span>. Da <span class="math inline">\(X_1, X_2 \in \{ 0, 1, \ldots \}\)</span> f.s., ist ebenfalls <span class="math inline">\(Z := X_1 + X_2 \in \{ 0, 1, \ldots \}\)</span> f.s..</p>
+<p>Wollen wir nun die Dichte der Zufallsvariable <span class="math inline">\(Z\)</span>, d.h. die Wahrscheinlichkeit <span class="math inline">\(\mathbb{P}(Z = k) = \mathbb{P}(X_1 + X_2 = k)\)</span> für alle <span class="math inline">\(k \in \mathbb{N}_0\)</span>, berechnen, so müssen wir lediglich die Wahrscheinlichkeiten aller möglichen Kombinationen <span class="math inline">\(\{ X_1 = i \} \cap \{ X_2 = j \}\)</span> summieren, in denen <span class="math inline">\(i + j = k\)</span>. Somit berechnen wir <span class="math display">\[\begin{align}
+        \mathbb{P}(X_1 + X_2 = k) = \sum_{i = 0}^{\infty} \mathbb{P}(X_1 = i, X_2 = k - i). \label{eq: Summe von Poisson} \tag{3}
+\end{align}\]</span></p>
+<p>Da wir an dieser Stelle die Abhängigkeitsstruktur von <span class="math inline">\(X_1\)</span> und <span class="math inline">\(X_2\)</span> nicht kennen (da wir nur die Randverteilungen angegeben haben), können wir leider nicht weiterrechnen. Nehmen wir zusätzlich an, <span class="math inline">\(X_1\)</span> und <span class="math inline">\(X_2\)</span> wären unabhängig, so zerfällt die gemeinsame Zähldichte in das Produkt der Randdichten und wir könnten den Ausdruck in Gleichung <span class="math inline">\(\eqref{eq: Summe von Poisson}\)</span> weiter vereinfachen.</p>
+</div>
+<p>Die in <a href="#exm-summe-poisson">Beispiel&nbsp;<span>5.1</span></a> illustrierte Vorgehensweise ist natürlich nicht nur für Poissonverteilte Zufallsvariablen gültig. Im Allgemeinen können wir das folgende Theorem formulieren:</p>
+<div id="thm-fkt-von-zv" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.3 </strong></span>Seien <span class="math inline">\(X_1\)</span> und <span class="math inline">\(X_2\)</span> zwei absolutstetige Zufallsvariablen mit Dichte <span class="math inline">\(f_{X_1}\)</span> und <span class="math inline">\(f_{X_2}\)</span> und gemeinsamer Dichte <span class="math inline">\(f\)</span>. Dann gilt: <span class="math display">\[\begin{align*}
+        &amp;f_{X_1+X_2}(z) = \int_{-\infty}^{\infty} f(z-t,t) \ dt\\
+        &amp;f_{X_1-X_2}(z) = \int_{-\infty}^{\infty} f(z+t,t) \ dt\\
+        &amp;f_{X_1 \cdot X_2}(z) = \int_{-\infty}^{\infty} \frac{1}{\vert t \vert} \ f\bigg(\frac{z}{t},t\bigg) \ dt\\
+        &amp;f_{X_1 / X_2}(z) = \int_{-\infty}^{\infty} \vert t \vert \ f(zt,t) \ dt
+\end{align*}\]</span></p>
+</div>
+
+
+
+</main> <!-- /main -->
+<script>
+var custom_title = document.querySelectorAll('.custom .theorem-title');
+for (let i = 0; i < custom_title.length; i++ ) {
+   var mod_name = custom_title[i].innerHTML;
+   custom_title[i].innerHTML = mod_name.replace("Annahme", "Bemerkung");
+};
+
+var cnj_citations = document.querySelectorAll("a[href*='#cnj']");
+for (let i = 0; i < cnj_citations.length; i++ ) {
+   var cite_name = cnj_citations[i].innerHTML;
+   cnj_citations[i].innerHTML = cite_name.replace("Annahme", "Bemerkung");
+};
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04_Verteilungen.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Verteilungen</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./bibliografie.html" class="pagination-link">
+        <span class="nav-page-text">Bibliografie</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
