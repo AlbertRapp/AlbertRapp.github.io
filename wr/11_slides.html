@@ -334,11 +334,11 @@
 <section id="section" class="slide level1 center">
 <h1></h1>
 <h2 id="markow-ungleichung">Markow-Ungleichung</h2>
-<p>Für eine ZV <span class="math inline">\(X\)</span> mit <span class="math inline">\(\mathbb{E} [\vert X \vert^r] &lt; \infty\)</span> für ein <span class="math inline">\(r &gt; 0\)</span> gilt <span class="math display">\[\begin{align*}
+<p>Für <span class="math inline">\(X\)</span> mit <span class="math inline">\(\mathbb{E} [\vert X \vert^r] &lt; \infty\)</span> für ein <span class="math inline">\(r &gt; 0\)</span> gilt <span class="math display">\[\begin{align*}
         \mathbb{P}\big( \vert X \vert \geq \varepsilon \big) \leq \frac{\mathbb{E} [\vert X \vert^r] }{\varepsilon^r} \text{ für alle } \varepsilon &gt; 0
 \end{align*}\]</span></p>
 <h2 id="tschebyschew-ungleichung">Tschebyschew-Ungleichung</h2>
-<p>Für eine ZV <span class="math inline">\(X\)</span> mit <span class="math inline">\(\mathbb{E} [X ^2] &lt; \infty\)</span> und <span class="math inline">\(\varepsilon &gt; 0\)</span> gilt <span class="math display">\[\begin{align*}
+<p>Für <span class="math inline">\(X\)</span> mit <span class="math inline">\(\mathbb{E} [X ^2] &lt; \infty\)</span> und <span class="math inline">\(\varepsilon &gt; 0\)</span> gilt <span class="math display">\[\begin{align*}
     \mathbb{P}\big( \vert X -\mathbb{E}X \vert \geq \varepsilon \big) \leq \frac{\text{Var} ( X ) }{\varepsilon^2}
 \end{align*}\]</span></p>
 <aside class="notes">
@@ -363,21 +363,17 @@ Abschätzung für die Abweichung vom Erwartungswert % %
 <section id="section-1" class="slide level1 center">
 <h1></h1>
 <h2 id="hölder-ungleichung">Hölder-Ungleichung</h2>
-<p>Für zwei ZV <span class="math inline">\(X,Y\)</span> mit <span class="math inline">\(\mathbb{E} [\vert X \vert^p],\mathbb{E} [\vert Y \vert^q] &lt; \infty\)</span> für <span class="math inline">\(p,q \in (1,\infty)\)</span>, sodass <span class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span> ist <span class="math display">\[\begin{align*}
+<p>Für <span class="math inline">\(X,Y\)</span> mit <span class="math inline">\(\mathbb{E} [\vert X \vert^p],\mathbb{E} [\vert Y \vert^q] &lt; \infty\)</span> für <span class="math inline">\(p,q \in (1,\infty)\)</span>, sodass <span class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span> ist <span class="math display">\[\begin{align*}
         \mathbb{E}\vert XY \vert &lt; \infty \quad \text{ und } \quad
         \mathbb{E}\vert XY \vert \leq \mathbb{E} [\vert X \vert^p]^{1/p}\ \mathbb{E} [\vert Y \vert^q] ^{1/q}
 \end{align*}\]</span></p>
 <h2 id="cauchy-schwarz-ungleichung">Cauchy-Schwarz-Ungleichung</h2>
-<p>Für zwei ZV <span class="math inline">\(X,Y\)</span> mit <span class="math inline">\(\mathbb{E} [\vert X \vert^2],\mathbb{E} [\vert Y \vert^2] &lt; \infty\)</span> ist <span class="math display">\[\begin{align*}
+<p>Für <span class="math inline">\(X,Y\)</span> mit <span class="math inline">\(\mathbb{E} [\vert X \vert^2],\mathbb{E} [\vert Y \vert^2] &lt; \infty\)</span> ist <span class="math display">\[\begin{align*}
     \mathbb{E}\vert XY \vert &lt; \infty \quad \text{ und } \quad
     \mathbb{E}\vert XY \vert \leq \sqrt{\mathbb{E} [X ^2]}\  \sqrt{\mathbb{E} [ Y^2]}
 \end{align*}\]</span></p>
 <div class="fragment">
-<!-- -->
-<h3 id="anwendung">Anwendung:</h3>
-<p><span class="math display">\[\begin{align*}
-        \vert \text{Cov} (X,Y) \vert \leq \mathbb{E}\vert (X-\mathbb{E}X) (Y-\mathbb{E}Y)\vert \leq \sqrt{\text{Var} (X)}\  \sqrt{\text{Var} (Y)}
-\end{align*}\]</span></p>
+<p><span style="color:#06436e;font-weight:bold"> Anwendung:</span> <span class="math inline">\(\vert \text{Cov} (X,Y) \vert \leq \mathbb{E}\vert (X-\mathbb{E}X) (Y-\mathbb{E}Y)\vert \leq \sqrt{\text{Var} (X)}\  \sqrt{\text{Var} (Y)}\)</span></p>
 </div>
 <aside class="notes">
 %Die Hölder-Ungleichung ist eine Verallgemeinerung der Cauchy-Schwarz-Ungleichung: % \begin{itemize} %
