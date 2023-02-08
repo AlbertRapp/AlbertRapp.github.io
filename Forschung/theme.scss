@@ -1,0 +1,111 @@
+/*-- scss:defaults --*/
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$primary:  #06436e !default;
+$code-color: $primary !default;
+$font-family-base:  'Source Sans Pro',  'Lato', 'Merriweather', 'Roboto Regular', 'Cabin Regular' !default;
+$body-color: $gray-700 !default;
+$headings-font-family:  'Prata', 'Roboto', 'Playfair Display', 'Montserrat'    !default;
+
+/*-- scss:rules --*/
+
+ol > li {
+    margin-bottom: $font-size-base * 0.25;
+}
+
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+  font-family: "Oleo Script", "Libre Baskerville", $headings-font-family;
+  font-size: $font-size-base * 2.5;
+}
+
+
+.navbar-dark .navbar-brand {
+  font-family: "Oleo Script", 'Merriweather', 'Roboto', $headings-font-family;
+  font-size: $font-size-base * 1.75;
+}
+
+.navbar > .container-xxl, .navbar > .container-xl, .navbar > .container-lg, .navbar > .container-md, .navbar > .container-sm, .navbar > .container, .navbar > .container-fluid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+div.quarto-post .listing-categories .listing-category {
+    color: $white;
+    background-color: $primary;
+    border: none;
+    border-radius: .4em;
+    text-transform: none;
+}
+
+#title-block-header.quarto-title-block.default .quarto-categories .quarto-category {
+    color: $white;
+    background-color: $primary;
+    border: none;
+    border-radius: .4em;
+    text-transform: none;
+    opacity: 1;
+}
+
+nav .nav-item:not(.compact){
+  font-weight: 600;
+  line-height: 25px;
+  font-size: $font-size-base * 1.25;
+  
+}
+
+#bio-pic{
+  align-items: end;
+  display: grid;
+}
+
+#about-me-text{
+  align-items: end;
+  display: grid;
+}
+
+iframe#beehiiv-form {
+    width: 100%;
+}
+
+.theorem {
+  margin-left: 1cm;
+}
+
+@media (min-width: 768px) {
+  iframe#beehiiv-form {
+    width: 70%;
+  }
+}
+
+.grid#dataviz_portfolio .img-fluid {
+  margin-bottom: 10px;
+  border: 1px solid #adb5bd;
+}
+
+
+@media (min-width: 768px) {
+  .grid#dataviz_portfolio .img-fluid {
+    margin-bottom: 25px;
+    border: 3px solid #adb5bd;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid#dataviz_portfolio .img-fluid {
+    margin-bottom: 50px;
+    border: 5px solid #adb5bd;
+  }
+}
