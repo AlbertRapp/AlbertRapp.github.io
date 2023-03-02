@@ -1,0 +1,75 @@
+
+
+```{r}
+setwd(here::here('2023-w08-bob-ross'))
+library(tidyverse)
+bob_ross <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-21/bob_ross.csv')
+
+
+```
+
+
+```{r}
+
+walk2(bob_ross$painting_index, bob_ross$img_src, \(x, y) download.file(y, glue::glue('imgs/{x}.png')))
+```
+
+
+```{r}
+image_read('imgs/105.png') |> 
+  image_equalize() |> 
+  image_quantize(max = 20) |> 
+  image_data()
+```
+
+
+```{r}
+
+find_mode <- function(x) {
+  u <- unique(x)
+  tab <- tabulate(match(x, u))
+  u[tab == max(tab)]
+}
+
+library(magick)
+
+extract_most_common_hexcode <- function(img) {
+  image_read(img) |> 
+    image_quantize(max = 10) |> 
+    image_data() |> 
+    apply(2:3, paste, collapse = "") |> 
+    as.vector() |> 
+    find_mode() 
+} 
+  
+
+```
+
+
+```{r}
+tictoc::tic()
+hex_codes <- bob_ross |> 
+  slice(1:20) |> 
+  select(season, episode, img_src, painting_title, painting_index) |> 
+  mutate(
+    filename = glue::glue('imgs/{painting_index}.png'),
+    hex_codes = map_chr(filename, extract_most_common_hexcode),
+    hex_codes = paste0("#", hex_codes)
+  ) |> 
+  select(-c(filename, painting_index))
+
+write_csv(hex_codes, 'hex_codes.csv')
+tictoc::toc()
+```
+
+
+
+```{r}
+hex_codes |> 
+  ggplot(aes(x = episode, y = season, fill = hex_codes)) +
+  geom_tile(col = 'white') +
+  coord_equal() +
+  scale_fill_identity() +
+  theme_void()
+```
+

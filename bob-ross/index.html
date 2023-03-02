@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
+    <title>Bob Ross Paintings</title>
+  </head>
+  <body>
+    <h1 style="font-family: 'Oleo Script', sans-serif;color:#3c3939; font-size: xxx-large; margin-bottom: 0;;">Average Colors of Bob Ross Paintings</h1>
+    <p style="font-size: x-large;">Each tile represents the "average" color of a Bob Ross painting. Hover over the tiles to see the full painting. The average colors were computed as descriped on <a href="https://sighack.com/post/averaging-rgb-colors-the-right-way">Sighack</a>.</p>
+    <script src="hex.js" type="text/javascript"></script>
+    <div id="tooltip" class="hidden">
+			<h3 id ="painting">Painting name</h3>
+      <p id ="painting_description">Painted in bla bla</p>
+			<img id="image" src="https://www.twoinchbrush.com/images/painting285.png" alt="">
+		</div>
+  </body>
+</html>
